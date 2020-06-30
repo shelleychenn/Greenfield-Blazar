@@ -1,13 +1,17 @@
-
 import React from "react";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
   render() {
     const { name } = this.props;
     return (
       <>
         <h1>
-          Hello {name}
+          Hello World!
         </h1>
       </>
     );
