@@ -1,17 +1,21 @@
-# project-greenfield
+# Project Greenfield
 
-## Building and running on localhost
+## Installation
 
-```sh
 npm install
-```
+npm run dev-react
+npm start
 
-To create a development build:
+## Usage
 
-```sh
-npm run build-dev
-```
+Open the file `client/dist/index.html` or `http://localhost:5050` in your browser
 
-## Running
+## Testing
 
-Open the file `dist/index.html` in your browser
+npm test
+
+## Contributors
+
+Shelley Chen
+Eric Weiner
+Michael Doudy

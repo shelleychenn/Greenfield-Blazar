@@ -1,11 +1,9 @@
-
 import React from "react";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      testText: 'HEY THERE',
     }
   }
   render() {
@@ -13,11 +11,8 @@ class App extends React.Component {
     return (
       <>
         <h1>
-          Hello {name}
+          Hello World!
         </h1>
-        <h2>
-          { this.state.testText }
-        </h2>
       </>
     );
   }
