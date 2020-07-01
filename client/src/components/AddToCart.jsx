@@ -17,26 +17,27 @@ const AddToCart = () => {
 
   return (
     <form className='container-AddToCart'>
-      <select onChange = { (e) => setSize(e.target.value) }>
+      <select onChange={(e) => setSize(e.target.value)}>
         <option>SELECT SIZE</option>
-        { selectedStyle && Object.keys(selectedStyle.skus).map((rowSize) => {
-          return (<option value = { rowSize } >{ rowSize }</option>)
-        }) }
+        {selectedStyle &&
+          Object.keys(selectedStyle.skus).map((rowSize) => {
+            return <option value={rowSize}>{rowSize}</option>;
+          })}
       </select>
 
-      <select onChange = { (e) => setQuantity(e.target.value) }>
-        <option>{ quantity }</option>
-        { size && [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(1).map((qty) => {
-          return (<option value = { qty }>{ qty }</option>)
-        }) }
+      <select onChange={(e) => setQuantity(e.target.value)}>
+        <option>{quantity}</option>
+        {size &&
+          [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(1).map((qty) => {
+            return <option value={qty}>{qty}</option>;
+          })}
       </select>
 
       <button>ADD TO BAG</button>
 
       <div>
-        IMAGE GOES HERE
+        <img src='./assets/heart-unfilled-icon.png' />
       </div>
-
     </form>
   );
 };
