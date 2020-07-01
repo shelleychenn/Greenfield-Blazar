@@ -19,9 +19,12 @@ const AddToCart = () => {
     <form className='container-AddToCart'>
       <select onChange={(e) => setSize(e.target.value)}>
         <option>SELECT SIZE</option>
+        {/* need to add logic to deactivate if out of stock */}
         {selectedStyle &&
-          Object.keys(selectedStyle.skus).map((rowSize) => {
-            return <option value={rowSize}>{rowSize}</option>;
+          Object.entries(selectedStyle.skus).map(([rowSize, rowQty]) => {
+            if (rowQty) {
+              return <option value={rowSize}>{rowSize}</option>;
+          }
           })}
       </select>
 
@@ -35,7 +38,7 @@ const AddToCart = () => {
 
       <button>ADD TO BAG</button>
 
-      <div>
+      <div className = 'container-favorite'>
         <img src='./assets/heart-unfilled-icon.png' />
       </div>
     </form>
