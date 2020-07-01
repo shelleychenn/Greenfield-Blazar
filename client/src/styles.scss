@@ -1,0 +1,40 @@
+.productCard{
+  display: grid;
+  grid-template-columns: 22vh;
+  grid-template-rows: 195px 60px 25px;
+  width: 22vh;
+  border: 1px solid grey;
+
+  .imageDisplay {
+    background-image: url("https://images.unsplash.com/photo-1544441892-794166f1e3be?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80");
+
+    background-position: center;
+  }
+  .productInfo{
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #484848;
+    margin-left: 2%;
+
+    .category {
+      font-weight: 300;
+      font-size: 14px;
+    }
+    .productName {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .price {
+      font-size: 12px;
+    }
+  }
+  .stars {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: yellow;
+    font-size: 14px;
+  }
+}
