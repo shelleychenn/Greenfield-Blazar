@@ -1,18 +1,16 @@
-import React from "react";
+import React from 'react';
+import StarRating from './StarRating.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
+    this.state = {};
   }
   render() {
     const { name } = this.props;
     return (
       <>
-        <h1>
-          Hello World!
-        </h1>
+        <StarRating value={3.5} />
       </>
     );
   }
