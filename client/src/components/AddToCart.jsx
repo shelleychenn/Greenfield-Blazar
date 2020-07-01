@@ -7,8 +7,11 @@ const AddToCart = () => {
   const [selectedStyle, setSelectedStyle] = useState();
   //!
 
+  //! Should probably pull from database
+  const [isFavorite, toggleIsFavorite] = useState(false);
+
   const [size, setSize] = useState();
-  const [quantity, setQuantity] = useState('-');
+  const [quantity, setQuantity] = useState();
 
   useEffect(() => {
     setProductStyles(products.productStyles.results);
@@ -19,7 +22,7 @@ const AddToCart = () => {
     <form className='container-AddToCart'>
       <select onChange={(e) => setSize(e.target.value)}>
         <option>SELECT SIZE</option>
-        {/* need to add logic to deactivate if out of stock */}
+        {/*//! need to add logic to deactivate if out of stock */}
         {selectedStyle &&
           Object.entries(selectedStyle.skus).map(([rowSize, rowQty]) => {
             if (rowQty) {
@@ -28,18 +31,26 @@ const AddToCart = () => {
           })}
       </select>
 
-      <select onChange={(e) => setQuantity(e.target.value)}>
-        <option>{quantity}</option>
+      {/*//! Qty state undefined on default after size is chosen; needs to be 1 */}
+      <select onChange={(e) => setQuantity(Number(e.target.value))}>
+        <option>{ size ? 1 : '-' }</option>
         {size &&
-          [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(1).map((qty) => {
+          [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(2).map((qty) => {
             return <option value={qty}>{qty}</option>;
           })}
       </select>
 
-      <button>ADD TO BAG</button>
+      <button onClick = {(e) => {
+        e.preventDefault();
+        //! do something with the style selection
+        console.log({ style_id: selectedStyle.style_id, id: 'TO BE ADDED', quantity });
+      }} >ADD TO BAG</button>
 
-      <div className = 'container-favorite'>
-        <img src='./assets/heart-unfilled-icon.png' />
+      <div className = 'container-favorite' onClick = {() => {
+        toggleIsFavorite(!isFavorite);
+        //! Do something with data here
+      }}>
+        { isFavorite ? <img src='./assets/heart-filled-icon.png' /> : <img src='./assets/heart-unfilled-icon.png' /> }
       </div>
     </form>
   );

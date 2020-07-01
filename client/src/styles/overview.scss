@@ -1,9 +1,29 @@
+button {
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+button:focus,
+select:focus {
+  outline:0;
+}
+
 .container-AddToCart {
 
   display: grid;
   grid-template-columns: repeat(5, 50px);
   grid-template-rows: 50px 50px;
   grid-gap: 15px;
+
+  select {
+    text-indent: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('/assets/arrow-down-icon.png');
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    cursor: pointer;
+  }
 
   select:first-of-type {
     grid-column: 1 / span 3;
@@ -20,10 +40,12 @@
     background-position: 95% 50%;
     text-align: left;
     text-indent: 10px;
+    cursor: pointer;
   }
 
   .container-favorite {
     border: 1px solid #000;
+    cursor: pointer;
 
     img {
       padding: 25%;
