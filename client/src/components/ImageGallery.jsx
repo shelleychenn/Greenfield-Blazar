@@ -7,24 +7,31 @@ const ImageGallery = () => {
   const [selectedStyle, setSelectedStyle] = useState();
   //!
 
+  const [currentImage, setCurrentImage] = useState();
+
   useEffect(() => {
     setProductStyles(products.productStyles.results);
     setSelectedStyle(!!productStyles && productStyles[0]);
+    setCurrentImage(!!productStyles ? productStyles[0].photos[2] : null);
   }, [productStyles]);
 
   return (
     <div className='container-imageGallery'>
       {/* relative position */}
-      <img /> {/* absolute position */}
-      <div>
+      <img src = {currentImage ? currentImage.url : ''}
+           className = 'main-image'/> {/* absolute position */}
+      <div className = 'image-overlay-container'>
         {/* absolute position, z-index: 10 */}
-        <div>
-          {/* 5 images mapped into here */}
+        <div className = 'thumbnail-container'>
+          {/*//! 7 images at a time */}
+          { selectedStyle && selectedStyle.photos.map(({ thumbnail_url }) => {
+            return <img className = 'thumbnail' src = {thumbnail_url}/>;
+          }) }
           {/* down arrow icon */}
         </div>
-        <img />
-        <img />
-        <img />
+        <img className = 'fullScreen-icon' src = './assets/fullscreen-icon.png'/>
+        <img className = 'leftArrow-icon' src = './assets/left-arrow-icon.png'/>
+        <img className = 'rightArrow-icon' src = './assets/right-arrow-icon.png'/>
       </div>
     </div>
   );
