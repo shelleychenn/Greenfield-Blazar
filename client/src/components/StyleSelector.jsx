@@ -12,11 +12,13 @@ const StyleSelector = () => {
 
   return (
     <div className='container-styleSelector'>
-      <p>STYLE > {!!selectedStyle && selectedStyle.name.toUpperCase()}</p>
-      <div>
+      <p><span>STYLE > </span>{!!selectedStyle && selectedStyle.name.toUpperCase()}</p>
+      <div className = 'container-thumbnails'>
         {!!productStyles &&
           productStyles.map((style) => {
-            return <img src={style.photos[0].thumbnail_url} onClick={() => setSelectedStyle(style)} />;
+            return (<div>
+            {selectedStyle.style_id === style.style_id ? <img className='checkmark' src='./assets/checkmark-icon.png'/> : null}
+            <img className='thumbnail' src={style.photos[0].thumbnail_url} onClick={() => setSelectedStyle(style)} /></div>);
           })}
       </div>
     </div>
