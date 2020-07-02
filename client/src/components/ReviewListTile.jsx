@@ -1,6 +1,7 @@
 import React from 'react';
 import StarRating from './StarRating.jsx';
 import NameAndDate from './NameAndDate.jsx';
+import SubmittedImages from './SubmittedImages.jsx';
 
 const ReviewListTile = ({ review }) => {
   return (
@@ -19,13 +20,7 @@ const ReviewListTile = ({ review }) => {
         <br />
         {review.body}
         <div className="review-tile-image-section">
-          {review.photos.map((photo) => (
-            <img
-              alt="review image"
-              src={photo.url}
-              className="review-tile-image"
-            ></img>
-          ))}
+          <SubmittedImages review={review} />
         </div>
       </div>
     </div>
