@@ -4,6 +4,7 @@ import NameAndDate from './NameAndDate.jsx';
 import SubmittedImages from './SubmittedImages.jsx';
 import Summary from './Summary.jsx';
 import RecommendCheckMark from './RecommendCheckMark.jsx';
+import SellerResponse from './SellerResponse.jsx';
 
 const ReviewListTile = ({ review }) => {
   return (
@@ -23,6 +24,9 @@ const ReviewListTile = ({ review }) => {
         </div>
         <div className="review-tile-recommend-checkmark">
           <RecommendCheckMark review={review} />
+        </div>
+        <div className="review-tile-seller-response">
+          <SellerResponse review={review} />
         </div>
       </div>
     </div>

@@ -11,7 +11,8 @@
           justify-content: space-between;
 }
 
-.review-tile-body-summary {
+.review-tile-body-summary,
+.seller-response-heading {
   font-weight: bold;
 }
 
@@ -21,5 +22,9 @@
 
 .review-tile-image {
   height: 88px;
+}
+
+.review-tile-seller-response {
+  background: #e4e4e4;
 }
 /*# sourceMappingURL=reviews.tile.css.map */

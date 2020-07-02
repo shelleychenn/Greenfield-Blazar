@@ -37,7 +37,7 @@ const reviews = {
       rating: 3.5,
       summary: "I'm enjoying wearing these shades.",
       recommend: 1,
-      response: '',
+      response: 'This is a reponse',
       body: 'Comfortable and practical.',
       date: '2019-04-14T00:00:00.000Z',
       reviewer_name: 'shortandsweeet',
