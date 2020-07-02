@@ -1,0 +1,21 @@
+.review-tile {
+  width: 60%;
+}
+
+.review-tile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.review-tile-body-summary {
+  font-weight: bold;
+}
+
+.review-tile-image {
+  height: 88px;
+}
+/*# sourceMappingURL=reviews.tile.css.map */

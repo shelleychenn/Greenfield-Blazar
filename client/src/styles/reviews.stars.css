@@ -1,0 +1,58 @@
+.full-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(100%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 100%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.three-Fourth-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(70%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 70%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.half-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(50%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 50%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.one-third-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(30%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 30%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.empty-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(0%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 0%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.review-tile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.review-tile-body-summary {
+  font-weight: bold;
+}
+/*# sourceMappingURL=reviews.stars.css.map */

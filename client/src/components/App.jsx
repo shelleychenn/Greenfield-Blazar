@@ -11,7 +11,6 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
-        <h1>Hello World!</h1>
         <div className="ratings-and-reviews">
           <ReviewList reviews={reviews} />
         </div>

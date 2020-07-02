@@ -10,7 +10,21 @@ const ReviewListTile = ({ review }) => {
       </div>
       <div className="review-tile-body">
         <div className="review-tile-body-summary">
-          {review.summary.slice(0, 60)}
+          {review.summary.slice(0, 60)}...
+        </div>
+        <br />
+        ...{review.summary.slice(60)}
+        <br />
+        <br />
+        {review.body}
+        <div className="review-tile-image-section">
+          {review.photos.map((photo) => (
+            <img
+              alt="review image"
+              src={photo.url}
+              className="review-tile-image"
+            ></img>
+          ))}
         </div>
       </div>
     </div>
