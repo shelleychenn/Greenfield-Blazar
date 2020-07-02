@@ -1,9 +1,11 @@
 import React from 'react';
+import ImageGallery from './ImageGallery.jsx';
 
 const Overview = () => {
   return (
-    // Overview Components go here
-    <></>
+    <>
+      <ImageGallery />
+    </>
   );
 }
 
