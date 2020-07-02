@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewList from './ReviewList.jsx';
+import RatingsAndReviews from './RatingsAndReviews.jsx';
 import reviews from '../../../_testApiData/_reviewsApi.js';
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <>
         <div className="ratings-and-reviews">
-          <ReviewList reviews={reviews} />
+          <RatingsAndReviews reviews={reviews} />
         </div>
       </>
     );

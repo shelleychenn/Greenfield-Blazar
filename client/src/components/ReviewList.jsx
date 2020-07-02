@@ -7,7 +7,7 @@ const ReviewList = ({ reviews }) => {
   return (
     <div className="review-list">
       {reviews.results.map((review) => (
-        <ReviewListTile review={review} />
+        <ReviewListTile review={review} key={review.review_id} />
       ))}
     </div>
   );

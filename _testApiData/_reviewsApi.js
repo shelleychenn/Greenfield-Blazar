@@ -34,7 +34,7 @@ const reviews = {
 
     {
       review_id: 5,
-      rating: 3.5,
+      rating: 3.8,
       summary: "I'm enjoying wearing these shades.",
       recommend: 1,
       response: 'This is a reponse',

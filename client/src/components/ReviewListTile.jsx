@@ -29,10 +29,9 @@ const ReviewListTile = ({ review }) => {
         <div className="review-tile-seller-response">
           <SellerResponse review={review} />
         </div>
-
-        <div className="review-tile-footer">
-          <ReviewListTileFooter review={review} />
-        </div>
+      </div>
+      <div className="review-tile-footer">
+        <ReviewListTileFooter review={review} />
       </div>
     </div>
   );
