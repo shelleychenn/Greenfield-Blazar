@@ -7,7 +7,7 @@ const SellerResponse = ({ review }) => {
     return (
       <div>
         <p className="seller-response-heading">Response:</p>
-        {review.response}
+        <p>{review.response}</p>
       </div>
     );
   }

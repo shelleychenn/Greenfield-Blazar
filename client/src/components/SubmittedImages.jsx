@@ -19,6 +19,8 @@ class SubmittedImages extends Component {
           ))}
         </div>
       );
+    } else {
+      return null;
     }
   }
 }

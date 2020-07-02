@@ -11,9 +11,9 @@ const Summary = ({ review }) => {
     <div>
       {shortSummary}...
       <br />
-      <div className="review-tile-body-summary-rest">
+      <p className="review-tile-body-summary-rest">
         ...{review.summary.slice(60)}
-      </div>
+      </p>
     </div>
   );
 
