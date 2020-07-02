@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
+import SubmittedImage from './SubmittedImage.jsx';
 
-class SubmittedImages extends Component {
-  constructor(props) {
-    super(props);
+const SubmittedImages = ({ review }) => {
+  if (review.photos.length > 0) {
+    return (
+      <div className="review-tile-images">
+        {review.photos.map((photo) => (
+          <SubmittedImage photo={photo} key={photo.id} />
+        ))}
+      </div>
+    );
+  } else {
+    return null;
   }
-
-  render() {
-    if (this.props.review.photos.length > 0) {
-      return (
-        <div>
-          {this.props.review.photos.map((photo) => (
-            <img
-              alt="review image"
-              src={photo.url}
-              className="review-tile-image"
-              key={photo.id}
-            ></img>
-          ))}
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-}
+};
 
 export default SubmittedImages;

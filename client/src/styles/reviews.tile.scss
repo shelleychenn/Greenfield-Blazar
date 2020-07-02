@@ -16,8 +16,23 @@
   font-weight: normal;
 }
 
+.review-tile-images {
+  display: flex;
+  flex-direction: row;
+}
+
 .review-tile-image {
   height: 88px;
+}
+
+.review-tile-dialog {
+  position: static;
+  left: 20%;
+  top: 10%;
+}
+
+.review-tile-image-modal {
+  width: 400px;
 }
 
 .review-tile-seller-response {
