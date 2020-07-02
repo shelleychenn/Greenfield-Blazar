@@ -38,6 +38,7 @@ const ImageGallery = () => {
         src={currentImage ? currentImage.url : ''}
         className={isZoomView ? 'main-image-zoomed' : 'main-image'}
         // 800 and 500 below come from the image size
+        //! has issues if image was different dimensions than 800x500
         style={
           isZoomView && mouseCoordinates
             ? { objectPosition: `${(mouseCoordinates.x * 100) / 800}% ${(mouseCoordinates.y * 100) / 500}%` }
