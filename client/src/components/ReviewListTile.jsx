@@ -2,6 +2,7 @@ import React from 'react';
 import StarRating from './StarRating.jsx';
 import NameAndDate from './NameAndDate.jsx';
 import SubmittedImages from './SubmittedImages.jsx';
+import Summary from './Summary.jsx';
 
 const ReviewListTile = ({ review }) => {
   return (
@@ -12,11 +13,8 @@ const ReviewListTile = ({ review }) => {
       </div>
       <div className="review-tile-body">
         <div className="review-tile-body-summary">
-          {review.summary.slice(0, 60)}...
+          <Summary review={review} />
         </div>
-        <br />
-        ...{review.summary.slice(60)}
-        <br />
         <br />
         {review.body}
         <div className="review-tile-image-section">

@@ -35,7 +35,7 @@ const reviews = {
     {
       review_id: 5,
       rating: 3.5,
-      summary: "I'm enjoying wearing these shades",
+      summary: "I'm enjoying wearing these shades.",
       recommend: 0,
       response: '',
       body: 'Comfortable and practical.',
