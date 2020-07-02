@@ -3,7 +3,8 @@
   grid-template-columns: 22vh;
   grid-template-rows: 195px 60px 25px;
   width: 22vh;
-  border: 1px solid grey;
+ 
+  padding-right: 10px;
 
   .imageDisplay {
     background-image: url("https://images.unsplash.com/photo-1544441892-794166f1e3be?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80");
@@ -38,3 +39,16 @@
     font-size: 14px;
   }
 }
+
+
+.pButton{
+    visibility: hidden;
+}
+// .cardContainer {
+//     display:"flex";
+//     flex-direction: row;
+//     justify-content: "center";
+
+//     width: "fit-content";
+//   }
+
