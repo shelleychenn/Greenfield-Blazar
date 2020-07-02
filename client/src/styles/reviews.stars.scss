@@ -31,12 +31,3 @@
 .empty-star {
   @include starProperties(0%);
 }
-
-.review-tile-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.review-tile-body-summary {
-  font-weight: bold;
-}

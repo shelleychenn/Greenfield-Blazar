@@ -1,6 +1,9 @@
 import React from 'react';
-import RatingsAndReviews from './RatingsAndReviews.jsx';
 import reviews from '../../../_testApiData/_reviewsApi.js';
+import Overview from './Overview.jsx';
+import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
+import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import RatingsAndReviews from './RatingsAndReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,9 +11,11 @@ class App extends React.Component {
     this.state = {};
   }
   render() {
-    const { name } = this.props;
     return (
       <>
+        <Overview />
+        <RelatedItemsAndComparison />
+        <QuestionsAndAnswers />
         <div className="ratings-and-reviews">
           <RatingsAndReviews reviews={reviews} />
         </div>
