@@ -66,43 +66,66 @@ const ImageGallery = () => {
       <div className='image-overlay-container'>
         {!isZoomView && (
           <>
-            {thumbnailIndexBounds && thumbnailIndexBounds[0] > 0 && (
-              <img
-                className='upArrow-icon'
-                src='./assets/up-arrow-icon.png'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  scrollBackward();
-                }}
-              />
-            )}
-            <div className='thumbnail-container'>
-              {selectedStyle &&
-                selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
-                  return (
-                    <img
-                      className={
-                        index + indexDisplacement === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'
-                      }
-                      src={thumbnail_url}
-                      key={index + indexDisplacement}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setImageIndex(index + indexDisplacement);
-                      }}
-                    />
-                  );
-                })}
-            </div>
-            {thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length && (
-              <img
-                className='downArrow-icon'
-                src='./assets/down-arrow-icon.png'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  scrollForward();
-                }}
-              />
+            {isExpandedView ? (
+              <>
+                <div className='slideShow-bubble-container'>
+                  {selectedStyle &&
+                    selectedStyle.photos.map((_, index) => {
+                      return (
+                        <div
+                          className={
+                            index === imageIndex ? 'slideShow-bubble slideShow-bubble-selected' : 'slideShow-bubble'
+                          }
+                          key={index + indexDisplacement}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setImageIndex(index + indexDisplacement);
+                          }}></div>
+                      );
+                    })}
+                </div>
+              </>
+            ) : (
+              <>
+                {thumbnailIndexBounds && thumbnailIndexBounds[0] > 0 && (
+                  <img
+                    className='upArrow-icon'
+                    src='./assets/up-arrow-icon.png'
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollBackward();
+                    }}
+                  />
+                )}
+                <div className='thumbnail-container'>
+                  {selectedStyle &&
+                    selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
+                      return (
+                        <img
+                          className={
+                            index + indexDisplacement === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'
+                          }
+                          src={thumbnail_url}
+                          key={index + indexDisplacement}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setImageIndex(index + indexDisplacement);
+                          }}
+                        />
+                      );
+                    })}
+                </div>
+                {thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length && (
+                  <img
+                    className='downArrow-icon'
+                    src='./assets/down-arrow-icon.png'
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollForward();
+                    }}
+                  />
+                )}
+              </>
             )}
             <img
               className='fullScreen-icon'

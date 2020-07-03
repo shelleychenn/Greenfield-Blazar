@@ -66,6 +66,36 @@
       }
     }
 
+    .slideShow-bubble-container {
+      z-index: 10;
+      display: grid;
+      grid-row: 5;
+      grid-column: 1 / span 5;
+      grid-template-rows: 1fr;
+      grid-template-columns: auto;
+      justify-content: center;
+      grid-gap: 7px;
+
+      .slideShow-bubble {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba($color: rgb(255, 255, 255), $alpha: .2);
+        grid-row: 1;
+        cursor: pointer;
+      }
+
+      .slideShow-bubble-selected {
+        background-color: #fff;
+        transform: scale(1.25);
+      }
+
+      .slideShow-bubble:hover {
+        background-color: #fff;
+        transform: scale(1.25);
+      }
+    }
+
     .fullScreen-icon {
       grid-row: 1;
       grid-column: 5;
