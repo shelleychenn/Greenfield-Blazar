@@ -12,17 +12,18 @@ const AddToCart = () => {
 
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState();
+  const [isOutOfStock, setIsOutOfStock] = useState(false);
 
   useEffect(() => {
     setProductStyles(products.productStyles.results);
     setSelectedStyle(!!productStyles && productStyles[0]);
+    setIsOutOfStock(!!productStyles && productStyles.length ? false : true);
   }, [productStyles]);
 
   return (
     <form className='container-AddToCart'>
-      <select onChange={(e) => setSize(e.target.value)}>
-        <option>SELECT SIZE</option>
-        {/*//! need to add logic to deactivate if out of stock */}
+      <select onChange={(e) => setSize(e.target.value)} disabled = {isOutOfStock}>
+        <option>{isOutOfStock ? 'OUT OF STOCK' : 'SELECT SIZE'}</option>
         {selectedStyle &&
           Object.entries(selectedStyle.skus).map(([rowSize, rowQty]) => {
             if (rowQty) {
@@ -32,14 +33,15 @@ const AddToCart = () => {
       </select>
 
       {/*//! Qty state undefined on default after size is chosen; needs to be 1 */}
-      <select onChange={(e) => setQuantity(Number(e.target.value))}>
+      <select onChange={(e) => setQuantity(Number(e.target.value))} disabled = {isOutOfStock}>
         <option>{ size ? 1 : '-' }</option>
         {size &&
           [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(2).map((qty) => {
             return <option value={qty}>{qty}</option>;
           })}
       </select>
-
+      {!isOutOfStock &&
+      <>
       <button onClick = {(e) => {
         e.preventDefault();
         //! do something with the style selection
@@ -52,6 +54,7 @@ const AddToCart = () => {
       }}>
         { isFavorite ? <img src='./assets/heart-filled-icon.png' /> : <img src='./assets/heart-unfilled-icon.png' /> }
       </div>
+    </> }
     </form>
   );
 };
