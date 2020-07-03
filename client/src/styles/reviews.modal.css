@@ -67,4 +67,9 @@
   overflow: hidden;
   margin-right: 17px;
 }
+
+.form-text {
+  color: gray;
+  font-size: smaller;
+}
 /*# sourceMappingURL=reviews.modal.css.map */
