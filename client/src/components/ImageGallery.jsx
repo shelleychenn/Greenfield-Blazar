@@ -27,6 +27,16 @@ const ImageGallery = () => {
     );
   }, [productStyles]);
 
+  const scrollForward = () => {
+    setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
+    setIndexDisplacement(indexDisplacement + 1);
+  };
+
+  const scrollBackward = () => {
+    setThumbnailIndexBounds([thumbnailIndexBounds[0] - 1, thumbnailIndexBounds[1] - 1]);
+    setIndexDisplacement(indexDisplacement - 1);
+  };
+
   return (
     <div
       className={
@@ -62,8 +72,7 @@ const ImageGallery = () => {
                 src='./assets/up-arrow-icon.png'
                 onClick={(e) => {
                   e.stopPropagation();
-                  setThumbnailIndexBounds([thumbnailIndexBounds[0] - 1, thumbnailIndexBounds[1] - 1]);
-                  setIndexDisplacement(indexDisplacement - 1);
+                  scrollBackward();
                 }}
               />
             )}
@@ -76,6 +85,7 @@ const ImageGallery = () => {
                         index + indexDisplacement === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'
                       }
                       src={thumbnail_url}
+                      key={index + indexDisplacement}
                       onClick={(e) => {
                         e.stopPropagation();
                         setImageIndex(index + indexDisplacement);
@@ -90,8 +100,7 @@ const ImageGallery = () => {
                 src='./assets/down-arrow-icon.png'
                 onClick={(e) => {
                   e.stopPropagation();
-                  setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
-                  setIndexDisplacement(indexDisplacement + 1);
+                  scrollForward();
                 }}
               />
             )}
@@ -112,8 +121,7 @@ const ImageGallery = () => {
                   if (imageIndex > 0) {
                     setImageIndex(imageIndex - 1);
                     if (imageIndex - 1 < thumbnailIndexBounds[0]) {
-                      setThumbnailIndexBounds([thumbnailIndexBounds[0] - 1, thumbnailIndexBounds[1] - 1]);
-                      setIndexDisplacement(indexDisplacement - 1);
+                      scrollBackward();
                     }
                   }
                 }}
@@ -128,8 +136,7 @@ const ImageGallery = () => {
                   if (imageIndex < selectedStyle.photos.length - 1) {
                     setImageIndex(imageIndex + 1);
                     if (imageIndex >= thumbnailIndexBounds[1] - 1) {
-                      setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
-                      setIndexDisplacement(indexDisplacement + 1);
+                      scrollForward();
                     }
                   }
                 }}
