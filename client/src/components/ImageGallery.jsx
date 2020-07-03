@@ -137,7 +137,7 @@ const ImageGallery = () => {
             />
             {imageIndex > 0 && (
               <img
-                className='leftArrow-icon'
+                className={isExpandedView ? 'leftArrow-icon leftArrow-icon-expanded' : 'leftArrow-icon'}
                 src='./assets/left-arrow-icon.png'
                 onClick={(e) => {
                   e.stopPropagation();
