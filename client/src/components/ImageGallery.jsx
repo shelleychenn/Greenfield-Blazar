@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
 import products from '../../../_testApiData/_productsApi.js';
 import SlideshowBubbles from './overview-components/SlideshowBubbles.jsx';
+import ThumbnailDisplay from './overview-components/ThumbnailDisplay.jsx';
 
 const ImageGallery = () => {
   //! will need to convert to either props or shared state
@@ -14,6 +16,7 @@ const ImageGallery = () => {
   const [thumbnailIndexBounds, setThumbnailIndexBounds] = useState();
   const [isExpandedView, toggleIsExpandedView] = useState(false);
   const [isZoomView, toggleIsZoomView] = useState(false);
+  const [zoomedImageDims, setZoomedImageDims] = useState();
   const [mouseCoordinates, setMouseCoordinates] = useState();
 
   useEffect(() => {
@@ -51,16 +54,19 @@ const ImageGallery = () => {
         isExpandedView ? toggleIsZoomView(!isZoomView) : toggleIsExpandedView(!isExpandedView);
       }}
       onMouseMove={(e) => {
-        isZoomView && setMouseCoordinates({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+        if (isZoomView) {
+          setMouseCoordinates({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+          setZoomedImageDims([Number(window.getComputedStyle(ReactDOM.findDOMNode(e.target)).getPropertyValue("width").split('px').join(''))
+          ,Number(window.getComputedStyle(ReactDOM.findDOMNode(e.target)).getPropertyValue("height").split('px').join(''))]);
+        }
       }}>
       <img
         src={currentImage ? currentImage.url : ''}
         className={isZoomView ? 'main-image-zoomed' : 'main-image'}
-        // 800 and 500 below come from the image size
-        //! has issues if image has different dimensions than 800x500
+        //! has issues with certain images
         style={
           isZoomView && mouseCoordinates
-            ? { objectPosition: `${(mouseCoordinates.x * 100) / 800}% ${(mouseCoordinates.y * 100) / 500}%` }
+            ? { objectPosition: `${(mouseCoordinates.x * 100) / zoomedImageDims[0]}% ${(mouseCoordinates.y * 100) / zoomedImageDims[1]}%` }
             : null
         }
       />
@@ -68,54 +74,25 @@ const ImageGallery = () => {
         {!isZoomView && (
           <>
             {isExpandedView ? (
-                <SlideshowBubbles
-                  selectedStyle = {selectedStyle}
-                  imageIndex = {imageIndex}
-                  indexDisplacement = {indexDisplacement}
-                  setImageIndex = {setImageIndex}
-                  setIndexDisplacement = {setIndexDisplacement}
-                  setThumbnailIndexBounds = {setThumbnailIndexBounds} />
+              <SlideshowBubbles
+                selectedStyle={selectedStyle}
+                imageIndex={imageIndex}
+                indexDisplacement={indexDisplacement}
+                setImageIndex={setImageIndex}
+                setIndexDisplacement={setIndexDisplacement}
+                setThumbnailIndexBounds={setThumbnailIndexBounds}
+              />
             ) : (
-              <>
-                {thumbnailIndexBounds && thumbnailIndexBounds[0] > 0 && (
-                  <img
-                    className='upArrow-icon'
-                    src='./assets/up-arrow-icon.png'
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      scrollBackward();
-                    }}
-                  />
-                )}
-                <div className='thumbnail-container'>
-                  {selectedStyle &&
-                    selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
-                      return (
-                        <img
-                          className={
-                            index + indexDisplacement === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'
-                          }
-                          src={thumbnail_url}
-                          key={index + indexDisplacement}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setImageIndex(index + indexDisplacement);
-                          }}
-                        />
-                      );
-                    })}
-                </div>
-                {thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length && (
-                  <img
-                    className='downArrow-icon'
-                    src='./assets/down-arrow-icon.png'
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      scrollForward();
-                    }}
-                  />
-                )}
-              </>
+              <ThumbnailDisplay
+                selectedStyle={selectedStyle}
+                productStyles={productStyles}
+                thumbnailIndexBounds={thumbnailIndexBounds}
+                indexDisplacement={indexDisplacement}
+                imageIndex={imageIndex}
+                setImageIndex={setImageIndex}
+                scrollForward={scrollForward}
+                scrollBackward={scrollBackward}
+              />
             )}
             <img
               className='fullScreen-icon'

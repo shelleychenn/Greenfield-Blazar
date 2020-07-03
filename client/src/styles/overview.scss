@@ -10,12 +10,12 @@
 }
 
 .expanded-view {
-  width: 800px;
+  width: 100%;
   cursor: url('/assets/plus-icon.png'), auto;
 }
 
 .zoom-view {
-  width: 800px;
+  width: 100%;
   overflow: hidden;
   cursor: url('/assets/minus-icon.png'), auto;
 }
