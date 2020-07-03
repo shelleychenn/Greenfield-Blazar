@@ -30,9 +30,12 @@ const ReviewListTile = ({ review }) => {
           <SellerResponse review={review} />
         </div>
       </div>
+      <br />
       <div className="review-tile-footer">
         <ReviewListTileFooter review={review} />
       </div>
+      <hr />
+      <br />
     </div>
   );
 };

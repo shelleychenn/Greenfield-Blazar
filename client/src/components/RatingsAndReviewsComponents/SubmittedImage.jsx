@@ -29,6 +29,7 @@ class SubmittedImage extends Component {
             open
             onClick={this.handleShowModal}
           >
+            {/* <span class="close-btn">&times;</span> */}
             <img
               className="review-tile-image-modal"
               src={this.props.photo.url}

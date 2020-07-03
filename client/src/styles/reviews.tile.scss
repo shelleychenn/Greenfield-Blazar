@@ -1,5 +1,5 @@
 .review-tile {
-  width: 60%;
+  width: 65%;
 }
 
 .review-tile-header {
@@ -45,6 +45,10 @@
   background: #e4e4e4;
 }
 
+.seller-response {
+  padding: 1px 20px;
+}
+
 a {
   text-decoration: underline;
   color: gray;
@@ -53,4 +57,5 @@ a {
 .review-tile-footer {
   font-weight: lighter;
   font-size: 13px;
+  padding-bottom: 5px;
 }

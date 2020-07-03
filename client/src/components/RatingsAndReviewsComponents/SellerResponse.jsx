@@ -5,7 +5,7 @@ const SellerResponse = ({ review }) => {
     return null;
   } else {
     return (
-      <div>
+      <div className="seller-response">
         <p className="seller-response-heading">Response:</p>
         <p>{review.response}</p>
       </div>
