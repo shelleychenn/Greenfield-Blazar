@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import products from '../../../_testApiData/_productsApi.js';
+import SlideshowBubbles from './overview-components/SlideshowBubbles.jsx';
 
 const ImageGallery = () => {
   //! will need to convert to either props or shared state
@@ -67,24 +68,13 @@ const ImageGallery = () => {
         {!isZoomView && (
           <>
             {isExpandedView ? (
-              <>
-                <div className='slideShow-bubble-container'>
-                  {selectedStyle &&
-                    selectedStyle.photos.map((_, index) => {
-                      return (
-                        <div
-                          className={
-                            index === imageIndex ? 'slideShow-bubble slideShow-bubble-selected' : 'slideShow-bubble'
-                          }
-                          key={index + indexDisplacement}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setImageIndex(index + indexDisplacement);
-                          }}></div>
-                      );
-                    })}
-                </div>
-              </>
+                <SlideshowBubbles
+                  selectedStyle = {selectedStyle}
+                  imageIndex = {imageIndex}
+                  indexDisplacement = {indexDisplacement}
+                  setImageIndex = {setImageIndex}
+                  setIndexDisplacement = {setIndexDisplacement}
+                  setThumbnailIndexBounds = {setThumbnailIndexBounds} />
             ) : (
               <>
                 {thumbnailIndexBounds && thumbnailIndexBounds[0] > 0 && (
