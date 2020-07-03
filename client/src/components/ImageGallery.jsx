@@ -9,6 +9,7 @@ const ImageGallery = () => {
 
   const [currentImage, setCurrentImage] = useState();
   const [imageIndex, setImageIndex] = useState(0);
+  const [indexDisplacement, setIndexDisplacement] = useState(0);
   const [thumbnailIndexBounds, setThumbnailIndexBounds] = useState();
   const [isExpandedView, toggleIsExpandedView] = useState(false);
   const [isZoomView, toggleIsZoomView] = useState(false);
@@ -18,8 +19,13 @@ const ImageGallery = () => {
     setProductStyles(products.productStyles.results);
     setSelectedStyle(!!productStyles && productStyles[0]);
     setCurrentImage(!!productStyles ? productStyles[0].photos[imageIndex] : null);
-    setThumbnailIndexBounds(!!productStyles ? [0, productStyles[0].photos.length > 7 ? 7 : productStyles[0].photos.length] : null)
   }, [productStyles, imageIndex]);
+
+  useEffect(() => {
+    setThumbnailIndexBounds(
+      !!productStyles ? [0, productStyles[0].photos.length > 7 ? 7 : productStyles[0].photos.length] : null,
+    );
+  }, [productStyles]);
 
   return (
     <div
@@ -40,7 +46,7 @@ const ImageGallery = () => {
         src={currentImage ? currentImage.url : ''}
         className={isZoomView ? 'main-image-zoomed' : 'main-image'}
         // 800 and 500 below come from the image size
-        //! has issues if image was different dimensions than 800x500
+        //! has issues if image has different dimensions than 800x500
         style={
           isZoomView && mouseCoordinates
             ? { objectPosition: `${(mouseCoordinates.x * 100) / 800}% ${(mouseCoordinates.y * 100) / 500}%` }
@@ -50,33 +56,45 @@ const ImageGallery = () => {
       <div className='image-overlay-container'>
         {!isZoomView && (
           <>
+            {thumbnailIndexBounds && thumbnailIndexBounds[0] > 0 && (
+              <img
+                className='upArrow-icon'
+                src='./assets/up-arrow-icon.png'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setThumbnailIndexBounds([thumbnailIndexBounds[0] - 1, thumbnailIndexBounds[1] - 1]);
+                  setIndexDisplacement(indexDisplacement - 1);
+                }}
+              />
+            )}
             <div className='thumbnail-container'>
-              {/*//! 7 images at a time */}
               {selectedStyle &&
                 selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
                   return (
                     <img
-                      className={index === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'}
+                      className={
+                        index + indexDisplacement === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'
+                      }
                       src={thumbnail_url}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setImageIndex(index);
+                        setImageIndex(index + indexDisplacement);
                       }}
                     />
                   );
                 })}
-              {/* //! change to down arrow icon */}
-              { thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length &&
+            </div>
+            {thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length && (
               <img
-                // className='downArrow-icon'
-                src='./assets/fullscreen-icon.png'
+                className='downArrow-icon'
+                src='./assets/down-arrow-icon.png'
                 onClick={(e) => {
                   e.stopPropagation();
                   setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
-                  //? should index of image move as well
+                  setIndexDisplacement(indexDisplacement + 1);
                 }}
-              /> }
-            </div>
+              />
+            )}
             <img
               className='fullScreen-icon'
               src='./assets/fullscreen-icon.png'
@@ -85,22 +103,38 @@ const ImageGallery = () => {
                 toggleIsExpandedView(!isExpandedView);
               }}
             />
-            <img
-              className='leftArrow-icon'
-              src='./assets/left-arrow-icon.png'
-              onClick={(e) => {
-                e.stopPropagation();
-                imageIndex > 0 ? setImageIndex(imageIndex - 1) : null;
-              }}
-            />
-            <img
-              className='rightArrow-icon'
-              src='./assets/right-arrow-icon.png'
-              onClick={(e) => {
-                e.stopPropagation();
-                imageIndex < selectedStyle.photos.length - 1 ? setImageIndex(imageIndex + 1) : null;
-              }}
-            />
+            {imageIndex > 0 && (
+              <img
+                className='leftArrow-icon'
+                src='./assets/left-arrow-icon.png'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (imageIndex > 0) {
+                    setImageIndex(imageIndex - 1);
+                    if (imageIndex - 1 < thumbnailIndexBounds[0]) {
+                      setThumbnailIndexBounds([thumbnailIndexBounds[0] - 1, thumbnailIndexBounds[1] - 1]);
+                      setIndexDisplacement(indexDisplacement - 1);
+                    }
+                  }
+                }}
+              />
+            )}
+            {productStyles && imageIndex < productStyles[0].photos.length - 1 && (
+              <img
+                className='rightArrow-icon'
+                src='./assets/right-arrow-icon.png'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (imageIndex < selectedStyle.photos.length - 1) {
+                    setImageIndex(imageIndex + 1);
+                    if (imageIndex >= thumbnailIndexBounds[1] - 1) {
+                      setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
+                      setIndexDisplacement(indexDisplacement + 1);
+                    }
+                  }
+                }}
+              />
+            )}
           </>
         )}
       </div>
