@@ -19,6 +19,7 @@
 .review-tile-images {
   display: flex;
   flex-direction: row;
+  padding-top: 12px;
 }
 
 .review-tile-image {
@@ -29,12 +30,27 @@
   position: static;
   left: 20%;
   top: 10%;
+  height: 600px;
 }
 
 .review-tile-image-modal {
-  width: 400px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
 }
 
 .review-tile-seller-response {
   background: #e4e4e4;
+}
+
+a {
+  text-decoration: underline;
+  color: gray;
+}
+
+.review-tile-footer {
+  font-weight: lighter;
+  font-size: 13px;
 }
