@@ -9,6 +9,7 @@ const ImageGallery = () => {
 
   const [currentImage, setCurrentImage] = useState();
   const [imageIndex, setImageIndex] = useState(0);
+  const [thumbnailIndexBounds, setThumbnailIndexBounds] = useState();
   const [isExpandedView, toggleIsExpandedView] = useState(false);
   const [isZoomView, toggleIsZoomView] = useState(false);
   const [mouseCoordinates, setMouseCoordinates] = useState();
@@ -17,6 +18,7 @@ const ImageGallery = () => {
     setProductStyles(products.productStyles.results);
     setSelectedStyle(!!productStyles && productStyles[0]);
     setCurrentImage(!!productStyles ? productStyles[0].photos[imageIndex] : null);
+    setThumbnailIndexBounds(!!productStyles ? [0, productStyles[0].photos.length > 7 ? 7 : productStyles[0].photos.length] : null)
   }, [productStyles, imageIndex]);
 
   return (
@@ -51,7 +53,7 @@ const ImageGallery = () => {
             <div className='thumbnail-container'>
               {/*//! 7 images at a time */}
               {selectedStyle &&
-                selectedStyle.photos.map(({ thumbnail_url }, index) => {
+                selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
                   return (
                     <img
                       className={index === imageIndex ? 'thumbnail thumbnail-selected' : 'thumbnail'}
@@ -63,7 +65,17 @@ const ImageGallery = () => {
                     />
                   );
                 })}
-              {/* down arrow icon */}
+              {/* //! change to down arrow icon */}
+              { thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length &&
+              <img
+                // className='downArrow-icon'
+                src='./assets/fullscreen-icon.png'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
+                  //? should index of image move as well
+                }}
+              /> }
             </div>
             <img
               className='fullScreen-icon'
