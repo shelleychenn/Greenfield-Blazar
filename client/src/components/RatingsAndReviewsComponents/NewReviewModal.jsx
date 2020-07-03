@@ -3,13 +3,7 @@ import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import NewReviewForm from './NewReviewForm.jsx';
 
-const NewReviewModal = ({
-  onSubmit,
-  modalRef,
-  buttonRef,
-  closeModal,
-  onClickOutside,
-}) => {
+const NewReviewModal = ({ onSubmit, modalRef, buttonRef, closeModal }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
       <aside
@@ -18,7 +12,6 @@ const NewReviewModal = ({
         tabIndex="-1"
         aria-modal="true"
         className="modal-cover"
-        onClick={onClickOutside}
       >
         <div className="modal-area" ref={modalRef}>
           <button

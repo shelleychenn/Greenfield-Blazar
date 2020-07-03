@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TriggerButton = ({ showModal, buttonRef, triggerText }) => {
+const TriggerButton = ({ showModal, buttonRef, TriggerText }) => {
   return (
     <button className="add-review-button" ref={buttonRef} onClick={showModal}>
-      {triggerText}
+      {TriggerText}
     </button>
   );
 };

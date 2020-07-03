@@ -11,7 +11,6 @@ class AddReviewContainer extends Component {
     this.showModal = this.showModal.bind(this);
     this.toggleScrollLock = this.toggleScrollLock.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.onClickOutside = this.onClickOutside.bind(this);
   }
 
   showModal() {
@@ -31,12 +30,6 @@ class AddReviewContainer extends Component {
     this.toggleScrollLock();
   }
 
-  onClickOutside(event) {
-    if (this.modal && this.modal.contains(event.target)) {
-      return this.closeModal();
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -45,7 +38,7 @@ class AddReviewContainer extends Component {
           buttonRef={(n) => {
             this.TriggerButton = n;
           }}
-          triggerText={this.props.triggerText}
+          TriggerText={this.props.TriggerText}
         />
         {this.state.isShown ? (
           <NewReviewModal
@@ -59,7 +52,6 @@ class AddReviewContainer extends Component {
               this.closeButton = n;
             }}
             closeModal={this.closeModal}
-            onClickOutside={this.onClickOutside}
           />
         ) : null}
       </React.Fragment>
