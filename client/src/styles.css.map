@@ -4,7 +4,8 @@
     "sources": [
         "styles.scss",
         "styles/reviews.tile.scss",
-        "styles/reviews.stars.scss"
+        "styles/reviews.stars.scss",
+        "styles/reviews.modal.scss"
     ],
     "names": [],
     "file": "styles.css"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReviewListTile from './ReviewListTile.jsx';
+import AddReview from './AddReview.jsx';
 
 // input: displayed product / (product id)
 
@@ -69,6 +70,7 @@ class ReviewList extends Component {
           ))}
         </div>
         {button}
+        <AddReview />
       </>
     );
   }

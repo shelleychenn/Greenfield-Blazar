@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import reviews from '../../../_testApiData/_reviewsApi.js';
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
