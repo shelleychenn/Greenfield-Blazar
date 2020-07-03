@@ -36,6 +36,7 @@ class ReviewList extends Component {
     console.log('request submitted');
     e.preventDefault();
     // change review list by making a request with this.state.sortingRule
+    this.props.handleSortChoice(this.state.sortingRule);
   }
 
   render() {
