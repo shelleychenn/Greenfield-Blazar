@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './StarRating.jsx';
+import StarRating from '../StarRating.jsx';
 import NameAndDate from './NameAndDate.jsx';
 import SubmittedImages from './SubmittedImages.jsx';
 import Summary from './Summary.jsx';
