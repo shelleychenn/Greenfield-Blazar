@@ -13,6 +13,7 @@ const AddToCart = () => {
   const [size, setSize] = useState();
   const [quantity, setQuantity] = useState();
   const [isOutOfStock, setIsOutOfStock] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
     setProductStyles(products.productStyles.results);
@@ -22,46 +23,60 @@ const AddToCart = () => {
 
   return (
     <form className='container-AddToCart'>
-      <select onChange={(e) => {
-        setSize(e.target.value);
-        if (selectedStyle.skus[e.target.value] < quantity) {
-          setQuantity(1);
-        } else {
-          setQuantity(quantity ? quantity : 1);
-        }
-
-      }} disabled = {isOutOfStock}>
+      {showWarning && <p className='warning'>Please select size</p>}
+      <select
+        onChange={(e) => {
+          setSize(e.target.value);
+          if (selectedStyle.skus[e.target.value] < quantity) {
+            setQuantity(1);
+          } else {
+            setQuantity(quantity ? quantity : 1);
+          }
+          showWarning ? setShowWarning(false) : null;
+        }}
+        disabled={isOutOfStock}>
         <option>{isOutOfStock ? 'OUT OF STOCK' : 'SELECT SIZE'}</option>
         {selectedStyle &&
-          Object.entries(selectedStyle.skus).map(([rowSize, rowQty]) => {
+          Object.entries(selectedStyle.skus).map(([rowSize, rowQty], index) => {
             if (rowQty) {
-              return <option value={rowSize}>{rowSize}</option>;
-          }
+              return <option key={index} value={rowSize}>{rowSize}</option>;
+            }
           })}
       </select>
 
-      <select onChange={(e) => setQuantity(Number(e.target.value))} disabled = {isOutOfStock} >
-        <option>{ size ? 1 : '-' }</option>
+      <select onChange={(e) => setQuantity(Number(e.target.value))} disabled={isOutOfStock || size === undefined}>
+        <option>{size ? 1 : '-'}</option>
         {size &&
-          [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(2).map((qty) => {
-            return <option value={qty}>{qty}</option>;
+          [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(2).map((qty, index) => {
+            return <option key={index} value={qty}>{qty}</option>;
           })}
       </select>
-      {!isOutOfStock &&
-      <>
-      <button onClick = {(e) => {
-        e.preventDefault();
-        //! do something with the style selection
-        console.log({ style_id: selectedStyle.style_id, id: 'TO BE ADDED', quantity });
-      }} >ADD TO BAG</button>
+      {!isOutOfStock && (
+        <>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              if (size === undefined || size === 'SELECT SIZE') {
+                setShowWarning(true);
+              } else {
+                console.log('DATA TO BE SENT: ',{ style_id: selectedStyle.style_id, size, quantity });
+              }
+            }}>
+            ADD TO BAG
+          </button>
 
-      <div className = 'container-favorite' onClick = {() => {
-        toggleIsFavorite(!isFavorite);
-        //! Do something with data here
-      }}>
-        { isFavorite ? <img src='./assets/heart-filled-icon.png' /> : <img src='./assets/heart-unfilled-icon.png' /> }
-      </div>
-    </> }
+          {/* TODO: If the default ‘Select Size’ is currently selected: Clicking this button should open the size dropdown, and a message should appear above the dropdown stating “Please select size”.  */}
+
+          <div
+            className='container-favorite'
+            onClick={() => {
+              toggleIsFavorite(!isFavorite);
+              console.log('DATA TO BE SENT: ',{ style_id: selectedStyle.style_id });
+            }}>
+            {isFavorite ? <img src='./assets/heart-filled-icon.png' /> : <img src='./assets/heart-unfilled-icon.png' />}
+          </div>
+        </>
+      )}
     </form>
   );
 };
