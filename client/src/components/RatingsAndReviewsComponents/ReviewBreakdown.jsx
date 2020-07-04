@@ -7,6 +7,7 @@ class ReviewBreakdown extends Component {
     super(props);
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getRatingPercentage = this.getRatingPercentage.bind(this);
+    this.getRecommendedPercentage = this.getRecommendedPercentage.bind(this);
   }
 
   getAverageRating(ratings) {
@@ -33,6 +34,14 @@ class ReviewBreakdown extends Component {
     counts.percentage =
       (counts.targetStarCount / counts.totalRatingCount) * 100;
     return counts;
+  }
+
+  getRecommendedPercentage(metaData) {
+    let percentage =
+      (Object.values(metaData.recommended)[0] /
+        Object.keys(metaData.ratings).length) *
+      100;
+    return Math.round(percentage * 10) / 10;
   }
 
   render() {
@@ -74,6 +83,10 @@ class ReviewBreakdown extends Component {
             return bar;
           })}
         </div>
+        <p>
+          {this.getRecommendedPercentage(this.props.reviewsMetaData)}% of
+          reviews recommend this product
+        </p>
       </div>
     );
   }
