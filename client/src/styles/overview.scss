@@ -1,0 +1,19 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.price-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: auto;
+
+  .pre-sales-price {
+    text-decoration: line-through;
+    grid-column: 2;
+  }
+
+  .sales-price {
+    color: rgb(255, 0, 0);
+    grid-column: 1;
+  }
+}
