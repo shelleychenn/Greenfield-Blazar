@@ -35,7 +35,7 @@
   position: static;
   left: 20%;
   top: 10%;
-  height: 600px;
+  height: 500px;
 }
 
 .review-tile-image-modal {
@@ -43,7 +43,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 600px;
+  max-height: 500px;
 }
 
 .review-tile-seller-response {

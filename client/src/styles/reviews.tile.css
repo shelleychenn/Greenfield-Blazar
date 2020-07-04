@@ -44,7 +44,7 @@
   position: static;
   left: 20%;
   top: 10%;
-  height: 600px;
+  height: 500px;
 }
 
 .review-tile-image-modal {
@@ -57,7 +57,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 600px;
+  max-height: 500px;
 }
 
 .review-tile-seller-response {

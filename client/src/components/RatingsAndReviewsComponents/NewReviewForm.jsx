@@ -11,6 +11,13 @@ class NewReviewForm extends Component {
       reviewer_name: '',
       email: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   render() {
@@ -24,16 +31,20 @@ class NewReviewForm extends Component {
             <label>Review summary: </label>
             <input
               type="text"
-              className="form-control"
-              id="review-summary"
+              name="summary"
+              value={this.state.summary}
               placeholder="Example: Best purchase ever!"
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
             <label>Review Body: </label>
             <textarea
-              className="form-control"
+              value={this.state.body}
+              name="body"
               placeholder="Why did you like the product or not?"
+              onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -41,8 +52,11 @@ class NewReviewForm extends Component {
             <label>Nickname: </label>
             <input
               type="text"
-              className="form-control"
+              name="reviewer_name"
+              value={this.state.reviewer_name}
               placeholder="Example: jackson11!"
+              onChange={this.handleChange}
+              required
             />
             <p className="form-text">
               For privacy reasons, do not use your full name or email address
@@ -52,8 +66,11 @@ class NewReviewForm extends Component {
             <label htmlFor="email">Email: </label>
             <input
               type="email"
-              className="form-control"
+              name="email"
+              value={this.state.email}
               placeholder="name@example.com"
+              onChange={this.handleChange}
+              required
             />
             <p className="form-text">
               For authentication reasons, you will not be emailed

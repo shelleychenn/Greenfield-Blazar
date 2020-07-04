@@ -7,8 +7,6 @@ const AddReview = () => {
     event.preventDefault(event);
 
     // update date here with new review inputs
-    console.log(event.target.name.value);
-    console.log(event.target.email.value);
   };
 
   return (
