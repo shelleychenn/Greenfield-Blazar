@@ -23,18 +23,18 @@ h1 {
 }
 
 .rating-bar-container {
-  height: 20px;
+  height: 14px;
   width: 100%;
   background-color: #cecece;
   border-radius: 2px;
   margin-bottom: 5px;
-  margin-top: -1px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-top: 3px;
+  margin-right: 9px;
 }
 
 .review-rating-bars-bar {
   display: flex;
+  padding-top: 6px;
 }
 
 .rating-bar-filler {
@@ -45,8 +45,18 @@ h1 {
 
 .review-rating-bars-bar-label {
   white-space: nowrap;
+  padding-right: 5px;
 }
 
 .review-product-bar {
   margin-right: 16px;
+  margin-bottom: 15px;
+}
+
+.review-product-breakdown {
+  margin-top: 45px;
+}
+
+.review-%recommend {
+  margin-top: 30px;
 }

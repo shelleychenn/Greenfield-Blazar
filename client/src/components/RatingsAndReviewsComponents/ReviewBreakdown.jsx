@@ -61,30 +61,6 @@ class ReviewBreakdown extends Component {
   }
 
   render() {
-    const productBreakdownBar = (characteristics) => {
-      let productBars = [];
-      for (let trait in characteristics) {
-        productBars.push(
-          <div className="review-product-bar">
-            {trait}
-            <RatingBar
-              bgcolor="#bfbebe"
-              percentage={
-                Object.values(
-                  this.getCharacteristicAverage(characteristics[trait])
-                )[0]
-              }
-            />
-          </div>
-        );
-      }
-      return productBars;
-    };
-
-    let productBars = productBreakdownBar(
-      this.props.reviewsMetaData.characteristics
-    );
-
     const ratingBars = () => {
       let bars = [];
       for (let i = 1; i <= 5; i++) {
@@ -110,6 +86,31 @@ class ReviewBreakdown extends Component {
 
     let bars = ratingBars();
 
+    const productBreakdownBar = (characteristics) => {
+      let productBars = [];
+      for (let trait in characteristics) {
+        productBars.push(
+          <div className="review-product-bar">
+            {trait}
+            <RatingBar
+              bgcolor="#cecece"
+              percentage={
+                Object.values(
+                  this.getCharacteristicAverage(characteristics[trait])
+                )[0]
+              }
+              icon="▼"
+            />
+          </div>
+        );
+      }
+      return productBars;
+    };
+
+    let productBars = productBreakdownBar(
+      this.props.reviewsMetaData.characteristics
+    );
+
     return (
       <div className="review-breakdown">
         <RatingSummary
@@ -118,16 +119,18 @@ class ReviewBreakdown extends Component {
           )}
           reviewCounts={Object.keys(this.props.reviewsMetaData.ratings).length}
         />
+
+        <p className="review-%recommend">
+          {this.getRecommendedPercentage(this.props.reviewsMetaData)}% of
+          reviews recommend this product
+        </p>
+
         <div className="review-rating-bars">
-          <p>Rating Breakdown</p>
           {bars.map((bar) => {
             return bar;
           })}
         </div>
-        <p>
-          {this.getRecommendedPercentage(this.props.reviewsMetaData)}% of
-          reviews recommend this product
-        </p>
+
         <div className="review-product-breakdown">
           {productBars.map((bar) => {
             return bar;
