@@ -43,10 +43,12 @@ class ReviewBreakdown extends Component {
   }
 
   getRecommendedPercentage(metaData) {
-    let percentage =
-      (Object.values(metaData.recommended)[0] /
-        Object.keys(metaData.ratings).length) *
-      100;
+    let totalRecommended = Object.values(metaData.recommended)[0];
+    let totalReview = 0;
+    for (let key in metaData.ratings) {
+      totalReview += metaData.ratings[key];
+    }
+    let percentage = (totalRecommended / totalReview) * 100;
     return Math.round(percentage * 10) / 10;
   }
 
@@ -63,9 +65,10 @@ class ReviewBreakdown extends Component {
       let productBars = [];
       for (let trait in characteristics) {
         productBars.push(
-          <div>
+          <div className="review-product-bar">
             {trait}
             <RatingBar
+              bgcolor="#bfbebe"
               percentage={
                 Object.values(
                   this.getCharacteristicAverage(characteristics[trait])
@@ -89,6 +92,7 @@ class ReviewBreakdown extends Component {
           <div className="review-rating-bars-bar">
             <div className="review-rating-bars-bar-label">{i} Stars</div>
             <RatingBar
+              bgcolor="#60b960ba"
               percentage={
                 this.getRatingPercentage(i, this.props.reviewsMetaData.ratings)
                   .percentage

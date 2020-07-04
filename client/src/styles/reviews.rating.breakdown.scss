@@ -39,10 +39,13 @@ h1 {
 
 .rating-bar-filler {
   height: 100%;
-  background-color: #60b960ba;
   border-radius: inherit;
 }
 
 .review-rating-bars-bar-label {
   white-space: nowrap;
+}
+
+.review-product-bar {
+  margin-right: 16px;
 }
