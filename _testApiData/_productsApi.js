@@ -134,7 +134,7 @@ const products = {
         style_id: 26,
         name: 'White & White',
         original_price: '99',
-        sale_price: '0',
+        sale_price: '70',
         'default?': 1,
         photos: [
           {
