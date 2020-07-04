@@ -9,10 +9,12 @@ const Overview = () => {
   return (
     <div className = 'overview-master-component'>
       <ImageGallery />
-      <AddToCart />
-      <ProductInformation />
+      <div className = 'overview-side-container'>
+        <ProductInformation />
+        <StyleSelector />
+        <AddToCart />
+      </div>
       <ProductOverview />
-      <StyleSelector />
     </div>
   );
 }
