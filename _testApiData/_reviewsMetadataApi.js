@@ -1,7 +1,7 @@
 // http://18.224.200.47/reviews/7/meta
 // review metadata for a given product
 
-const reviews = {
+const reviewsMetaData = {
   product_id: '7',
   ratings: {
     '1': 1,
@@ -31,4 +31,4 @@ const reviews = {
   },
 };
 
-export default reviews;
+export default reviewsMetaData;
