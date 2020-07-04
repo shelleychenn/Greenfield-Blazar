@@ -1,7 +1,7 @@
 .container-styleSelector {
 
   // temporary size (will go off the outer container size eventually)
-  width: 350px;
+  width: 325px;
 
   p span {
     font-weight: bold;
@@ -10,6 +10,7 @@
   .container-thumbnails {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
 
     div {
       width: 70px;
