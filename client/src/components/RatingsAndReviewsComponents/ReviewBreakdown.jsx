@@ -21,19 +21,38 @@ class ReviewBreakdown extends Component {
 
   getRatingPercentage(targetStar, ratingData) {
     let counts = {
-      totalRatingCount: Object.keys(ratingData).length,
+      totalRatingCount: 0,
       targetStarCount: 0,
       percentage: 0,
     };
 
-    for (let key in ratingData) {
-      if (ratingData[key] === targetStar) {
-        counts.targetStarCount++;
+    if (ratingData[targetStar] === undefined) {
+      counts.percentage = 0;
+    } else {
+      counts.targetStarCount = ratingData[targetStar];
+
+      for (let key in ratingData) {
+        counts.totalRatingCount += ratingData[key];
       }
+
+      counts.percentage =
+        (counts.targetStarCount / counts.totalRatingCount) * 100;
     }
-    counts.percentage =
-      (counts.targetStarCount / counts.totalRatingCount) * 100;
     return counts;
+    // let counts = {
+    //   totalRatingCount: Object.keys(ratingData).length,
+    //   targetStarCount: 0,
+    //   percentage: 0,
+    // };
+
+    // for (let key in ratingData) {
+    //   if (ratingData[key] === targetStar) {
+    //     counts.targetStarCount++;
+    //   }
+    // }
+    // counts.percentage =
+    //   (counts.targetStarCount / counts.totalRatingCount) * 100;
+    // return counts;
   }
 
   getRecommendedPercentage(metaData) {
@@ -42,6 +61,16 @@ class ReviewBreakdown extends Component {
         Object.keys(metaData.ratings).length) *
       100;
     return Math.round(percentage * 10) / 10;
+  }
+
+  getCharacteristicAverage(characteristics) {
+    let storage = {};
+    for (let trait in characteristics) {
+      let percentage = characteristics[trait].value / 5;
+      let rounded = Math.round(percentage * 10) / 10;
+      storage[trait] = rounded;
+    }
+    return storage;
   }
 
   render() {
@@ -87,6 +116,9 @@ class ReviewBreakdown extends Component {
           {this.getRecommendedPercentage(this.props.reviewsMetaData)}% of
           reviews recommend this product
         </p>
+        <div className="review-product-breakdown">
+          <RatingBar />
+        </div>
       </div>
     );
   }
