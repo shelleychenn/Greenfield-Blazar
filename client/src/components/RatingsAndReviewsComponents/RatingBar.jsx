@@ -7,7 +7,7 @@ const RatingBar = ({ bgcolor, percentage }) => {
         className="rating-bar-filler"
         style={{ width: `${percentage}%`, backgroundColor: bgcolor }}
       >
-        <span></span>
+        <span className="rating-bar-icon">▼</span>
       </div>
     </div>
   );
