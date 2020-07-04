@@ -20,15 +20,15 @@ const ProductInformation = () => {
   }
 
   return (
-    <div className='container-productInformation'>
+    <div className='productInformation-container'>
       { !!productReviews && !!productReviews.length &&
-      <div>
-        <div>STARS</div>
+      <div className = 'reviews-container'>
+        <div>☆☆☆☆☆</div>
         {/* //! Link scrolls the page to the Ratings & Reviews */}
         <a href='.'>Read all {productReviews.length} reviews</a>
       </div>
       }
-      <p>{productDetails ? productDetails.category.toUpperCase() : null}</p>
+      <p className = 'category'>{productDetails ? productDetails.category.toUpperCase() : null}</p>
       <h1>{productDetails ? productDetails.name : null}</h1>
       <div className = 'price-container'>
         {!!selectedStyle ?
