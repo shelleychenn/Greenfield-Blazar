@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import NewReviewModal from './NewReviewModal.jsx';
+import Modal from './Modal.jsx';
 import TriggerButton from './TriggerButton.jsx';
+import NewReviewForm from './NewReviewForm.jsx';
 
 class AddReviewContainer extends Component {
   constructor(props) {
@@ -41,8 +42,7 @@ class AddReviewContainer extends Component {
           TriggerText={this.props.TriggerText}
         />
         {this.state.isShown ? (
-          <NewReviewModal
-            onSubmit={this.props.onSubmit}
+          <Modal
             // refer modal area
             modalRef={(n) => {
               this.modal = n;
@@ -52,7 +52,9 @@ class AddReviewContainer extends Component {
               this.closeButton = n;
             }}
             closeModal={this.closeModal}
-          />
+          >
+            <NewReviewForm onSubmit={this.props.onSubmit} />
+          </Modal>
         ) : null}
       </React.Fragment>
     );

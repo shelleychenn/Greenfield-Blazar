@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import NewReviewForm from './NewReviewForm.jsx';
 
-const NewReviewModal = ({ onSubmit, modalRef, buttonRef, closeModal }) => {
+const Modal = ({ modalRef, buttonRef, closeModal, children }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
       <aside
@@ -27,9 +27,7 @@ const NewReviewModal = ({ onSubmit, modalRef, buttonRef, closeModal }) => {
             </svg>
           </button>
 
-          <div className="new-review-modal-body">
-            <NewReviewForm onSubmit={onSubmit} />
-          </div>
+          <div className="new-review-modal-body">{children}</div>
         </div>
       </aside>
     </FocusTrap>,
@@ -37,4 +35,4 @@ const NewReviewModal = ({ onSubmit, modalRef, buttonRef, closeModal }) => {
   );
 };
 
-export default NewReviewModal;
+export default Modal;

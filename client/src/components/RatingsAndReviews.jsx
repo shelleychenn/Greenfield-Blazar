@@ -11,27 +11,30 @@ class RatingsAndReviews extends Component {
   }
 
   handleSortChoice(option) {
-    // if (option === 'Relevant') {
-    //   this.state.reviews.results.sort((a, b) => {
-    //     return reviews;
-    //   });
-    // }
-    // if (option === 'Helpful') {
-    //   let sorted = this.state.reviews.results.sort((a, b) => {
-    //     return a.helpfulness - b.helpfulness;
-    //   });
-    //   this.setState({
-    //     reviews: sorted,
-    //   });
-    // }
-    // if (option === 'Newest') {
-    //   let sorted = this.state.reviews.results.sort((a, b) => {
-    //     return a.date - b.date;
-    //   });
-    //   this.setState({
-    //     reviews: sorted,
-    //   });
-    // }
+    console.log(option);
+    let copy = [...this.state.reviews.results];
+    if (option === 'Relevant') {
+      this.state.reviews.results.sort((a, b) => {
+        // TODO:
+        return reviews;
+      });
+    }
+    if (option === 'Helpful') {
+      copy = copy.sort((a, b) => {
+        return b.helpfulness - a.helpfulness;
+      });
+      this.setState({
+        reviews: { ...this.state.reviews, results: copy },
+      });
+    }
+    if (option === 'Newest') {
+      copy = copy.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      });
+      this.setState({
+        reviews: { ...this.state.reviews, results: copy },
+      });
+    }
   }
 
   render() {
@@ -47,18 +50,3 @@ class RatingsAndReviews extends Component {
 }
 
 export default RatingsAndReviews;
-
-// const handleSortChoice = (option) => {
-//   if (option === 'Relevant')
-//     reviews.results.sort((a, b) => {
-//       return reviews;
-//     });
-//   if (option === 'Helpful')
-//     reviews.results.sort((a, b) => {
-//       return a.helpfulness - b.helpfulness;
-//     });
-//   if (option === 'Newest')
-//     reviews.results.sort((a, b) => {
-//       return a.date - b.date;
-//     });
-// };

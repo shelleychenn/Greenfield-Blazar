@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from './Modal.jsx';
 
 class SubmittedImage extends Component {
   constructor(props) {
@@ -7,10 +8,20 @@ class SubmittedImage extends Component {
       isOpen: false,
     };
     this.handleShowModal = this.handleShowModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleShowModal() {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState({ isOpen: true });
+  }
+
+  toggleScrollLock() {
+    document.querySelector('html').classList.toggle('scroll-lock');
+  }
+
+  closeModal() {
+    this.setState({ isOpen: false });
+    this.toggleScrollLock();
   }
 
   render() {
@@ -23,20 +34,21 @@ class SubmittedImage extends Component {
           alt="no image"
         />
         {this.state.isOpen && (
-          <dialog
-            className="review-tile-dialog"
-            style={{ position: 'absolute' }}
-            open
-            onClick={this.handleShowModal}
+          <Modal
+            modalRef={(n) => {
+              this.modal = n;
+            }}
+            buttonRef={(n) => {
+              this.closeButton = n;
+            }}
+            closeModal={this.closeModal}
           >
-            {/* <span class="close-btn">&times;</span> */}
             <img
               className="review-tile-image-modal"
               src={this.props.photo.url}
-              onClick={this.handleShowModal}
               alt="no image"
             />
-          </dialog>
+          </Modal>
         )}
       </div>
     );

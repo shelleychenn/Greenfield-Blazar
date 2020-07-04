@@ -15,7 +15,6 @@ class ReviewList extends Component {
     };
     this.loadMoreReviews = this.loadMoreReviews.bind(this);
     this.handleSortingChange = this.handleSortingChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   loadMoreReviews() {
@@ -31,16 +30,11 @@ class ReviewList extends Component {
     this.setState({
       sortingRule: e.target.value,
     });
-  }
-
-  handleSubmit(e) {
-    console.log('request submitted');
-    e.preventDefault();
-    // change review list by making a request with this.state.sortingRule
-    this.props.handleSortChoice(this.state.sortingRule);
+    this.props.handleSortChoice(e.target.value);
   }
 
   render() {
+    console.log(this.props.reviews);
     let button =
       this.state.reviewExist >= 2 ? (
         <button onClick={this.loadMoreReviews}>More Reviews</button>
@@ -51,7 +45,7 @@ class ReviewList extends Component {
     return (
       <>
         <div className="sorting-choices">
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <label>{this.state.totalReviewCount} reviews, sorted by </label>
             <select
               value={this.state.sortingRule}
@@ -69,8 +63,13 @@ class ReviewList extends Component {
             <ReviewListTile review={review} key={review.review_id} />
           ))}
         </div>
-        {button}
-        <AddReview />
+        <div className="review-list-buttons">
+          <div className="left-button"> {button}</div>
+          <div className="right-button">
+            {' '}
+            <AddReview />
+          </div>
+        </div>
       </>
     );
   }

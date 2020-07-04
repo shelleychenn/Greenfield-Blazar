@@ -44,6 +44,7 @@
   display: flex;
   flex-direction: column;
   max-height: 500px;
+  max-width: 80%;
 }
 
 .review-tile-seller-response {
@@ -63,4 +64,9 @@ a {
   font-weight: lighter;
   font-size: 13px;
   padding-bottom: 5px;
+}
+
+.review-list-buttons {
+  position: flex;
+  justify-content: row;
 }
