@@ -93,7 +93,7 @@ class ReviewBreakdown extends Component {
           <div className="review-product-bar">
             {trait}
             <RatingBar
-              bgcolor="#cecece"
+              bgcolor="#ebebeb"
               percentage={
                 Object.values(
                   this.getCharacteristicAverage(characteristics[trait])
