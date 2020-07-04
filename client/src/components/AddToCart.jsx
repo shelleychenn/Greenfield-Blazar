@@ -22,7 +22,15 @@ const AddToCart = () => {
 
   return (
     <form className='container-AddToCart'>
-      <select onChange={(e) => setSize(e.target.value)} disabled = {isOutOfStock}>
+      <select onChange={(e) => {
+        setSize(e.target.value);
+        if (selectedStyle.skus[e.target.value] < quantity) {
+          setQuantity(1);
+        } else {
+          setQuantity(quantity ? quantity : 1);
+        }
+
+      }} disabled = {isOutOfStock}>
         <option>{isOutOfStock ? 'OUT OF STOCK' : 'SELECT SIZE'}</option>
         {selectedStyle &&
           Object.entries(selectedStyle.skus).map(([rowSize, rowQty]) => {
@@ -32,8 +40,7 @@ const AddToCart = () => {
           })}
       </select>
 
-      {/*//! Qty state undefined on default after size is chosen; needs to be 1 */}
-      <select onChange={(e) => setQuantity(Number(e.target.value))} disabled = {isOutOfStock}>
+      <select onChange={(e) => setQuantity(Number(e.target.value))} disabled = {isOutOfStock} >
         <option>{ size ? 1 : '-' }</option>
         {size &&
           [...Array(selectedStyle.skus[size] < 15 ? selectedStyle.skus[size] + 1 : 16).keys()].slice(2).map((qty) => {
