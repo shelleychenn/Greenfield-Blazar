@@ -7,7 +7,7 @@ const RatingSummary = ({ averageRating }) => {
       <div className="rating-average">
         <h1>{averageRating}</h1>
       </div>
-      <div>
+      <div className="rating-average-stars">
         <StarRating value={averageRating} />
       </div>
     </div>
