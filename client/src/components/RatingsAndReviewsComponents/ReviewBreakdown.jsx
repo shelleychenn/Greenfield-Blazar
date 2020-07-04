@@ -8,6 +8,7 @@ class ReviewBreakdown extends Component {
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getRatingPercentage = this.getRatingPercentage.bind(this);
     this.getRecommendedPercentage = this.getRecommendedPercentage.bind(this);
+    this.getCharacteristicAverage = this.getCharacteristicAverage.bind(this);
   }
 
   getAverageRating(ratings) {
@@ -39,20 +40,6 @@ class ReviewBreakdown extends Component {
         (counts.targetStarCount / counts.totalRatingCount) * 100;
     }
     return counts;
-    // let counts = {
-    //   totalRatingCount: Object.keys(ratingData).length,
-    //   targetStarCount: 0,
-    //   percentage: 0,
-    // };
-
-    // for (let key in ratingData) {
-    //   if (ratingData[key] === targetStar) {
-    //     counts.targetStarCount++;
-    //   }
-    // }
-    // counts.percentage =
-    //   (counts.targetStarCount / counts.totalRatingCount) * 100;
-    // return counts;
   }
 
   getRecommendedPercentage(metaData) {
@@ -63,17 +50,38 @@ class ReviewBreakdown extends Component {
     return Math.round(percentage * 10) / 10;
   }
 
-  getCharacteristicAverage(characteristics) {
-    let storage = {};
-    for (let trait in characteristics) {
-      let percentage = characteristics[trait].value / 5;
-      let rounded = Math.round(percentage * 10) / 10;
-      storage[trait] = rounded;
-    }
-    return storage;
+  getCharacteristicAverage(characteristic) {
+    let trait = {};
+    let value = Number(characteristic.value);
+    let percentage = (value / 5) * 100;
+    trait[characteristic] = percentage;
+    return trait;
   }
 
   render() {
+    const productBreakdownBar = (characteristics) => {
+      let productBars = [];
+      for (let trait in characteristics) {
+        productBars.push(
+          <div>
+            {trait}
+            <RatingBar
+              percentage={
+                Object.values(
+                  this.getCharacteristicAverage(characteristics[trait])
+                )[0]
+              }
+            />
+          </div>
+        );
+      }
+      return productBars;
+    };
+
+    let productBars = productBreakdownBar(
+      this.props.reviewsMetaData.characteristics
+    );
+
     const ratingBars = () => {
       let bars = [];
       for (let i = 1; i <= 5; i++) {
@@ -117,7 +125,9 @@ class ReviewBreakdown extends Component {
           reviews recommend this product
         </p>
         <div className="review-product-breakdown">
-          <RatingBar />
+          {productBars.map((bar) => {
+            return bar;
+          })}
         </div>
       </div>
     );
