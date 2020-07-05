@@ -63,7 +63,7 @@ class ReviewBreakdown extends Component {
   render() {
     const ratingBars = () => {
       let bars = [];
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 5; i >= 1; i--) {
         bars.push(
           <div className="review-rating-bars-bar">
             <div className="review-rating-bars-bar-label">{i} Stars</div>

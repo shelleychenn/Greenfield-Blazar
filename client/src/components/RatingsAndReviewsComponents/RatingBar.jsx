@@ -14,5 +14,3 @@ const RatingBar = ({ bgcolor, percentage, icon }) => {
 };
 
 export default RatingBar;
-
-// ▼
