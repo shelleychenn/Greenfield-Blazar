@@ -12,15 +12,18 @@ class ReviewBreakdown extends Component {
   }
 
   getAverageRating(ratings) {
+    console.log('ratings', ratings);
     let sum = 0;
     let count = 0;
-    for (let key in ratings) {
-      count += ratings[key];
+    let tempRating = { ...ratings };
+    // TODO: simply the math
+    for (let key in tempRating) {
+      count += tempRating[key];
     }
-    for (let key in ratings) {
-      if (ratings[key] > 0) {
+    for (let key in tempRating) {
+      if (tempRating[key] > 0) {
         sum += Number(key);
-        ratings[key]--;
+        tempRating[key]--;
       }
     }
     return Math.round((sum / count) * 10) / 10;
@@ -76,7 +79,7 @@ class ReviewBreakdown extends Component {
       let bars = [];
       for (let i = 5; i >= 1; i--) {
         bars.push(
-          <div className="review-rating-bars-bar">
+          <div className="review-rating-bars-bar" key={i}>
             <div
               className="review-rating-bars-bar-label"
               onClick={() => {
@@ -107,8 +110,9 @@ class ReviewBreakdown extends Component {
     const productBreakdownBar = (characteristics) => {
       let productBars = [];
       for (let trait in characteristics) {
+        // TODO: use map
         productBars.push(
-          <div className="review-product-bar">
+          <div className="review-product-bar" key={trait}>
             {trait}
             <RatingBar
               bgcolor="#ebebeb"

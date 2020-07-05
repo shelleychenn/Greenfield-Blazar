@@ -49,6 +49,7 @@ class RatingsAndReviews extends Component {
   }
 
   render() {
+    console.log(this.props.reviewsMetaData);
     return (
       <div className="ratings-and-reviews-container">
         {/* Left side: ReviewBreakdown goes here */}

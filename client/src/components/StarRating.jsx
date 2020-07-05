@@ -17,8 +17,8 @@ function getStars(value) {
         ★
       </span>
     ),
-    oneThirdStar: (
-      <span aria-hidden="true" className="one-third-star">
+    oneFourthStar: (
+      <span aria-hidden="true" className="one-fourth-star">
         ★
       </span>
     ),
@@ -43,7 +43,7 @@ function getStars(value) {
     } else if (num >= 5) {
       stars.push(starIcon.halfStar);
     } else if (num >= 2.5) {
-      stars.push(starIcon.oneThirdStar);
+      stars.push(starIcon.oneFourthStar);
     }
   }
 
