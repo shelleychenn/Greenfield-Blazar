@@ -43,7 +43,7 @@ function getStars(value) {
     } else if (num >= 5) {
       stars.push(starIcon.halfStar);
     } else if (num >= 2.5) {
-      stars.push(starIcon.push(star.oneThirdStar));
+      stars.push(starIcon.oneThirdStar);
     }
   }
 

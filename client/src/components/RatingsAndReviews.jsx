@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReviewList from './RatingsAndReviewsComponents/ReviewList.jsx';
+import ReviewBreakdown from './RatingsAndReviewsComponents/ReviewBreakdown.jsx';
 
 class RatingsAndReviews extends Component {
   constructor(props) {
@@ -40,6 +41,10 @@ class RatingsAndReviews extends Component {
   render() {
     return (
       <div className="ratings-and-reviews-container">
+        {/* Left side: ReviewBreakdown goes here */}
+        <ReviewBreakdown reviewsMetaData={this.props.reviewsMetaData} />
+
+        {/* Right side: ReviewList goes here */}
         <ReviewList
           reviews={this.state.reviews}
           handleSortChoice={this.handleSortChoice}
