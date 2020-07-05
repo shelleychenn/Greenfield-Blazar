@@ -38,7 +38,7 @@ const reviews = {
       review_id: 8,
       rating: 4,
       summary: 'These pants are fine',
-      recommend: 0,
+      recommend: 1,
       response: '',
       body: 'I do like these pants',
       date: '2019-03-21T00:00:00.000Z',

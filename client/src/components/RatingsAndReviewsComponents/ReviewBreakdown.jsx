@@ -66,7 +66,14 @@ class ReviewBreakdown extends Component {
       for (let i = 5; i >= 1; i--) {
         bars.push(
           <div className="review-rating-bars-bar">
-            <div className="review-rating-bars-bar-label">{i} Stars</div>
+            <div
+              className="review-rating-bars-bar-label"
+              onClick={() => {
+                this.props.handleStarFilter(i);
+              }}
+            >
+              {i} Stars
+            </div>
             <RatingBar
               bgcolor="#60b960ba"
               percentage={

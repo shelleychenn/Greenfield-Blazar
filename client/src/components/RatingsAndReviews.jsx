@@ -9,6 +9,7 @@ class RatingsAndReviews extends Component {
       reviews: this.props.reviews,
     };
     this.handleSortChoice = this.handleSortChoice.bind(this);
+    this.handleStarFilter = this.handleStarFilter.bind(this);
   }
 
   handleSortChoice(option) {
@@ -38,17 +39,32 @@ class RatingsAndReviews extends Component {
     }
   }
 
+  handleStarFilter(starCount) {
+    let relatedReviews = this.props.reviews.results.filter((review) => {
+      return review.rating === starCount;
+    });
+    this.setState({
+      reviews: { results: relatedReviews },
+    });
+  }
+
   render() {
     return (
       <div className="ratings-and-reviews-container">
         {/* Left side: ReviewBreakdown goes here */}
-        <ReviewBreakdown reviewsMetaData={this.props.reviewsMetaData} />
-
+        <div className="ratings-and-reviews-left-container">
+          <ReviewBreakdown
+            reviewsMetaData={this.props.reviewsMetaData}
+            handleStarFilter={this.handleStarFilter}
+          />
+        </div>
         {/* Right side: ReviewList goes here */}
-        <ReviewList
-          reviews={this.state.reviews}
-          handleSortChoice={this.handleSortChoice}
-        />
+        <div className="ratings-and-reviews-right-container">
+          <ReviewList
+            reviews={this.state.reviews}
+            handleSortChoice={this.handleSortChoice}
+          />
+        </div>
       </div>
     );
   }
