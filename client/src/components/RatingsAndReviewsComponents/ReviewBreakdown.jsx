@@ -13,11 +13,17 @@ class ReviewBreakdown extends Component {
 
   getAverageRating(ratings) {
     let sum = 0;
-    let counts = Object.keys(ratings).length;
+    let count = 0;
     for (let key in ratings) {
-      sum += ratings[key];
+      count += ratings[key];
     }
-    return Math.round((sum / counts) * 10) / 10;
+    for (let key in ratings) {
+      if (ratings[key] > 0) {
+        sum += Number(key);
+        ratings[key]--;
+      }
+    }
+    return Math.round((sum / count) * 10) / 10;
   }
 
   getRatingPercentage(targetStar, ratingData) {
@@ -43,11 +49,16 @@ class ReviewBreakdown extends Component {
   }
 
   getRecommendedPercentage(metaData) {
-    let totalRecommended = Object.values(metaData.recommended)[0];
-    let totalReview = 0;
-    for (let key in metaData.ratings) {
-      totalReview += metaData.ratings[key];
+    let totalRecommended;
+    if (metaData.recommended[1] === undefined) {
+      totalRecommended = 0;
+    } else {
+      totalRecommended = metaData.recommended[1];
     }
+
+    let totalReview =
+      (metaData.recommended[0] || 0) + (metaData.recommended[1] || 0);
+
     let percentage = (totalRecommended / totalReview) * 100;
     return Math.round(percentage * 10) / 10;
   }

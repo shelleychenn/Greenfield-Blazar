@@ -2,31 +2,31 @@
 // review metadata for a given product
 
 const reviewsMetaData = {
-  product_id: '7',
+  product_id: '4',
   ratings: {
-    '1': 1,
-    '3': 1,
-    '5': 2,
+    '2': 1,
+    '4': 1,
+    '5': 1,
   },
   recommended: {
-    '0': 4,
+    '0': 3,
   },
   characteristics: {
-    Size: {
-      id: 22,
+    Fit: {
+      id: 10,
       value: '3.0000',
     },
-    Width: {
-      id: 23,
+    Length: {
+      id: 11,
       value: '4.0000',
     },
     Comfort: {
-      id: 24,
+      id: 12,
       value: '3.7500',
     },
     Quality: {
-      id: 25,
-      value: '3.0000',
+      id: 13,
+      value: '2.0000',
     },
   },
 };

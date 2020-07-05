@@ -1,8 +1,8 @@
-// http://18.224.200.47/reviews/2/list
+// http://18.224.200.47/reviews/4/list
 // a list of reviews for a particular product, does not include any reported reviews.
 
 const reviews = {
-  product: '7',
+  product: '4',
   page: 0,
   count: 5,
   results: [
@@ -38,7 +38,7 @@ const reviews = {
       review_id: 8,
       rating: 4,
       summary: 'These pants are fine',
-      recommend: 1,
+      recommend: 0,
       response: '',
       body: 'I do like these pants',
       date: '2019-03-21T00:00:00.000Z',
