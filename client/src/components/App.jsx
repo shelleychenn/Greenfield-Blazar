@@ -6,16 +6,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+    
     }
+
   }
+  
   render() {
-    const { name } = this.props;
+   
     return (
-      <div>
-     
+      
+     <div>
      <Carousel/>
-     
+    
+     <Carousel/>
      </div>
+   
+     
+     
          
       
     );
@@ -23,3 +30,7 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+

@@ -1,11 +1,15 @@
 import React from "react";
 
-var ProductCardView = ({ productInfo }) => {
+var ProductCardView = ({ productInfo,handleClick}) => {
   const { name, category, default_price } = productInfo;
+  
+
 
   return (
     <div className="productCard">
-      <div className="imageDisplay"></div>
+      <div className="imageDisplay">
+        <div className="starButton" onClick={handleClick}>star</div>
+      </div>
 
       <div className="productInfo">
         <div className="category">{name} </div>
@@ -19,3 +23,4 @@ var ProductCardView = ({ productInfo }) => {
 };
 
 export default ProductCardView;
+
