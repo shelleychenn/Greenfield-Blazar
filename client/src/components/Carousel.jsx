@@ -12,15 +12,33 @@ class Carousel extends React.Component {
     this.state = {
       currentProductCard: 0,
       modalView:false
+
     };
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleClick=this.handleClick.bind(this);
+    this.handleDelete=this.handleDelete.bind(this);
 
   }
 /////////////////////////////////////////////////////////////////////////////////////////////
   handleClick(){
+    
     this.setState({modalView:!this.state.modalView})
+    
+  
+  }
+  handleDelete(e){
+    
+    let outfitArray=JSON.parse(localStorage.getItem('outFitArray'))
+    
+   
+    outfitArray.splice(e.target.id,1);
+    localStorage.setItem('outFitArray',JSON.stringify(outfitArray))
+    this.props.alterList(outfitArray)
+    
+   
+
+    
   }
   handleNext() {
     // this takes the current productCard and mutliplies it by the width of a single product card. Then takes that number and translate the div by that number
@@ -30,7 +48,7 @@ class Carousel extends React.Component {
       this.cardContainer.children.length - 1
     ) {
       if (
-        this.state.currentProductCard + 8 ===
+        this.state.currentProductCard + 6 ===
         this.cardContainer.children.length
       ) {
         this.nextButton.style.visibility = "hidden";
@@ -68,9 +86,10 @@ class Carousel extends React.Component {
   }
   //////////////////////////////////////////////////////////////////////////////
   render() {
-    let size = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 1, 1, 1, 1,1,1,1,1,1];
-
+   
+    var productList=this.props.list;
     if(this.state.modalView){
+      
       return(
         <div>
         <ComparisonModal/>
@@ -96,20 +115,13 @@ class Carousel extends React.Component {
             className="cardContainer"
             
           >
-            {size.map((item, i) => {
+            {productList.map((item, i) => {
               return (
                 <ProductCardView
-                  key={i}
+                  value={i}
                   handleClick={this.handleClick}
-                  productInfo={{
-                    id: 6,
-                    name: "Pumped Up Kicks",
-                    slogan: "Faster than a just about anything",
-                    description:
-                      "The Pumped Up serves up crisp court style with a modern look. These shoes show off tennis-whites shades and are constructed with a supple leather upper and a classic rubber cupsole.",
-                    category: "Kicks",
-                    default_price: "89",
-                  }}
+                  view={this.props.view}
+                  productInfo={item}
                 />
               );
             })}
@@ -119,8 +131,11 @@ class Carousel extends React.Component {
 
       )
     }else{
+      
     return (
+      
       <div>
+        
         
         <div className="viewer">
         
@@ -144,20 +159,13 @@ class Carousel extends React.Component {
             className="cardContainer"
             
           >
-            {size.map((item, i) => {
+            {productList.map((item, i) => {
               return (
                 <ProductCardView
-                  key={i}
-                  handleClick={this.handleClick}
-                  productInfo={{
-                    id: 6,
-                    name: "Pumped Up Kicks",
-                    slogan: "Faster than a just about anything",
-                    description:
-                      "The Pumped Up serves up crisp court style with a modern look. These shoes show off tennis-whites shades and are constructed with a supple leather upper and a classic rubber cupsole.",
-                    category: "Kicks",
-                    default_price: "89",
-                  }}
+                value={i}
+                  view={this.props.view}
+                  handleClick={this.handleDelete}
+                  productInfo={item}
                 />
               );
             })}

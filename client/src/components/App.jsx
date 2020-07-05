@@ -1,6 +1,6 @@
 import React from "react";
 
-import Carousel from "./Carousel.jsx"
+import RelatedProducts from "./RelatedProducts.jsx"
 
 class App extends React.Component {
   constructor(props) {
@@ -15,13 +15,8 @@ class App extends React.Component {
    
     return (
       
-     <div>
-     <Carousel/>
     
-     <Carousel/>
-     </div>
-   
-     
+     <RelatedProducts/>
      
          
       
