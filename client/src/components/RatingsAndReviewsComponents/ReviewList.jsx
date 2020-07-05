@@ -36,9 +36,9 @@ class ReviewList extends Component {
   render() {
     console.log(this.props.reviews);
     let button =
-      this.state.reviewExist >= 2 ? (
+      this.state.reviewExist <= 2 || this.state.totalReviewCount <= 2 ? null : (
         <button onClick={this.loadMoreReviews}>More Reviews</button>
-      ) : null;
+      );
 
     let reviews = this.props.reviews.results.slice(0, this.state.reviewShown);
 
@@ -66,7 +66,6 @@ class ReviewList extends Component {
         <div className="review-list-buttons">
           <div className="left-button"> {button}</div>
           <div className="right-button">
-            {' '}
             <AddReview />
           </div>
         </div>
