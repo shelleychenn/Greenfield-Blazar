@@ -16,7 +16,7 @@ class ReviewBreakdown extends Component {
     let sum = 0;
     let count = 0;
     let tempRating = { ...ratings };
-    // TODO: simply the math
+    // TODO: simplify the math
     for (let key in tempRating) {
       count += tempRating[key];
     }

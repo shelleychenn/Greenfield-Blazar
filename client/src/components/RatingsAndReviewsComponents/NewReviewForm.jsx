@@ -63,7 +63,9 @@ class NewReviewForm extends Component {
             onMouseLeave={this.onMouseLeave}
             onClickStars={this.onClickStars}
           />
+          <br />
           <RecommendRadioButton updateRecommendState={this.handleChange} />
+          <br />
           <div className="form-group">
             <label>Review summary: </label>
             <input
@@ -74,6 +76,7 @@ class NewReviewForm extends Component {
               onChange={this.handleChange}
             />
           </div>
+          <br />
           <div className="form-group">
             <label>Review Body: </label>
             <textarea
@@ -84,10 +87,11 @@ class NewReviewForm extends Component {
               required
             />
           </div>
+          <br />
           <div>
             <UploadImages />
           </div>
-
+          <br />
           <div className="form-group">
             <label>Nickname: </label>
             <input
@@ -102,6 +106,7 @@ class NewReviewForm extends Component {
               For privacy reasons, do not use your full name or email address
             </p>
           </div>
+          <br />
           <div className="form-group">
             <label htmlFor="email">Email: </label>
             <input
@@ -116,6 +121,7 @@ class NewReviewForm extends Component {
               For authentication reasons, you will not be emailed
             </p>
           </div>
+          <br />
           <div className="form-group">
             <button className="form-submit-button" type="submit">
               Submit

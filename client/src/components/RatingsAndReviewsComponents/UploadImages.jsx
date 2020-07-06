@@ -25,6 +25,9 @@ const UploadImages = () => {
         accept="image/*"
         onChange={handleImageUpload}
         ref={imageUploader}
+        style={{
+          display: 'none',
+        }}
       />
       <div
         className="upload-images-container"
@@ -32,6 +35,7 @@ const UploadImages = () => {
       >
         <img className="upload-images-img" ref={uploadedImage} />
       </div>
+      Click to upload Image
     </div>
   );
 };
