@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import StarRating from '../StarRating.jsx';
+import RecommendRadioButton from './RecommendRadioButton.jsx';
 
 class NewReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       rating: null,
+      recommend: '',
       summary: '',
       body: '',
       photos: [],
@@ -12,6 +15,7 @@ class NewReviewForm extends Component {
       email: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.onMouseOver = this.onMouseOver.bind(this);
   }
 
   handleChange(e) {
@@ -20,13 +24,21 @@ class NewReviewForm extends Component {
     });
   }
 
+  onMouseOver(e) {
+    e.target.className = 'full-star';
+    console.log(e.target);
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
           <h3>Write Your Review</h3>
         </div>
         <form onSubmit={this.props.onSubmit}>
+          <StarRating onMouseOver={this.onMouseOver} />
+          <RecommendRadioButton updateRecommendState={this.handleChange} />
           <div className="form-group">
             <label>Review summary: </label>
             <input
