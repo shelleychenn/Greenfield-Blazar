@@ -12,21 +12,19 @@ class ReviewBreakdown extends Component {
   }
 
   getAverageRating(ratings) {
-    console.log('ratings', ratings);
     let sum = 0;
-    let count = 0;
-    let tempRating = { ...ratings };
-    // TODO: simplify the math
-    for (let key in tempRating) {
-      count += tempRating[key];
+    let result = {
+      average: null,
+      count: 0,
+    };
+
+    for (let key in ratings) {
+      result.count += ratings[key];
+      sum += key * ratings[key];
     }
-    for (let key in tempRating) {
-      if (tempRating[key] > 0) {
-        sum += Number(key);
-        tempRating[key]--;
-      }
-    }
-    return Math.round((sum / count) * 10) / 10;
+
+    result.average = Math.round((sum / result.count) * 10) / 10;
+    return result;
   }
 
   getRatingPercentage(targetStar, ratingData) {
@@ -133,13 +131,16 @@ class ReviewBreakdown extends Component {
       this.props.reviewsMetaData.characteristics
     );
 
+    console.log('Averating', this.props.reviewsMetaData.ratings);
     return (
       <div className="review-breakdown">
         <RatingSummary
-          averageRating={this.getAverageRating(
-            this.props.reviewsMetaData.ratings
-          )}
-          reviewCounts={Object.keys(this.props.reviewsMetaData.ratings).length}
+          averageRating={
+            this.getAverageRating(this.props.reviewsMetaData.ratings).average
+          }
+          reviewCounts={
+            this.getAverageRating(this.props.reviewsMetaData.ratings).count
+          }
         />
 
         <p className="review-%recommend">
