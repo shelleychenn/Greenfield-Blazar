@@ -48,6 +48,11 @@ h1 {
   padding-right: 5px;
 }
 
+.review-rating-bars-bar-label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .review-product-bar {
   margin-right: 16px;
   margin-bottom: 15px;
@@ -55,6 +60,14 @@ h1 {
 
 .review-product-breakdown {
   margin-top: 45px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .review-%recommend {
