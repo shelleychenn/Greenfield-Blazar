@@ -49,7 +49,7 @@ class RatingsAndReviews extends Component {
   }
 
   render() {
-    console.log(this.props.reviewsMetaData);
+    console.log('reviews in RA', this.props.reviews);
     return (
       <div className="ratings-and-reviews-container">
         {/* Left side: ReviewBreakdown goes here */}

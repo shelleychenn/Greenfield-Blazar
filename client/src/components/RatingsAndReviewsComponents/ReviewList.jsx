@@ -34,7 +34,7 @@ class ReviewList extends Component {
   }
 
   render() {
-    console.log(this.props.reviews);
+    console.log('reviews', this.props.reviews);
     let button =
       this.state.reviewExist <= 2 || this.state.totalReviewCount <= 2 ? null : (
         <button onClick={this.loadMoreReviews}>More Reviews</button>
