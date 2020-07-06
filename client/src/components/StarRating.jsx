@@ -54,11 +54,18 @@ function getStars(value) {
   return stars;
 }
 
-const StarRating = ({ value, onMouseOver }) => {
+const StarRating = ({ value, onMouseEnter, onMouseLeave, onClickStars }) => {
   return (
     <span className="stars">
       {getStars(value).map((star, index) => (
-        <span key={index} value={index} onMouseOver={onMouseOver}>
+        <span
+          key={index}
+          onMouseEnter={() => {
+            onMouseEnter(index + 1);
+          }}
+          onMouseLeave={onMouseLeave}
+          onClick={onClickStars}
+        >
           {star}
         </span>
       ))}

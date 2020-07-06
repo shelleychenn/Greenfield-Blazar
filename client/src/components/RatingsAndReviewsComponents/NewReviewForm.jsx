@@ -7,7 +7,8 @@ class NewReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: null,
+      isStarsClicked: false,
+      rating: 0,
       recommend: '',
       summary: '',
       body: '',
@@ -16,7 +17,9 @@ class NewReviewForm extends Component {
       email: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.onClickStars = this.onClickStars.bind(this);
     this.updateRecommendState = this.updateRecommendState.bind(this);
   }
 
@@ -32,11 +35,18 @@ class NewReviewForm extends Component {
     });
   }
 
-  onMouseOver(e) {
-    // e.target.className = 'full-star';
-    console.log('e', e.currentTarget.value);
-    console.log('target', e.target);
-    console.log('value', e.target.value);
+  onMouseEnter(e) {
+    this.setState({ isStarsClicked: false, rating: e });
+  }
+
+  onMouseLeave(e) {
+    if (!this.state.isStarsClicked) {
+      this.setState({ rating: 0 });
+    }
+  }
+
+  onClickStars() {
+    this.setState({ isStarsClicked: true });
   }
 
   render() {
@@ -47,7 +57,12 @@ class NewReviewForm extends Component {
           <h3>Write Your Review</h3>
         </div>
         <form onSubmit={this.props.onSubmit}>
-          <StarRating onMouseOver={this.onMouseOver} />
+          <StarRating
+            value={this.state.rating}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClickStars={this.onClickStars}
+          />
           <RecommendRadioButton updateRecommendState={this.handleChange} />
           <div className="form-group">
             <label>Review summary: </label>
