@@ -9,7 +9,8 @@ const reviewsMetaData = {
     '5': 1,
   },
   recommended: {
-    '0': 3,
+    '0': 2,
+    '1': 1,
   },
   characteristics: {
     Fit: {
