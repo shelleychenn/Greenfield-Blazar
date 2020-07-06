@@ -124,7 +124,7 @@ render(){
       />
 
       <h4>Your Outfit </h4>
-      <div>add card functionality</div>
+      
       <Carousel
         view="yourOutfit"
         list={this.state.outFitList}
