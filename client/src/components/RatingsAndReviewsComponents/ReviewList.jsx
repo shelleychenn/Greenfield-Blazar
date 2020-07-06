@@ -8,9 +8,9 @@ class ReviewList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewExist: this.props.reviews.results.length,
+      reviewExist: this.props.reviews.length,
       reviewShown: 2,
-      totalReviewCount: this.props.reviews.results.length,
+      totalReviewCount: this.props.reviews.length,
       sortingRule: 'Relevant',
     };
     this.loadMoreReviews = this.loadMoreReviews.bind(this);
@@ -40,7 +40,7 @@ class ReviewList extends Component {
         <button onClick={this.loadMoreReviews}>More Reviews</button>
       );
 
-    let reviews = this.props.reviews.results.slice(0, this.state.reviewShown);
+    let reviews = this.props.reviews.slice(0, this.state.reviewShown);
 
     return (
       <>

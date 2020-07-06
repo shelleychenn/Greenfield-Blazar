@@ -6,6 +6,7 @@ import {
   setSelectedStyle,
   setProductInfo,
   setProductReviews,
+  setProductReviewsMetaData,
 } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
 
@@ -24,6 +25,7 @@ const App = () => {
   // using random product id to start with
   let productId = 5;
   useEffect(() => {
+    console.log('hello');
     apiHelpers
       .getProductStyles(productId)
       .then(({ data }) => {
@@ -47,6 +49,13 @@ const App = () => {
       .catch((err) => {
         console.log('ISSUE FETCHING PRODUCT REVIEWS');
       });
+
+    apiHelpers
+      .getProductReviewsMetadata(productId)
+      .then(({ data }) => dispatch(setProductReviewsMetaData(data)))
+      .catch((err) => {
+        console.log('ISSUE FETCHING PRODUCT REVIEWS');
+      });
   }, [productId]);
 
   return (
@@ -56,8 +65,8 @@ const App = () => {
       <QuestionsAndAnswers />
       <div className="ratings-and-reviews">
         <RatingsAndReviews
-          reviews={reviews.selectedProductReviews}
-          reviewsMetaData={reviewsMetaData}
+        // reviews={reviews.selectedProductReviews}
+        // reviewsMetaData={reviewsMetaData}
         />
       </div>
     </>
