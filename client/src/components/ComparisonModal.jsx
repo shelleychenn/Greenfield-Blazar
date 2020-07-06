@@ -6,7 +6,7 @@ var ComparisonModal= (props)=>{
 
 return(
 <div className="modalWindowContainer"> 
-<div className="comparisonModalWindow">modal goes here</div>
+<div className="comparisonModalWindow"><h1>A Wild Modal Appears</h1></div>
 </div>
 
 )
