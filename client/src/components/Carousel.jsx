@@ -124,6 +124,7 @@ class Carousel extends React.Component {
               {productList.map((item, i) => {
                 return (
                   <ProductCardView
+                    
                     value={i}
                     handleClick={
                       this.props.view === "relatedProducts"

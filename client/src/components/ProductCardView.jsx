@@ -8,7 +8,7 @@ var ProductCardView = ({ productInfo,handleClick,view,value}) => {
 
   return (
     
-    <div className="productCard">
+    <div className="productCard" >
       <div className="imageDisplay">
         <div className="starButton" onClick={handleClick}>star</div>
       </div>
@@ -25,7 +25,7 @@ var ProductCardView = ({ productInfo,handleClick,view,value}) => {
   }else{
     return (
     
-      <div className="productCard">
+      <div className="productCard" >
         <div className="imageDisplay">
           <div className="starButton" id ={value} onClick={handleClick}>x</div>
         </div>
