@@ -18,7 +18,7 @@ class RecommendRadioButton extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updateRecommendState(e);
+    this.props.updateRecommendState(this.state.value);
   }
 
   render() {
@@ -27,31 +27,25 @@ class RecommendRadioButton extends Component {
         <p>Do you recommend this product?</p>
 
         <div>
-          <div>
-            <label>
-              <input
-                type="radio"
-                value="Yes"
-                name="recommend"
-                checked={this.state.value === 'Yes'}
-                onChange={this.handleChange}
-              />
-              Yes
-            </label>
-          </div>
+          <label>
+            <input
+              type="radio"
+              value="Yes"
+              checked={this.state.value === 'Yes'}
+              onChange={this.handleChange}
+            />
+            Yes
+          </label>
 
-          <div>
-            <label>
-              <input
-                type="radio"
-                value="No"
-                name="recommend"
-                checked={this.state.value === 'No'}
-                onChange={this.handleChange}
-              />
-              No
-            </label>
-          </div>
+          <label>
+            <input
+              type="radio"
+              value="No"
+              checked={this.state.value === 'No'}
+              onChange={this.handleChange}
+            />
+            No
+          </label>
         </div>
       </form>
     );

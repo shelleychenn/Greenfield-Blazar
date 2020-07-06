@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StarRating from '../StarRating.jsx';
 import RecommendRadioButton from './RecommendRadioButton.jsx';
+import UploadImages from './UploadImages.jsx';
 
 class NewReviewForm extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class NewReviewForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.onMouseOver = this.onMouseOver.bind(this);
+    this.updateRecommendState = this.updateRecommendState.bind(this);
   }
 
   handleChange(e) {
@@ -24,9 +26,17 @@ class NewReviewForm extends Component {
     });
   }
 
+  updateRecommendState(choice) {
+    this.setState({
+      recommend: choice,
+    });
+  }
+
   onMouseOver(e) {
-    e.target.className = 'full-star';
-    console.log(e.target);
+    // e.target.className = 'full-star';
+    console.log('e', e.currentTarget.value);
+    console.log('target', e.target);
+    console.log('value', e.target.value);
   }
 
   render() {
@@ -58,6 +68,9 @@ class NewReviewForm extends Component {
               onChange={this.handleChange}
               required
             />
+          </div>
+          <div>
+            <UploadImages />
           </div>
 
           <div className="form-group">
