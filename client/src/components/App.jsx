@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setProductStyles, setSelectedStyle } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
 
@@ -10,7 +10,6 @@ import RatingsAndReviews from './RatingsAndReviews.jsx';
 
 const App = () => {
 
-  const counter = useSelector((state) => state.counter);
   const productStyles = useSelector((state) => state.productStyles);
   const dispatch = useDispatch();
 
