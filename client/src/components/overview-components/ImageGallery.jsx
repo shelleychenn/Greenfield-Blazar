@@ -28,6 +28,7 @@ const ImageGallery = () => {
       !!Object.keys(selectedStyle).length ? [0, selectedStyle.photos.length > 7 ? 7 : selectedStyle.photos.length] : null,
     );
     setImageIndex(0);
+    setIndexDisplacement(0);
   }, [selectedStyle]);
 
   const scrollForward = () => {
