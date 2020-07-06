@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import products from '../../../../_testApiData/_productsApi.js';
 
 const AddToCart = () => {
-  //! will need to convert to either props or shared state
-  const [productStyles, setProductStyles] = useState();
-  const [selectedStyle, setSelectedStyle] = useState();
-  //!
+
+  const productStyles = useSelector((state) => state.productStyles);
+  const selectedStyle = useSelector((state) => state.selectedStyle);
 
   //! Should probably pull from database
   const [isFavorite, toggleIsFavorite] = useState(false);
@@ -16,8 +16,6 @@ const AddToCart = () => {
   const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
-    setProductStyles(products.productStyles.results);
-    setSelectedStyle(!!productStyles && productStyles[0]);
     setIsOutOfStock(!!productStyles && productStyles.length ? false : true);
   }, [productStyles]);
 
@@ -37,7 +35,7 @@ const AddToCart = () => {
           }}
           disabled={isOutOfStock}>
           <option>{isOutOfStock ? 'OUT OF STOCK' : 'SELECT SIZE'}</option>
-          {selectedStyle &&
+          {!!Object.keys(selectedStyle).length &&
             Object.entries(selectedStyle.skus).map(([rowSize, rowQty], index) => {
               if (rowQty) {
                 return (

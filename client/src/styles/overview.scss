@@ -90,8 +90,15 @@ body {
   }
 }
 
-.imageGalleryComponent {
+.expanded-component {
+  grid-column: 2 / span 2;
+}
+
+.default-component {
   grid-column: 2;
+}
+
+.imageGalleryComponent {
 
   .default-view,
   .expanded-view,
@@ -146,6 +153,7 @@ body {
         grid-gap: 11px;
         grid-column: 2;
         grid-row: 2 / span 3;
+        grid-auto-rows: fit-content(50px);;
 
         .thumbnail {
           width: 50px;

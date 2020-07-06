@@ -2,7 +2,6 @@ import React from 'react';
 
 const ThumbnailDisplay = ({
   selectedStyle,
-  productStyles,
   thumbnailIndexBounds,
   indexDisplacement,
   imageIndex,
@@ -23,7 +22,7 @@ const ThumbnailDisplay = ({
         />
       )}
       <div className='thumbnail-container'>
-        {selectedStyle &&
+        {!!Object.keys(selectedStyle).length && thumbnailIndexBounds &&
           selectedStyle.photos.slice(...thumbnailIndexBounds).map(({ thumbnail_url }, index) => {
             return (
               <img
@@ -38,7 +37,7 @@ const ThumbnailDisplay = ({
             );
           })}
       </div>
-      {thumbnailIndexBounds && thumbnailIndexBounds[1] < productStyles[0].photos.length && (
+      {thumbnailIndexBounds && thumbnailIndexBounds[1] < selectedStyle.photos.length && (
         <img
           className='downArrow-icon'
           src='./assets/down-arrow-icon.png'

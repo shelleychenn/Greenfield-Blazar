@@ -25,3 +25,9 @@ export const setProductReviews = (reviews) => {
     payload: reviews
   }
 }
+
+export const toggleIsExpandedView = () => {
+  return {
+    type: 'TOGGLE_IS_EXPANDED_VIEW'
+  }
+}

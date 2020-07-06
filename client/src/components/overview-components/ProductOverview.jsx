@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import products from '../../../../_testApiData/_productsApi.js';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const ProductOverview = () => {
-  const [productDetails, setProductDetails] = useState();
-
-  useEffect(() => {
-    setProductDetails(products.productInformation);
-  }, [products]);
+  const productDetails = useSelector((state) => state.productInfo);
 
   return (
     <div className='productOverview-component'>
       <div className='productOverview-container'>
         <div className='productDescription-container'>
           <div className='description'>
-            {!!productDetails && (productDetails.slogan || productDetails.description) && (
+            {!!Object.keys(productDetails).length && (productDetails.slogan || productDetails.description) && (
               <>
                 <h4>{productDetails.slogan}</h4>
                 <p>{productDetails.description}</p>
@@ -26,7 +22,7 @@ const ProductOverview = () => {
               <img src='./assets/pinterest-icon.png' />
             </div>
           </div>
-          {!!productDetails && !!productDetails.features.length && (
+          {!!Object.keys(productDetails).length && !!productDetails.features.length && (
             <div className='features'>
               {productDetails.features.map(({ feature, value }) => (
                 <p>

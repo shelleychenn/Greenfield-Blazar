@@ -10,7 +10,7 @@ const SlideshowBubbles = ({
 }) => {
   return (
     <div className='slideShow-bubble-container'>
-      {selectedStyle &&
+      {!!Object.keys(selectedStyle).length &&
         selectedStyle.photos.map((_, index) => {
           return (
             <div

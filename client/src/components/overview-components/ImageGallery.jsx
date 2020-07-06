@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import products from '../../../../_testApiData/_productsApi.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleIsExpandedView } from '../../actions/';
 import SlideshowBubbles from './SlideshowBubbles.jsx';
 import ThumbnailDisplay from './ThumbnailDisplay.jsx';
 
 const ImageGallery = () => {
-  //! will need to convert to either props or shared state
-  const [productStyles, setProductStyles] = useState();
-  const [selectedStyle, setSelectedStyle] = useState();
-  //!
+  const productStyles = useSelector((state) => state.productStyles);
+  const selectedStyle = useSelector((state) => state.selectedStyle);
+  const isExpandedView = useSelector((state) => state.isExpandedView);
+  const dispatch = useDispatch();
 
   const [currentImage, setCurrentImage] = useState();
   const [imageIndex, setImageIndex] = useState(0);
   const [indexDisplacement, setIndexDisplacement] = useState(0);
   const [thumbnailIndexBounds, setThumbnailIndexBounds] = useState();
-  const [isExpandedView, toggleIsExpandedView] = useState(false);
   const [isZoomView, toggleIsZoomView] = useState(false);
   const [zoomedImageDims, setZoomedImageDims] = useState();
   const [mouseCoordinates, setMouseCoordinates] = useState();
 
   useEffect(() => {
-    setProductStyles(products.productStyles.results);
-    setSelectedStyle(!!productStyles && productStyles[0]);
-    setCurrentImage(!!productStyles ? productStyles[0].photos[imageIndex] : null);
-  }, [productStyles, imageIndex]);
+    setCurrentImage(!!Object.keys(selectedStyle).length ? selectedStyle.photos[imageIndex] : null);
+  }, [selectedStyle, imageIndex]);
 
   useEffect(() => {
     setThumbnailIndexBounds(
-      !!productStyles ? [0, productStyles[0].photos.length > 7 ? 7 : productStyles[0].photos.length] : null,
+      !!Object.keys(selectedStyle).length ? [0, selectedStyle.photos.length > 7 ? 7 : selectedStyle.photos.length] : null,
     );
-  }, [productStyles]);
+    setImageIndex(0);
+  }, [selectedStyle]);
 
   const scrollForward = () => {
     setThumbnailIndexBounds([thumbnailIndexBounds[0] + 1, thumbnailIndexBounds[1] + 1]);
@@ -42,7 +41,7 @@ const ImageGallery = () => {
   };
 
   return (
-    <div className='imageGalleryComponent'>
+    <div className={ isExpandedView ? 'imageGalleryComponent expanded-component' : 'imageGalleryComponent default-component'}>
       <div
         className={
           isExpandedView
@@ -52,7 +51,7 @@ const ImageGallery = () => {
             : 'container-imageGallery default-view'
         }
         onClick={() => {
-          isExpandedView ? toggleIsZoomView(!isZoomView) : toggleIsExpandedView(!isExpandedView);
+          isExpandedView ? toggleIsZoomView(!isZoomView) : dispatch(toggleIsExpandedView());
         }}
         onMouseMove={(e) => {
           if (isZoomView) {
@@ -96,7 +95,6 @@ const ImageGallery = () => {
               ) : (
                 <ThumbnailDisplay
                   selectedStyle={selectedStyle}
-                  productStyles={productStyles}
                   thumbnailIndexBounds={thumbnailIndexBounds}
                   indexDisplacement={indexDisplacement}
                   imageIndex={imageIndex}
@@ -110,7 +108,7 @@ const ImageGallery = () => {
                 src='./assets/fullscreen-icon.png'
                 onClick={(e) => {
                   e.stopPropagation();
-                  toggleIsExpandedView(!isExpandedView);
+                  dispatch(toggleIsExpandedView());
                 }}
               />
               {imageIndex > 0 && (
@@ -128,7 +126,7 @@ const ImageGallery = () => {
                   }}
                 />
               )}
-              {productStyles && imageIndex < productStyles[0].photos.length - 1 && (
+              {!!Object.keys(selectedStyle).length && imageIndex < selectedStyle.photos.length - 1 && (
                 <img
                   className='rightArrow-icon'
                   src='./assets/right-arrow-icon.png'

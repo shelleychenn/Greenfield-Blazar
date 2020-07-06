@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import products from '../../../../_testApiData/_productsApi.js';
-import reviews from '../../../../_testApiData/_reviewsApi.js';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const ProductInformation = () => {
-  const [productDetails, setProductDetails] = useState();
-  const [productStyles, setProductStyles] = useState();
-  const [productReviews, setProductReviews] = useState();
-  const [selectedStyle, setSelectedStyle] = useState();
 
-  useEffect(() => {
-    setProductDetails(products.productInformation);
-    setProductStyles(products.productStyles);
-    setProductReviews(reviews.selectedProductReviews.results);
-    setSelectedStyle(!!productStyles && productStyles.results[0]);
-  });
+  const productStyles = useSelector((state) => state.productStyles);
+  const selectedStyle = useSelector((state) => state.selectedStyle);
+  const productDetails = useSelector((state) => state.productInfo);
+  const productReviews = useSelector((state) => state.productReviews);
 
   const formatPrice = (price) => {
     return Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 5 }).format(
@@ -31,10 +24,10 @@ const ProductInformation = () => {
             <a href='.'>Read all {productReviews.length} reviews</a>
           </div>
         )}
-        <p className='category'>{productDetails ? productDetails.category.toUpperCase() : null}</p>
+        <p className='category'>{!!Object.keys(productDetails).length ? productDetails.category.toUpperCase() : null}</p>
         <h1>{productDetails ? productDetails.name : null}</h1>
         <div className='price-container'>
-          {!!selectedStyle ? (
+          {!!Object.keys(selectedStyle).length ? (
             selectedStyle.sale_price !== '0' ? (
               <>
                 <p className='sales-price'>{formatPrice(selectedStyle.sale_price)}</p>
