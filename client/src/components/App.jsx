@@ -63,12 +63,7 @@ const App = () => {
       <Overview />
       <RelatedItemsAndComparison />
       <QuestionsAndAnswers />
-      <div className="ratings-and-reviews">
-        <RatingsAndReviews
-        // reviews={reviews.selectedProductReviews}
-        // reviewsMetaData={reviewsMetaData}
-        />
-      </div>
+      <RatingsAndReviews />
     </>
   );
 };
