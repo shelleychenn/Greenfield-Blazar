@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import apiHelpers from '../../helpers/apiHelpers.js';
+import axios from 'axios';
 
 class ReviewListTileFooter extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class ReviewListTileFooter extends Component {
 
   incrementWasHelpfulCount() {
     let newCount = this.state.helpfulCount + 1;
+    //apiHelpers.markReviewAsHelpful()
     this.setState({
       clicked: true,
       helpfulCount: newCount,

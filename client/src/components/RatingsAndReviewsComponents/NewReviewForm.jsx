@@ -9,7 +9,7 @@ class NewReviewForm extends Component {
     this.state = {
       isStarsClicked: false,
       rating: 0,
-      recommend: '',
+      recommend: 0,
       summary: '',
       body: '',
       photos: [],
@@ -29,10 +29,12 @@ class NewReviewForm extends Component {
     });
   }
 
-  updateRecommendState(choice) {
-    this.setState({
-      recommend: choice,
-    });
+  updateRecommendState(value) {
+    if (value === 'Yes') {
+      this.setState({
+        recommend: 1,
+      });
+    }
   }
 
   onMouseEnter(e) {
@@ -64,7 +66,9 @@ class NewReviewForm extends Component {
             onClickStars={this.onClickStars}
           />
           <br />
-          <RecommendRadioButton updateRecommendState={this.handleChange} />
+          <RecommendRadioButton
+            updateRecommendState={this.updateRecommendState}
+          />
           <br />
           <div className="form-group">
             <label>Review summary: </label>
@@ -123,7 +127,11 @@ class NewReviewForm extends Component {
           </div>
           <br />
           <div className="form-group">
-            <button className="form-submit-button" type="submit">
+            <button
+              className="form-submit-button"
+              type="submit"
+              onSubmit={this.props.onSubmit}
+            >
               Submit
             </button>
           </div>

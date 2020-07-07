@@ -16,6 +16,24 @@ const productReviewsReducer = (state = {}, action) => {
       };
     }
 
+    case 'UPDATE_REVIEW_HELPFULNESS': {
+      let review_id = action.payload;
+      const { reviews } = state;
+      const updateReviews = reviews.map((review) => {
+        if (review.reviewId === review_id) {
+          return {
+            ...review,
+            helpfulness: review.helpfulness + 1,
+          };
+        }
+        return { ...review };
+      });
+      return {
+        ...state,
+        reviews: updateReviews,
+      };
+    }
+
     default:
       return state;
   }
