@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-SemiBold.ttf');
+  font-weight: bold;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}

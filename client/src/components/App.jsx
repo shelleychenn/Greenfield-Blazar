@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProductStyles, setSelectedStyle, setProductInfo, setProductReviews } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
 
+import Header from './Header.jsx';
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
@@ -42,6 +43,7 @@ const App = () => {
 
     return (
       <>
+        <Header />
         <Overview />
         <RelatedItemsAndComparison />
         <QuestionsAndAnswers />
