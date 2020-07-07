@@ -6,7 +6,7 @@ const AddReview = () => {
   const onSubmit = (event) => {
     event.preventDefault(event);
 
-    // update date here with new review inputs
+    // update date here with new review input
   };
 
   return (
