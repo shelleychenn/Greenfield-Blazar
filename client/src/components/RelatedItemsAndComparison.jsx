@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "./Carousel.jsx";
+import Carousel from "./relatedItems-componenets/Carousel.jsx";
 
 
 class RelatedProducts extends React.Component{
@@ -117,13 +117,13 @@ render(){
   
     return (
     <div>
-      <h4>Related Products</h4>
+      <h4 className="relatedItemsTitle">Related Products</h4>
       <Carousel
         view="relatedProducts"
         list={this.state.relatedProductList}
       />
 
-      <h4>Your Outfit </h4>
+      <h4 className="relatedItemsTitle">Your Outfit </h4>
       
       <Carousel
         view="yourOutfit"

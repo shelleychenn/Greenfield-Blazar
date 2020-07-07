@@ -1,5 +1,5 @@
-import ProductCardView from "./ProductCardView.jsx";
-import ComparisonModal from "./ComparisonModal.jsx";
+import ProductCardView from "../relatedItems-componenets/ProductCardView.jsx";
+import ComparisonModal from "../relatedItems-componenets/ComparisonModal.jsx";
 
 import React from "react";
 
@@ -58,7 +58,7 @@ class Carousel extends React.Component {
       this.cardContainer.children.length - 1
     ) {
       if (
-        this.state.currentProductCard + 7 >=
+        this.state.currentProductCard + 5 >=
         this.cardContainer.children.length
       ) {
         this.nextButton.style.visibility = "hidden";
@@ -91,6 +91,7 @@ class Carousel extends React.Component {
         this.cardContainer.style.transform = `translate(-${
           26.5 * this.state.currentProductCard
         }vh)`;
+       
       });
     }
   }
@@ -102,20 +103,18 @@ class Carousel extends React.Component {
         <div>
           <ComparisonModal />
           <div className="viewer">
-            <button
+            <img
               ref={(ref_id) => (this.previousButton = ref_id)}
               onClick={this.handlePrevious}
-              className={"pButton"}
-            >
-              Previous
-            </button>
-            <button
+              className="pButton"
+              src="./assets/left-arrow-icon.png"
+            />
+            <img
               ref={(ref_id) => (this.nextButton = ref_id)}
               onClick={this.handleNext}
-              className={"nButton"}
-            >
-              Next
-            </button>
+              className="nButton"
+              src="./assets/right-arrow-icon.png"
+            />
 
             <div
               ref={(ref_id) => (this.cardContainer = ref_id)}
@@ -124,7 +123,6 @@ class Carousel extends React.Component {
               {productList.map((item, i) => {
                 return (
                   <ProductCardView
-                    
                     value={i}
                     handleClick={
                       this.props.view === "relatedProducts"
@@ -148,20 +146,18 @@ class Carousel extends React.Component {
           ) : null}
 
           <div className="viewer">
-            <button
+            <img
               ref={(ref_id) => (this.previousButton = ref_id)}
               onClick={this.handlePrevious}
-              className={"pButton"}
-            >
-              Previous
-            </button>
-            <button
+              className="pButton"
+              src="./assets/left-arrow-icon.png"
+            />
+            <img
               ref={(ref_id) => (this.nextButton = ref_id)}
               onClick={this.handleNext}
-              className={"nButton"}
-            >
-              Next
-            </button>
+              className="nButton"
+              src="./assets/right-arrow-icon.png"
+            ></img>
 
             <div
               ref={(ref_id) => (this.cardContainer = ref_id)}

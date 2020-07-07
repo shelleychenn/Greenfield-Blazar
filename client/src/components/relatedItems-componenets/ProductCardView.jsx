@@ -7,7 +7,7 @@ var ProductCardView = ({ productInfo,handleClick,view,value}) => {
   if(view==="relatedProducts") {
 
   return (
-    
+    <div className='productCardPadder'>
     <div className="productCard" >
       <div className="imageDisplay">
         <div className="starButton" onClick={handleClick}>star</div>
@@ -21,10 +21,12 @@ var ProductCardView = ({ productInfo,handleClick,view,value}) => {
 
       <div className="stars">stars go here</div>
     </div>
+    </div>
   );
   }else{
     return (
     
+      <div className="productCardPadder">
       <div className="productCard" >
         <div className="imageDisplay">
           <div className="starButton" id ={value} onClick={handleClick}>x</div>
@@ -37,6 +39,7 @@ var ProductCardView = ({ productInfo,handleClick,view,value}) => {
         </div>
   
         <div className="stars">stars go here</div>
+      </div>
       </div>
     );
 
