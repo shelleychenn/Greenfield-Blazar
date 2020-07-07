@@ -91,7 +91,6 @@
 }
 
 .imageGalleryComponent {
-
   .default-view,
   .expanded-view,
   .zoom-view {
@@ -145,7 +144,7 @@
         grid-gap: 11px;
         grid-column: 2;
         grid-row: 2 / span 3;
-        grid-auto-rows: fit-content(50px);;
+        grid-auto-rows: fit-content(50px);
 
         .thumbnail {
           width: 50px;
@@ -376,7 +375,6 @@
 .styleSelector-component {
   grid-row: 3;
   .container-styleSelector {
-
     p span {
       font-weight: bold;
     }

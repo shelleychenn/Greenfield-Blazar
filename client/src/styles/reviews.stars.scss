@@ -1,0 +1,33 @@
+@mixin starProperties($percentFilled) {
+  font-size: 1em;
+  background: linear-gradient(
+    to right,
+    #f8ce0b,
+    #f8ce0b $percentFilled,
+    #ccc 1%,
+    #ccc 99%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.full-star {
+  @include starProperties(100%);
+}
+
+.three-Fourth-star {
+  @include starProperties(70%);
+}
+
+.half-star {
+  @include starProperties(50%);
+}
+
+.one-fourth-star {
+  @include starProperties(30%);
+}
+
+.empty-star {
+  @include starProperties(0%);
+}
