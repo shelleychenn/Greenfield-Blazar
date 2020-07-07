@@ -103,14 +103,15 @@ class NewReviewForm extends Component {
         'Runs long',
       ],
     };
-    // iterate over this.props.reviewsMetaData.characteristics, get each trait and create a radiobutton
+
     let traits = [];
     for (let trait in this.props.reviewsMetaData.characteristics) {
-      console.log(trait);
-      traits.push({ trait: characteristicSelections[trait] });
+      traits.push({
+        type: trait,
+        characteristic: characteristicSelections[trait],
+      });
     }
 
-    console.log(traits);
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
@@ -129,7 +130,7 @@ class NewReviewForm extends Component {
           />
           <br />
           {traits.map((trait) => (
-            <CharacteristicsRadioButton trait={trait.trait} />
+            <CharacteristicsRadioButton trait={trait} />
           ))}
 
           <div className="form-group">
