@@ -10,6 +10,7 @@ import {
 } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
 
+import Header from './Header.jsx';
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
@@ -58,14 +59,15 @@ const App = () => {
       });
   }, [productId]);
 
-  return (
-    <>
-      <Overview />
-      <RelatedItemsAndComparison />
-      <QuestionsAndAnswers />
-      <RatingsAndReviews />
-    </>
-  );
-};
+    return (
+      <>
+        <Header />
+        <Overview />
+        <RelatedItemsAndComparison />
+        <QuestionsAndAnswers />
+        <RatingsAndReviews />
+      </>
+    );
+}
 
 export default App;

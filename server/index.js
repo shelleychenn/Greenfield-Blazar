@@ -4,4 +4,5 @@ const app = express();
 const port = 5050;
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
+
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
