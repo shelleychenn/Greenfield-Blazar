@@ -9,14 +9,10 @@ import {
   setProductReviewsMetaData,
 } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
-
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews.jsx';
-// Dummy data files below:
-import reviews from '../../../_testApiData/_reviewsApi.js';
-import reviewsMetaData from '../../../_testApiData/_reviewsMetadataApi.js';
 
 const App = () => {
   const productStyles = useSelector((state) => state.productStyles);
@@ -64,10 +60,7 @@ const App = () => {
       <RelatedItemsAndComparison />
       <QuestionsAndAnswers />
       <div className="ratings-and-reviews">
-        <RatingsAndReviews
-        // reviews={reviews.selectedProductReviews}
-        // reviewsMetaData={reviewsMetaData}
-        />
+        <RatingsAndReviews />
       </div>
     </>
   );

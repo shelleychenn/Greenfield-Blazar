@@ -53,7 +53,10 @@ class AddReviewContainer extends Component {
             }}
             closeModal={this.closeModal}
           >
-            <NewReviewForm onSubmit={this.props.onSubmit} />
+            <NewReviewForm
+              handleNewReview={this.props.handleNewReview}
+              reviewsMetaData={this.props.reviewsMetaData}
+            />
           </Modal>
         ) : null}
       </React.Fragment>

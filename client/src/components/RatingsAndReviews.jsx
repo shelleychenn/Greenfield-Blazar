@@ -6,7 +6,7 @@ import ReviewBreakdown from './RatingsAndReviewsComponents/ReviewBreakdown.jsx';
 const RatingsAndReviews = () => {
   const productReviews = useSelector((state) => state.productReviews);
 
-  console.log('dataSelected', productReviews);
+  //console.log('dataSelected', productReviews);
   if (
     productReviews &&
     productReviews.reviews &&
@@ -21,7 +21,10 @@ const RatingsAndReviews = () => {
         </div>
         {/* Right side: ReviewList goes here */}
         <div className="ratings-and-reviews-right-container">
-          <ReviewList reviews={productReviews.reviews} />
+          <ReviewList
+            reviews={productReviews.reviews}
+            reviewsMetaData={productReviews.reviewsMetaData}
+          />
         </div>
       </div>
     );

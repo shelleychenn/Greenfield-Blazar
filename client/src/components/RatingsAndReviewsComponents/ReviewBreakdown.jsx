@@ -131,7 +131,7 @@ class ReviewBreakdown extends Component {
       this.props.reviewsMetaData.characteristics
     );
 
-    console.log('Averating', this.props.reviewsMetaData.ratings);
+    //console.log('Averating', this.props.reviewsMetaData.ratings);
     return (
       <div className="review-breakdown">
         <RatingSummary

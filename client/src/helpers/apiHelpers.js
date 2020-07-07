@@ -24,7 +24,15 @@ const apiHelpers = {
   },
 
   markReviewAsHelpful: (review_id) => {
-    return axios.put(`${API_URL}/helpful/${review_id}`);
+    return axios.put(`${API_URL}/reviews/helpful/${review_id}`);
+  },
+
+  sortReviews: (productId, sortBy) => {
+    return axios.get(`${API_URL}/reviews/${productId}/list?sort=${sortBy}`);
+  },
+
+  postReview: (product_id) => {
+    return axios.post(`${API_URL}/reviews/${product_id}`);
   },
 };
 
