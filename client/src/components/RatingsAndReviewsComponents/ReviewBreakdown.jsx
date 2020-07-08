@@ -79,31 +79,6 @@ class ReviewBreakdown extends Component {
     return trait;
   }
 
-  // handleStarFilter(starCount) {
-  //   let copy = this.props.reviews.slice();
-  //   let relatedReviews = this.props.reviews.filter((review) => {
-  //     return review.rating === starCount;
-  //   });
-
-  //   if (!this.state.filterClicked) {
-  //     this.setState({
-  //       filterClicked: true,
-  //     });
-  //     this.props.dispatch(setProductReviews(relatedReviews));
-  //   } else {
-  //     this.setState({
-  //       filterClicked: false,
-  //     });
-  //     console.log(copy);
-  //     this.props.dispatch(setProductReviews(copy));
-  //   }
-  // }
-
-  // removeAllFilters() {
-  //   console.log(this.props.reviews);
-  //   this.props.dispatch(setProductReviews(this.props.reviews));
-  // }
-
   render() {
     const ratingBars = () => {
       let bars = [];

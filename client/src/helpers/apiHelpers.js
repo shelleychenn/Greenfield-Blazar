@@ -16,7 +16,7 @@ const apiHelpers = {
   },
 
   getProductReviews: (productId) => {
-    return axios.get(`${API_URL}/reviews/${productId}/list`);
+    return axios.get(`${API_URL}/reviews/${productId}/list?count=20`);
   },
 
   getProductReviewsMetadata: (productId) => {

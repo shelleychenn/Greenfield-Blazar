@@ -56,6 +56,7 @@ class AddReviewContainer extends Component {
             <NewReviewForm
               handleNewReview={this.props.handleNewReview}
               reviewsMetaData={this.props.reviewsMetaData}
+              closeModal={this.closeModal}
             />
           </Modal>
         ) : null}
