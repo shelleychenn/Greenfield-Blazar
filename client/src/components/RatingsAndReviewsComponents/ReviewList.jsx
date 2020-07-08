@@ -21,7 +21,7 @@ class ReviewList extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-      reviewExist: nextProps.reviews.length,
+      //reviewExist: nextProps.reviews.length,
       reviewShown: prevState.reviewShown,
       totalReviewCount: nextProps.reviews.length,
       sortingRule: prevState.sortingRule,
@@ -49,6 +49,10 @@ class ReviewList extends Component {
   }
 
   render() {
+    console.log('reviewExist', this.state.reviewExist);
+    console.log('reviewShown', this.state.reviewShown);
+    console.log('totalReviewCount', this.state.totalReviewCount);
+    console.log('sortingRule', this.state.sortingRule);
     let button =
       this.state.reviewExist <= 2 || this.state.totalReviewCount <= 2 ? null : (
         <button onClick={this.loadMoreReviews}>More Reviews</button>
