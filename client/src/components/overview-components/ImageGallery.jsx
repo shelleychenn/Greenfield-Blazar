@@ -8,6 +8,7 @@ import ThumbnailDisplay from './ThumbnailDisplay.jsx';
 const ImageGallery = () => {
   const productStyles = useSelector((state) => state.productStyles);
   const selectedStyle = useSelector((state) => state.selectedStyle);
+  const productDetails = useSelector((state) => state.productInfo);
   const isExpandedView = useSelector((state) => state.isExpandedView);
   const dispatch = useDispatch();
 
@@ -80,6 +81,7 @@ const ImageGallery = () => {
                 }
               : null
           }
+          alt={!!productDetails ? `${productDetails.name}` : ''}
         />
         <div className='image-overlay-container'>
           {!isZoomView && (
@@ -96,6 +98,7 @@ const ImageGallery = () => {
               ) : (
                 <ThumbnailDisplay
                   selectedStyle={selectedStyle}
+                  productDetails={productDetails}
                   thumbnailIndexBounds={thumbnailIndexBounds}
                   indexDisplacement={indexDisplacement}
                   imageIndex={imageIndex}
@@ -111,6 +114,7 @@ const ImageGallery = () => {
                   e.stopPropagation();
                   dispatch(toggleIsExpandedView());
                 }}
+                alt='Full screen icon'
               />
               {imageIndex > 0 && (
                 <img
@@ -125,6 +129,7 @@ const ImageGallery = () => {
                       }
                     }
                   }}
+                  alt='Left arrow icon'
                 />
               )}
               {!!Object.keys(selectedStyle).length && imageIndex < selectedStyle.photos.length - 1 && (
@@ -140,6 +145,7 @@ const ImageGallery = () => {
                       }
                     }
                   }}
+                  alt='Right arrow icon'
                 />
               )}
             </>

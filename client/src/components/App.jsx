@@ -15,18 +15,17 @@ import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews.jsx';
+import Footer from './Footer.jsx';
 // Dummy data files below:
 import reviews from '../../../_testApiData/_reviewsApi.js';
 import reviewsMetaData from '../../../_testApiData/_reviewsMetadataApi.js';
 
 const App = () => {
   const productStyles = useSelector((state) => state.productStyles);
+  const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
 
-  // using random product id to start with
-  let productId = 5;
   useEffect(() => {
-    console.log('hello');
     apiHelpers
       .getProductStyles(productId)
       .then(({ data }) => {
@@ -63,9 +62,10 @@ const App = () => {
       <>
         <Header />
         <Overview />
-        <RelatedItemsAndComparison />
+        {/* <RelatedItemsAndComparison /> */}
         <QuestionsAndAnswers />
         <RatingsAndReviews />
+        <Footer />
       </>
     );
 }

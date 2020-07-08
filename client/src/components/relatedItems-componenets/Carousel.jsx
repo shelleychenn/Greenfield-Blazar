@@ -91,7 +91,7 @@ class Carousel extends React.Component {
         this.cardContainer.style.transform = `translate(-${
           26.5 * this.state.currentProductCard
         }vh)`;
-       
+
       });
     }
   }
@@ -120,7 +120,7 @@ class Carousel extends React.Component {
               ref={(ref_id) => (this.cardContainer = ref_id)}
               className="cardContainer"
             >
-              {productList.map((item, i) => {
+              {!!productList && productList.map((item, i) => {
                 return (
                   <ProductCardView
                     value={i}
@@ -163,7 +163,7 @@ class Carousel extends React.Component {
               ref={(ref_id) => (this.cardContainer = ref_id)}
               className="cardContainer"
             >
-              {productList.map((item, i) => {
+              {!!productList && productList.map((item, i) => {
                 return (
                   <ProductCardView
                     value={i}

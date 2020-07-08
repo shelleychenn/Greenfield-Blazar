@@ -1,18 +1,17 @@
 .header-component {
-  height: 111px;
+  height: 136px;
 
   .header-container {
     display: grid;
     grid-template-columns: 1fr 600px 200px 130px 20px 1fr;
-    grid-template-rows: 18px 25px 18px;
-    background-color: rgb(255, 255, 255);
+    grid-template-rows: 30px 26px 30px;
     border-bottom: rgb(145, 145, 145) 1px solid;
 
     h2 {
       margin: 0;
       font-family: 'Montserrat-Light';
       font-weight: 100;
-      color: #000;
+      font-size: 26px;
       grid-column: 2;
       grid-row: 2;
     }
@@ -46,7 +45,6 @@
       grid-column: 2;
       align-self: center;
       font-family: 'Montserrat-Light';
-      text-transform: capitalize;
       font-size: 14px;
     }
   }

@@ -114,9 +114,9 @@ changeOutfitList(value){
 }
 
 render(){
-  
+
     return (
-    <div>
+    <div className = 'related-items-component'>
       <h4 className="relatedItemsTitle">Related Products</h4>
       <Carousel
         view="relatedProducts"
@@ -124,7 +124,7 @@ render(){
       />
 
       <h4 className="relatedItemsTitle">Your Outfit </h4>
-      
+
       <Carousel
         view="yourOutfit"
         list={this.state.outFitList}
