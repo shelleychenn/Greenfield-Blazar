@@ -4,13 +4,25 @@ class CharacteristicsRadioButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: '',
       value: '',
     };
   }
 
-  render() {
-    console.log('trait3', this.props.trait);
+  handleChange(e) {
+    this.setState({
+      type: this.props.trait.type,
+      value: e.target.value,
+    });
+  }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updateCharacteristic(this.state);
+  }
+
+  render() {
+    console.log('state', this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <p>{this.props.trait.type}</p>

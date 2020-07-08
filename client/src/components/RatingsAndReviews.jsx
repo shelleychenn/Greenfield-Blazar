@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ReviewList from './RatingsAndReviewsComponents/ReviewList.jsx';
 import ReviewBreakdown from './RatingsAndReviewsComponents/ReviewBreakdown.jsx';
 
 const RatingsAndReviews = () => {
   const productReviews = useSelector((state) => state.productReviews);
+
+  const [starCount, setStarCount] = useState(null);
+
+  const handleStarFilter = (starCount) => {
+    setStarCount(starCount);
+
+    // let copy = this.props.reviews.slice();
+    // let relatedReviews = this.props.reviews.filter((review) => {
+    //   return review.rating === starCount;
+    // });
+
+    // if (!this.state.filterClicked) {
+    //   this.setState({
+    //     filterClicked: true,
+    //   });
+    //   this.props.dispatch(setProductReviews(relatedReviews));
+    // } else {
+    //   this.setState({
+    //     filterClicked: false,
+    //   });
+    //   console.log(copy);
+    //   this.props.dispatch(setProductReviews(copy));
+    // }
+  };
 
   //console.log('dataSelected', productReviews);
   if (
@@ -13,16 +37,28 @@ const RatingsAndReviews = () => {
     productReviews.reviews.length &&
     productReviews.reviewsMetaData
   ) {
+    console.log(starCount);
+    let reviews = productReviews.reviews;
+    if (starCount !== null) {
+      reviews = reviews.filter((review) => {
+        return review.rating === starCount;
+      });
+    }
+    console.log(reviews);
     return (
       <div className="ratings-and-reviews-container">
         {/* Left side: ReviewBreakdown goes here */}
         <div className="ratings-and-reviews-left-container">
-          <ReviewBreakdown reviewsMetaData={productReviews.reviewsMetaData} />
+          <ReviewBreakdown
+            reviews={productReviews.reviews}
+            reviewsMetaData={productReviews.reviewsMetaData}
+            handleStarFilter={handleStarFilter}
+          />
         </div>
         {/* Right side: ReviewList goes here */}
         <div className="ratings-and-reviews-right-container">
           <ReviewList
-            reviews={productReviews.reviews}
+            reviews={reviews}
             reviewsMetaData={productReviews.reviewsMetaData}
           />
         </div>

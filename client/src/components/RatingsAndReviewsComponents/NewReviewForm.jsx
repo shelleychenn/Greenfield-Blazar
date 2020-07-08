@@ -23,6 +23,7 @@ class NewReviewForm extends Component {
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onClickStars = this.onClickStars.bind(this);
     this.updateRecommendState = this.updateRecommendState.bind(this);
+    this.updateCharacteristic = this.updateCharacteristic.bind(this);
   }
 
   handleChange(e) {
@@ -56,6 +57,15 @@ class NewReviewForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.handleNewReview(product_id, this.state);
+  }
+
+  updateCharacteristic(input) {
+    console.log(input);
+    // this.setState({
+    //   characteristics: {
+    //     input.type: input.value
+    //   }
+    // })
   }
 
   render() {
@@ -130,7 +140,10 @@ class NewReviewForm extends Component {
           />
           <br />
           {traits.map((trait) => (
-            <CharacteristicsRadioButton trait={trait} />
+            <CharacteristicsRadioButton
+              trait={trait}
+              updateCharacteristic={this.updateCharacteristic}
+            />
           ))}
 
           <div className="form-group">

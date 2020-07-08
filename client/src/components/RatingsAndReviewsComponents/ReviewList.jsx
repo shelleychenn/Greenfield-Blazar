@@ -19,6 +19,15 @@ class ReviewList extends Component {
     this.handleSortingChange = this.handleSortingChange.bind(this);
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      reviewExist: nextProps.reviews.length,
+      reviewShown: prevState.reviewShown,
+      totalReviewCount: nextProps.reviews.length,
+      sortingRule: prevState.sortingRule,
+    };
+  }
+
   loadMoreReviews() {
     let newCount = this.state.reviewShown;
     let reviewToLoad = this.state.reviewExist;
@@ -46,7 +55,6 @@ class ReviewList extends Component {
       );
 
     let reviews = this.props.reviews.slice(0, this.state.reviewShown);
-
     return (
       <>
         <div className="sorting-choices">
