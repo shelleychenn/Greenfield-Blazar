@@ -31,8 +31,8 @@ const apiHelpers = {
     return axios.get(`${API_URL}/reviews/${productId}/list?sort=${sortBy}`);
   },
 
-  postReview: (product_id) => {
-    return axios.post(`${API_URL}/reviews/${product_id}`);
+  postReview: (productId, newReview) => {
+    return axios.post(`${API_URL}/reviews/${productId}`, newReview);
   },
 };
 

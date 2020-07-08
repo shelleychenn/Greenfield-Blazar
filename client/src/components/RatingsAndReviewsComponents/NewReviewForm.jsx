@@ -56,16 +56,31 @@ class NewReviewForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.handleNewReview(product_id, this.state);
+    this.props.handleNewReview(
+      this.props.reviewsMetaData.product_id,
+      this.state
+    );
   }
 
   updateCharacteristic(input) {
-    console.log(input);
-    // this.setState({
-    //   characteristics: {
-    //     input.type: input.value
-    //   }
-    // })
+    console.log('input', input.type);
+    let code = {
+      Size: 14,
+      Width: 15,
+      Comfort: 16,
+      Quality: 17,
+      Length: 18,
+      Fit: 19,
+    };
+    let num = code[input.type];
+    console.log('num', num);
+
+    this.setState({
+      characteristics: {
+        ...this.state.characteristics,
+        num: input.value,
+      },
+    });
   }
 
   render() {
@@ -122,6 +137,8 @@ class NewReviewForm extends Component {
       });
     }
 
+    console.log(this.state);
+
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
@@ -145,7 +162,7 @@ class NewReviewForm extends Component {
               updateCharacteristic={this.updateCharacteristic}
             />
           ))}
-
+          <br />
           <div className="form-group">
             <label>Review summary: </label>
             <input
@@ -206,7 +223,7 @@ class NewReviewForm extends Component {
             <button
               className="form-submit-button"
               type="submit"
-              onSubmit={this.props.onSubmit}
+              onSubmit={this.onSubmit}
             >
               Submit
             </button>

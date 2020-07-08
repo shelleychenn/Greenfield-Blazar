@@ -50,7 +50,14 @@ const App = () => {
       .getProductReviewsMetadata(productId)
       .then(({ data }) => dispatch(setProductReviewsMetaData(data)))
       .catch((err) => {
-        console.log('ISSUE FETCHING PRODUCT REVIEWS');
+        console.log('ISSUE FETCHING PRODUCT REVIEWS METADATA');
+      });
+
+    apiHelpers
+      .postReview(productId)
+      .then(({ data }) => dispatch(postNewReview(data)))
+      .catch((err) => {
+        console.log('ISSUE POSTING NEW REVIEW');
       });
   }, [productId]);
 

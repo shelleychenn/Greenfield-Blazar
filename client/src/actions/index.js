@@ -34,6 +34,13 @@ export const setProductReviewsMetaData = (reviewsMetaData) => {
   };
 };
 
+export const postNewReview = (newReview) => {
+  return {
+    type: 'POST_NEW_REVIEWS',
+    payload: newReview,
+  };
+};
+
 export const toggleIsExpandedView = () => {
   return {
     type: 'TOGGLE_IS_EXPANDED_VIEW',
