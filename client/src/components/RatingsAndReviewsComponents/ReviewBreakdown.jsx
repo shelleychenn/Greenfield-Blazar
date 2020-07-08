@@ -14,8 +14,6 @@ class ReviewBreakdown extends Component {
     this.getRatingPercentage = this.getRatingPercentage.bind(this);
     this.getRecommendedPercentage = this.getRecommendedPercentage.bind(this);
     this.getCharacteristicAverage = this.getCharacteristicAverage.bind(this);
-    //this.handleStarFilter = this.handleStarFilter.bind(this);
-    //this.removeAllFilters = this.removeAllFilters.bind(this);
   }
 
   getAverageRating(ratings) {

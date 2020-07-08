@@ -16,9 +16,6 @@ const AddReview = ({ reviewsMetaData }) => {
         photos: newReviewInfo.photos,
         characteristics: newReviewInfo.characteristics,
       })
-      // .then(() => {
-      //   console.log('new review posted!');
-      // })
       .then((response) => {
         dispatch({
           type: 'POST_NEW_REVIEWS',

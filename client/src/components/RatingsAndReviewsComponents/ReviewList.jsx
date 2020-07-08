@@ -21,7 +21,6 @@ class ReviewList extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-      //reviewExist: nextProps.reviews.length,
       reviewShown: prevState.reviewShown,
       totalReviewCount: nextProps.reviews.length,
       sortingRule: prevState.sortingRule,
