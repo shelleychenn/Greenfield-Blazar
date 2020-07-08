@@ -24,7 +24,6 @@ class CharacteristicsRadioButton extends Component {
   }
 
   render() {
-    console.log('state', this.state);
     return (
       <div className="characteristic-radio-button">
         <form onSubmit={this.handleSubmit}>

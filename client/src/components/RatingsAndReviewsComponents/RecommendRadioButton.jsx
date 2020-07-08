@@ -7,18 +7,17 @@ class RecommendRadioButton extends Component {
       value: 'No',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({
-      value: e.target.value,
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.updateRecommendState(this.state.value);
+    this.setState(
+      {
+        value: e.target.value,
+      },
+      () => {
+        this.props.updateRecommendState(this.state.value);
+      }
+    );
   }
 
   render() {

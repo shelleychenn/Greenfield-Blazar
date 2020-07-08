@@ -10,7 +10,7 @@ class NewReviewForm extends Component {
     this.state = {
       isStarsClicked: false,
       rating: 0,
-      recommend: 0,
+      recommend: false,
       summary: '',
       body: '',
       photos: [],
@@ -35,7 +35,12 @@ class NewReviewForm extends Component {
   updateRecommendState(value) {
     if (value === 'Yes') {
       this.setState({
-        recommend: 1,
+        recommend: true,
+      });
+    }
+    if (value === 'No') {
+      this.setState({
+        recommend: false,
       });
     }
   }
