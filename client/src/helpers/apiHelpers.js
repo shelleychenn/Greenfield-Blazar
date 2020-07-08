@@ -16,7 +16,7 @@ const apiHelpers = {
   },
 
   getProductReviews: (productId) => {
-    return axios.get(`${API_URL}/reviews/${productId}/list?count=20`);
+    return axios.get(`${API_URL}/reviews/${productId}/list?count=30`);
   },
 
   getProductReviewsMetadata: (productId) => {
@@ -28,7 +28,9 @@ const apiHelpers = {
   },
 
   sortReviews: (productId, sortBy) => {
-    return axios.get(`${API_URL}/reviews/${productId}/list?sort=${sortBy}`);
+    return axios.get(
+      `${API_URL}/reviews/${productId}/list?sort=${sortBy}&count=30`
+    );
   },
 
   postReview: (productId, newReview) => {

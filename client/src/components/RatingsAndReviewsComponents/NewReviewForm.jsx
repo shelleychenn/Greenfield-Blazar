@@ -273,7 +273,11 @@ class NewReviewForm extends Component {
             <button
               className="form-submit-button"
               type="submit"
-              onSubmit={this.onSubmit}
+              onSubmit={() => {
+                this.props.closeModal();
+                console.log('hello');
+                this.onSubmit();
+              }}
             >
               Submit
             </button>
