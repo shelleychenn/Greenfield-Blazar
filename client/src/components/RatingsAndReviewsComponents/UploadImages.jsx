@@ -16,6 +16,7 @@ const UploadImages = () => {
       };
       reader.readAsDataURL(file);
     }
+    console.log(e.target.files);
   };
 
   return (
