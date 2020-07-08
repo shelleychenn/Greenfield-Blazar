@@ -139,6 +139,16 @@ class NewReviewForm extends Component {
 
     console.log(this.state);
 
+    let starTest = {
+      1: 'Poor',
+      2: 'Fair',
+      3: 'Average',
+      4: 'Good',
+      5: 'Great',
+    };
+
+    let text = starTest[this.state.rating.toString()];
+
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
@@ -154,6 +164,7 @@ class NewReviewForm extends Component {
               onMouseLeave={this.onMouseLeave}
               onClickStars={this.onClickStars}
             />
+            {text}
           </div>
           <br />
           <br />
