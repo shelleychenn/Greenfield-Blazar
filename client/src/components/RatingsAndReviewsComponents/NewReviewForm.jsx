@@ -3,6 +3,7 @@ import StarRating from '../StarRating.jsx';
 import RecommendRadioButton from './RecommendRadioButton.jsx';
 import CharacteristicsRadioButton from './CharacteristicsRadioButton.jsx';
 import UploadImages from './UploadImages.jsx';
+import apiHelpers from '../../helpers/apiHelpers.js';
 
 class NewReviewForm extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class NewReviewForm extends Component {
     this.onClickStars = this.onClickStars.bind(this);
     this.updateRecommendState = this.updateRecommendState.bind(this);
     this.updateCharacteristic = this.updateCharacteristic.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -61,10 +63,23 @@ class NewReviewForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.handleNewReview(
-      this.props.reviewsMetaData.product_id,
-      this.state
-    );
+    apiHelpers
+      .postReview(this.props.reviewsMetaData.product_id, {
+        rating: this.state.rating,
+        summary: this.state.summary,
+        body: this.state.body,
+        recommend: this.state.recommend,
+        name: this.state.reviewer_name,
+        email: this.state.email,
+        photos: this.state.photos,
+        characteristics: this.state.characteristics,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   updateCharacteristic(input) {
@@ -83,7 +98,7 @@ class NewReviewForm extends Component {
     this.setState({
       characteristics: {
         ...this.state.characteristics,
-        num: input.value,
+        [num]: Number(input.value),
       },
     });
   }
@@ -159,7 +174,7 @@ class NewReviewForm extends Component {
         <div className="modal-form-heading">
           <h3>Write Your Review</h3>
         </div>
-        <form onSubmit={this.props.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <label>Overall rating*</label>
           <br />
           <div className="modal-form-star-rating">
@@ -237,7 +252,6 @@ class NewReviewForm extends Component {
               For privacy reasons, do not use your full name or email address
             </p>
           </div>
-          <br />
           <div className="form-group">
             <label htmlFor="email">Your email* </label>
             <br />

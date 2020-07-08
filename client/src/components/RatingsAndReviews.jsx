@@ -4,6 +4,9 @@ import ReviewList from './RatingsAndReviewsComponents/ReviewList.jsx';
 import ReviewBreakdown from './RatingsAndReviewsComponents/ReviewBreakdown.jsx';
 
 const RatingsAndReviews = () => {
+  const newReview = useSelector((state) => {
+    state.newReview;
+  });
   const productReviews = useSelector((state) => state.productReviews);
 
   const [starCount, setStarCount] = useState(null);

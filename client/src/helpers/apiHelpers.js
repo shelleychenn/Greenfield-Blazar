@@ -32,6 +32,7 @@ const apiHelpers = {
   },
 
   postReview: (productId, newReview) => {
+    console.log('newReview', newReview);
     return axios.post(`${API_URL}/reviews/${productId}`, newReview);
   },
 };

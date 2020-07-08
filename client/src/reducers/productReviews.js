@@ -18,8 +18,8 @@ const productReviewsReducer = (state = {}, action) => {
 
     case 'POST_NEW_REVIEWS': {
       return {
-        newReview: action.newReview,
         ...state,
+        reviews: [action.payload, ...state.reviews],
       };
     }
 
