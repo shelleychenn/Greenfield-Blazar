@@ -73,3 +73,15 @@ button:hover {
 .review-%recommend {
   margin-top: 30px;
 }
+
+.review-remove-filter:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.review-product-bar-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -12px;
+  font-size: 0.8em;
+}

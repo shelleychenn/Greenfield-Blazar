@@ -137,10 +137,18 @@ class ReviewBreakdown extends Component {
 
     let bars = ratingBars();
 
+    const traitMeaning = {
+      Size: ['too small', 'too big'],
+      Width: ['too narrow', 'too wide'],
+      Comfort: ['uncomfortable', 'perfect'],
+      Quality: ['poor', 'great'],
+      Length: ['too short', 'too long'],
+      Fit: ['too tight', 'too loose'],
+    };
+
     const productBreakdownBar = (characteristics) => {
       let productBars = [];
       for (let trait in characteristics) {
-        // TODO: use map
         productBars.push(
           <div className="review-product-bar" key={trait}>
             {trait}
@@ -153,6 +161,10 @@ class ReviewBreakdown extends Component {
               }
               icon="▼"
             />
+            <div className="review-product-bar-text">
+              <p>{traitMeaning[trait][0]}</p>
+              <p>{traitMeaning[trait][1]}</p>
+            </div>
           </div>
         );
       }
@@ -163,7 +175,6 @@ class ReviewBreakdown extends Component {
       this.props.reviewsMetaData.characteristics
     );
 
-    //console.log('Averating', this.props.reviewsMetaData.ratings);
     return (
       <div className="review-breakdown">
         <RatingSummary
@@ -187,6 +198,7 @@ class ReviewBreakdown extends Component {
         </div>
         <br />
         <div
+          className="review-remove-filter"
           onClick={() => {
             this.props.handleStarFilter(null);
           }}
