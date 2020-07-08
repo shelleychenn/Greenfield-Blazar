@@ -76,3 +76,16 @@ a {
   position: flex;
   justify-content: row;
 }
+
+.review-list {
+  overflow: scroll;
+  height: 600px;
+}
+
+.left-button {
+  float: left;
+}
+
+.right-button {
+  float: left;
+}
