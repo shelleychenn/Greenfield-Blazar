@@ -19,7 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   // using random product id to start with
-  let productId = 5;
+  let productId = 4;
   useEffect(() => {
     apiHelpers
       .getProductStyles(productId)
