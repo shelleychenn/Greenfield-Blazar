@@ -19,40 +19,36 @@ class CharacteristicsRadioButton extends Component {
       },
       () => {
         this.props.updateCharacteristic(this.state);
+        e.preventDefault();
       }
     );
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   console.log('value', this.state.value);
-  //   console.log('type', this.state.type);
-  //   this.props.updateCharacteristic(this.state);
-  // }
-
   render() {
     console.log('state', this.state);
     return (
-      <form onSubmit={this.handleSubmit}>
-        <p>{this.props.trait.type}</p>
+      <div className="characteristic-radio-button">
+        <form onSubmit={this.handleSubmit}>
+          <p>{this.props.trait.type}</p>
 
-        <div>
-          {this.props.trait.characteristic.map((description, index) => (
-            <>
-              <label>
-                <input
-                  type="radio"
-                  value={index + 1}
-                  checked={this.state.value == index + 1}
-                  onChange={this.handleChange}
-                />
-                {description}
-              </label>
-              <br />
-            </>
-          ))}
-        </div>
-      </form>
+          <div>
+            {this.props.trait.characteristic.map((description, index) => (
+              <>
+                <label>
+                  <input
+                    type="radio"
+                    value={index + 1}
+                    checked={this.state.value == index + 1}
+                    onChange={this.handleChange}
+                  />
+                  {description}
+                </label>
+                <br />
+              </>
+            ))}
+          </div>
+        </form>
+      </div>
     );
   }
 }

@@ -21,7 +21,6 @@ const App = () => {
   // using random product id to start with
   let productId = 5;
   useEffect(() => {
-    console.log('hello');
     apiHelpers
       .getProductStyles(productId)
       .then(({ data }) => {

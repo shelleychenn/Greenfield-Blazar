@@ -23,7 +23,6 @@ class ReviewListTileFooter extends Component {
 
   render() {
     if (!this.state.clicked) {
-      console.log(this.state.helpfulCount);
       return (
         <>
           Helpful? <a onClick={this.incrementWasHelpfulCount}>Yes </a>(

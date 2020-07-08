@@ -105,7 +105,6 @@ class ReviewBreakdown extends Component {
   // }
 
   render() {
-    console.log('dataa', this.props.reviews);
     const ratingBars = () => {
       let bars = [];
       for (let i = 5; i >= 1; i--) {

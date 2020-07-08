@@ -25,8 +25,6 @@ class RecommendRadioButton extends Component {
     console.log('value', this.state.value);
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>Do you recommend this product?</p>
-
         <div>
           <label>
             <input

@@ -5,7 +5,6 @@ import apiHelpers from '../../helpers/apiHelpers.js';
 const AddReview = ({ reviewsMetaData }) => {
   const TriggerText = 'Add a Review';
   const handleNewReview = (product_id, newReviewInfo) => {
-    // update date here with new review inputs
     apiHelpers
       .postReview(product_id, {
         rating: newReviewInfo.rating,
@@ -17,7 +16,14 @@ const AddReview = ({ reviewsMetaData }) => {
         photos: newReviewInfo.photos,
         characteristics: newReviewInfo.characteristics,
       })
-      .then(() => {
+      // .then(() => {
+      //   console.log('new review posted!');
+      // })
+      .then((response) => {
+        dispatch({
+          type: 'POST_NEW_REVIEWS',
+          payload: response,
+        });
         console.log('new review posted!');
       })
       .catch((err) => {

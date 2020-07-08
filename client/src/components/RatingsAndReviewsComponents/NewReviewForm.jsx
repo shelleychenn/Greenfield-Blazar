@@ -145,16 +145,27 @@ class NewReviewForm extends Component {
           <h3>Write Your Review</h3>
         </div>
         <form onSubmit={this.props.onSubmit}>
-          <StarRating
-            value={this.state.rating}
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-            onClickStars={this.onClickStars}
-          />
+          <label>Overall rating*</label>
           <br />
-          <RecommendRadioButton
-            updateRecommendState={this.updateRecommendState}
-          />
+          <div className="modal-form-star-rating">
+            <StarRating
+              value={this.state.rating}
+              onMouseEnter={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+              onClickStars={this.onClickStars}
+            />
+          </div>
+          <br />
+          <br />
+          <label>Do you recommend this product?*</label>
+          <br />
+          <div className="modal-form-recommend-radio-button">
+            <RecommendRadioButton
+              updateRecommendState={this.updateRecommendState}
+            />
+          </div>
+          <br />
+          <label>Characteristics*</label>
           <br />
           {traits.map((trait) => (
             <CharacteristicsRadioButton
@@ -165,7 +176,9 @@ class NewReviewForm extends Component {
           <br />
           <div className="form-group">
             <label>Review summary: </label>
+            <br />
             <input
+              className="modal-form-input"
               type="text"
               name="summary"
               value={this.state.summary}
@@ -175,8 +188,10 @@ class NewReviewForm extends Component {
           </div>
           <br />
           <div className="form-group">
-            <label>Review Body: </label>
+            <label>Review Body:* </label>
+            <br />
             <textarea
+              className="modal-form-input"
               value={this.state.body}
               name="body"
               placeholder="Why did you like the product or not?"
@@ -186,12 +201,15 @@ class NewReviewForm extends Component {
           </div>
           <br />
           <div>
+            <label>Upload your photos </label>
             <UploadImages />
           </div>
           <br />
           <div className="form-group">
-            <label>Nickname: </label>
+            <label>What is your nickname* </label>
+            <br />
             <input
+              className="modal-form-input"
               type="text"
               name="reviewer_name"
               value={this.state.reviewer_name}
@@ -205,8 +223,10 @@ class NewReviewForm extends Component {
           </div>
           <br />
           <div className="form-group">
-            <label htmlFor="email">Email: </label>
+            <label htmlFor="email">Your email* </label>
+            <br />
             <input
+              className="modal-form-input"
               type="email"
               name="email"
               value={this.state.email}
