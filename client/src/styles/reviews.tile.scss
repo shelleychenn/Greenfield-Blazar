@@ -1,6 +1,6 @@
-.review-tile {
-  width: 90%;
-}
+// .review-tile {
+//   width: 90%;
+// }
 
 .review-tile-header {
   display: flex;
@@ -76,6 +76,7 @@ a {
 .review-list-buttons {
   position: flex;
   justify-content: row;
+  float: right;
 }
 
 .review-list {
