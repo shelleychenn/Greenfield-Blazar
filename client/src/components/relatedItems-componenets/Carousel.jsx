@@ -2,6 +2,7 @@ import ProductCardView from "../relatedItems-componenets/ProductCardView.jsx";
 import ComparisonModal from "../relatedItems-componenets/ComparisonModal.jsx";
 
 import React from "react";
+import AddOutfitProductCard from "./AddOutfitProductCard.jsx";
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Carousel extends React.Component {
     this.state = {
       currentProductCard: 0,
       modalView: false,
+      modalIndex: 0
     };
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -18,8 +20,9 @@ class Carousel extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
   }
   /////////////////////////////////////////////////////////////////////////////////////////////
-  handleClick() {
+  handleClick(e) {
     this.setState({ modalView: !this.state.modalView });
+    this.setState({modalIndex:e.target.id})
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -95,13 +98,19 @@ class Carousel extends React.Component {
       });
     }
   }
+  componentDidMount(){
+    if(!localStorage.getItem('outFitArray')){
+      localStorage.setItem('outFitArray','[]')
+    }
+  
+  }
   //////////////////////////////////////////////////////////////////////////////
   render() {
-    var productList = this.props.list;
+    var productList = this.props.list ? this.props.list:[];
     if (this.state.modalView) {
       return (
         <div>
-          <ComparisonModal />
+           <ComparisonModal productInfo={this.props.list[this.state.modalIndex]} />
           <div className="viewer">
             <img
               ref={(ref_id) => (this.previousButton = ref_id)}
@@ -120,8 +129,11 @@ class Carousel extends React.Component {
               ref={(ref_id) => (this.cardContainer = ref_id)}
               className="cardContainer"
             >
+             
               {productList.map((item, i) => {
                 return (
+                  
+                
                   <ProductCardView
                     value={i}
                     handleClick={
@@ -132,6 +144,7 @@ class Carousel extends React.Component {
                     view={this.props.view}
                     productInfo={item}
                   />
+                  
                 );
               })}
             </div>
@@ -141,9 +154,7 @@ class Carousel extends React.Component {
     } else {
       return (
         <div>
-          {this.props.view !== "relatedProducts" ? (
-            <div onClick={this.handleAdd}>add card functionality</div>
-          ) : null}
+     
 
           <div className="viewer">
             <img
@@ -163,8 +174,14 @@ class Carousel extends React.Component {
               ref={(ref_id) => (this.cardContainer = ref_id)}
               className="cardContainer"
             >
+              {this.props.view !== "relatedProducts" ? (
+            
+            <AddOutfitProductCard eric={this.handleAdd}/>
+          ) : null}
+              
               {productList.map((item, i) => {
                 return (
+                 
                   <ProductCardView
                     value={i}
                     view={this.props.view}
