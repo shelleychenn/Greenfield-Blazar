@@ -9,17 +9,20 @@ import {
   setProductReviewsMetaData,
 } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
+import Header from './Header.jsx';
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews.jsx';
+import Footer from './Footer.jsx';
 
 const App = () => {
   const productStyles = useSelector((state) => state.productStyles);
+  const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
 
-  // using random product id to start with
-  let productId = 4;
+  // // using random product id to start with
+  // let productId = 4;
   useEffect(() => {
     apiHelpers
       .getProductStyles(productId)
@@ -62,12 +65,14 @@ const App = () => {
 
   return (
     <>
+      <Header />
       <Overview />
       <RelatedItemsAndComparison />
       <QuestionsAndAnswers />
       <div className="ratings-and-reviews">
         <RatingsAndReviews />
       </div>
+      <Footer />
     </>
   );
 };

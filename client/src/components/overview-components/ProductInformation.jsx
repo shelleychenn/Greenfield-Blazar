@@ -17,11 +17,11 @@ const ProductInformation = () => {
   return (
     <div className='productInformationComponent'>
       <div className='productInformation-container'>
-        {!!productReviews && !!productReviews.length && (
-          <div className='reviews-container'>
+        {!!productReviews && !!productReviews.reviews && (
+          <div className='overview-reviews-container'>
             <div>☆☆☆☆☆</div>
             {/* //! Link scrolls the page to the Ratings & Reviews */}
-            <a href='.'>Read all {productReviews.length} reviews</a>
+            <a href='.'>Read all {productReviews.reviews.length} reviews</a>
           </div>
         )}
         <p className='category'>{!!Object.keys(productDetails).length ? productDetails.category.toUpperCase() : null}</p>

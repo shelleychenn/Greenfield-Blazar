@@ -1,15 +1,7 @@
-body {
-  margin: 0;
-}
-
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .overview-master-component {
   display: grid;
-  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 600px 350px 1fr;
+  padding-bottom: 40px;
 
   .overview-side-container {
     display: grid;
@@ -340,7 +332,7 @@ body {
     grid-template-columns: 300px;
     grid-row-gap: 10px;
 
-    .reviews-container {
+    .overview-reviews-container {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 80px 100px;

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-SemiBold.ttf');
+  font-weight: bold;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+// CHANGES FOR NONE OVERVIEW FEATURES
+
+.related-items-component {
+  display: grid;
+  grid-template-columns: 1fr 950px 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  h4 {
+    // grid-row: 1;
+  }
+}
+
+// .ratings-and-reviews-container {
+//   display: grid;
+//   grid-template-columns: 1fr 950px 1fr;
+// }

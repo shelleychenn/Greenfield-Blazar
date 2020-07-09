@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const ProductOverview = () => {
   const productDetails = useSelector((state) => state.productInfo);
+  const selectedStyle = useSelector((state) => state.selectedStyle);
+
+   //! ROUTE - TO CHANGE
+  const route = 'https://temp.com/temp';
+  const [socialMediaContent, setSocialMediaContent] = useState({});
+
+  useEffect(() => {
+    !!Object.keys(productDetails).length &&
+      !!Object.keys(selectedStyle).length &&
+      setSocialMediaContent({
+        route: encodeURI(route),
+        content: encodeURI(`${productDetails.name} - ${productDetails.slogan}`),
+        image: encodeURI(selectedStyle.photos[0].thumbnail_url),
+      });
+  }, [productDetails, selectedStyle]);
+
 
   return (
     <div className='productOverview-component'>
@@ -15,11 +31,22 @@ const ProductOverview = () => {
                 <p>{productDetails.description}</p>
               </>
             )}
-            {/* //! Need to add sharing functionality */}
             <div className='socialMedia-container'>
-              <img src='./assets/facebook-icon.png' />
-              <img src='./assets/twitter-icon.png' />
-              <img src='./assets/pinterest-icon.png' />
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${socialMediaContent.route}%2F&amp;src=sdkpreparse`}
+                target='_blank'>
+                <img src='./assets/facebook-icon.png' />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${socialMediaContent.content}%20->%20${socialMediaContent.route}`}
+                target='_blank'>
+                <img src='./assets/twitter-icon.png' />
+              </a>
+              <a
+                href={`https://www.pinterest.com/pin/create/button/?url=${socialMediaContent.route}&media=${socialMediaContent.image}&description=${socialMediaContent.content}`}
+                target='_blank'>
+                <img src='./assets/pinterest-icon.png' />
+              </a>
             </div>
           </div>
           {!!Object.keys(productDetails).length && !!productDetails.features.length && (

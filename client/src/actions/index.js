@@ -46,3 +46,10 @@ export const toggleIsExpandedView = () => {
     type: 'TOGGLE_IS_EXPANDED_VIEW',
   };
 };
+
+export const setProductId = (id) => {
+  return {
+    type: 'SET_PRODUCT_ID',
+    payload: id,
+  };
+};
