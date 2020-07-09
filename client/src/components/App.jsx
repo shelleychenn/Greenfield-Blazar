@@ -62,8 +62,8 @@ const App = () => {
       <>
         <Header />
         <Overview />
-        {/* <RelatedItemsAndComparison /> */}
-        <QuestionsAndAnswers />
+        <RelatedItemsAndComparison />
+        {/* <QuestionsAndAnswers /> */}
         <RatingsAndReviews />
         <Footer />
       </>
