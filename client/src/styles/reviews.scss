@@ -1,0 +1,24 @@
+h1 {
+  font-size: 45px;
+}
+
+.ratings-and-reviews-container {
+  // max-width: 960px;
+  // margin: auto;
+  // margin-top: 3%;
+  display: grid;
+  grid-template-columns: 1fr 300px 15px 635px 1fr;
+}
+
+.ratings-and-reviews-left-container {
+  grid-column: 2;
+  // float: left;
+  // width: 30%;
+}
+
+.ratings-and-reviews-right-container {
+  grid-column: 4;
+  // float: left;
+  // width: 65%;
+  // margin-left: 3%;
+}

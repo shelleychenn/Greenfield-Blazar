@@ -1,0 +1,78 @@
+.review-tile {
+  width: 90%;
+}
+
+.review-tile-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sorting-choices {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.review-tile-body-summary,
+.seller-response-heading {
+  font-weight: bold;
+}
+
+.review-tile-body-summary-rest {
+  font-weight: normal;
+}
+
+.review-tile-images {
+  display: flex;
+  flex-direction: row;
+  padding-top: 12px;
+}
+
+.review-tile-image {
+  height: 88px;
+  width: 88px;
+  margin-right: 10px;
+}
+
+.review-tile-image:hover {
+  cursor: pointer;
+}
+
+.review-tile-dialog {
+  position: static;
+  left: 20%;
+  top: 10%;
+  height: 500px;
+}
+
+.review-tile-image-modal {
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  max-width: 80%;
+}
+
+.review-tile-seller-response {
+  background: #e4e4e4;
+}
+
+.seller-response {
+  padding: 1px 20px;
+}
+
+a {
+  text-decoration: underline;
+  color: gray;
+}
+
+.review-tile-footer {
+  font-weight: lighter;
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+
+.review-list-buttons {
+  position: flex;
+  justify-content: row;
+}

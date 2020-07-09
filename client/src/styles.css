@@ -1,0 +1,126 @@
+.review-tile {
+  width: 65%;
+}
+
+.review-tile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sorting-choices {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.review-tile-body-summary,
+.seller-response-heading {
+  font-weight: bold;
+}
+
+.review-tile-body-summary-rest {
+  font-weight: normal;
+}
+
+.review-tile-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 12px;
+}
+
+.review-tile-image {
+  height: 88px;
+}
+
+.review-tile-dialog {
+  position: static;
+  left: 20%;
+  top: 10%;
+  height: 600px;
+}
+
+.review-tile-image-modal {
+  margin: 0 auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 600px;
+}
+
+.review-tile-seller-response {
+  background: #e4e4e4;
+}
+
+.seller-response {
+  padding: 1px 20px;
+}
+
+a {
+  text-decoration: underline;
+  color: gray;
+}
+
+.review-tile-footer {
+  font-weight: lighter;
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+
+.full-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(100%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 100%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.three-Fourth-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(70%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 70%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.half-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(50%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 50%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.one-third-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(30%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 30%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+
+.empty-star {
+  font-size: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#f8ce0b), color-stop(0%, #f8ce0b), color-stop(1%, #ccc), color-stop(99%, #ccc));
+  background: linear-gradient(to right, #f8ce0b, #f8ce0b 0%, #ccc 1%, #ccc 99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0);
+}
+/*# sourceMappingURL=styles.css.map */

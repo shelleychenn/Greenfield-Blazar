@@ -94,7 +94,7 @@ class Carousel extends React.Component {
         this.cardContainer.style.transform = `translate(-${
           26.5 * this.state.currentProductCard
         }vh)`;
-       
+
       });
     }
   }

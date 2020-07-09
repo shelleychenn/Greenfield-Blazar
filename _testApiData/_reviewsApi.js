@@ -1,3 +1,13 @@
+// http://18.224.200.47/reviews/4/list
+// a list of reviews for a particular product, does not include any reported reviews.
+
+// const reviews = {
+//   product: '4',
+//   page: 0,
+//   count: 5,
+//   results: [
+//   ],
+
 const reviews = {
   selectedProductReviews: {
     product: '5',
@@ -34,7 +44,8 @@ const reviews = {
         summary: 'this was the best thing ive ever bought in my entire life',
         recommend: 1,
         response: null,
-        body: 'this was the best thing ive ever bought in my entire life and i love it very much. its my favorite ever',
+        body:
+          'this was the best thing ive ever bought in my entire life and i love it very much. its my favorite ever',
         date: '2020-04-13T00:00:00.000Z',
         reviewer_name: 'jackyboy123',
         helpfulness: 0,

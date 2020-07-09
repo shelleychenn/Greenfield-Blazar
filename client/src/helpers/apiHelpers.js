@@ -18,9 +18,14 @@ const apiHelpers = {
   getProductReviews: (productId) => {
     return axios.get(`${API_URL}/reviews/${productId}/list`);
   },
-  getProductReviewMetaData: (productId) => {
+
+  getProductReviewsMetadata: (productId) => {
     return axios.get(`${API_URL}/reviews/${productId}/meta`);
   },
+
+  markReviewAsHelpful: (review_id) => {
+    return axios.put(`${API_URL}/helpful/${review_id}`);
+  }
 };
 
 export default apiHelpers;
