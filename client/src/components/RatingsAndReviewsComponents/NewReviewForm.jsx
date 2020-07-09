@@ -106,13 +106,25 @@ class NewReviewForm extends Component {
 
   onImageChange(event) {
     if (event.target.files && event.target.files[0]) {
+      let images = [
+        ...this.state.photos,
+        URL.createObjectURL(event.target.files[0]),
+      ];
       this.setState({
-        photos: [URL.createObjectURL(event.target.files[0])],
+        photos: images,
       });
+
+      // this.setState({
+      //   photos: [URL.createObjectURL(event.target.files[0])],
+      // });
     }
   }
 
   render() {
+    let imagesThumbNails = this.state.photos.map((photo) => (
+      <img className="modal-form-image" src={photo} />
+    ));
+
     let characteristicSelections = {
       Size: [
         'A size too small',
@@ -242,13 +254,18 @@ class NewReviewForm extends Component {
           <br />
           <div>
             <label>Upload your photos </label>
-            <input
-              type="file"
-              onChange={this.onImageChange}
-              className="filetype"
-              id="group_image"
-            />
-            {/* <UploadImages /> */}
+            <div className="modal-form-upload-body">
+              <p style={{ fontSize: '0.8em' }}> *add up to five images*</p>
+              <input
+                type="file"
+                onChange={this.onImageChange}
+                className="filetype"
+                id="group_image"
+              />
+              {/* <img className="modal-form-image" src={this.state.photos[0]} /> */}
+              <div>{imagesThumbNails}</div>
+              {/* <UploadImages /> */}
+            </div>
           </div>
           <br />
           <div className="form-group">
