@@ -1,6 +1,6 @@
 import React from "react";
 
-var ComparisonModal = ({ productInfo }) => {
+var ComparisonModal = ({ productInfo, clickHandler}) => {
   let test = {
     "100% Cotton": [1, 0],
     Skinny: [1, 0],
@@ -14,8 +14,8 @@ var ComparisonModal = ({ productInfo }) => {
   let { features } = productInfo;
   console.log(JSON.stringify(features));
   return (
-    <div className="modalWindowContainer" >
-      <div className="comparisonModalWindow">
+    <div className="modalWindowContainer" onClick={clickHandler}>
+      <div className="comparisonModalWindow" >
         <div className="relatedProductName">{productInfo.name}</div>
         <div className="overViewProductName">{productInfo.name}</div>
         {testKeys.map((key, i) => {

@@ -111,6 +111,7 @@ class Carousel extends React.Component {
         <div>
           {this.state.modalView ?  <ComparisonModal
             productInfo={this.props.list[this.state.modalIndex]}
+            clickHandler={this.handleClick}
           /> : null}
           <div className="viewer">
             <img

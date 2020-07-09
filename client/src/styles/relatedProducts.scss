@@ -108,6 +108,9 @@
   position: absolute;
   background-color: rgb(230, 230, 236);
 }
+.modalWindowContainer:hover{
+  cursor:pointer;
+}
 .comparisonModalWindow {
   display: grid;
   grid-template-columns: 10px 100px 100px 100px 100px 10px;
