@@ -4,6 +4,8 @@ import RecommendRadioButton from './RecommendRadioButton.jsx';
 import CharacteristicsRadioButton from './CharacteristicsRadioButton.jsx';
 //import UploadImages from './UploadImages.jsx';
 import apiHelpers from '../../helpers/apiHelpers.js';
+import { connect } from 'react-redux';
+import { postNewReview } from '../../actions';
 
 class NewReviewForm extends Component {
   constructor(props) {
@@ -77,6 +79,8 @@ class NewReviewForm extends Component {
       })
       .then((response) => {
         console.log(response);
+        this.props.dispatch(postNewReview(this.state));
+        this.props.closeModal();
       })
       .catch((err) => {
         console.log(err);
@@ -195,6 +199,7 @@ class NewReviewForm extends Component {
         <div className="modal-form-heading">
           <h3>Write Your Review</h3>
         </div>
+        <hr />
         <form onSubmit={this.onSubmit}>
           <label>Overall rating*</label>
           <br />
@@ -321,4 +326,4 @@ class NewReviewForm extends Component {
   }
 }
 
-export default NewReviewForm;
+export default connect()(NewReviewForm);

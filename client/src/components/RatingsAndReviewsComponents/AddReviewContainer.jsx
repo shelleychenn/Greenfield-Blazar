@@ -27,6 +27,7 @@ class AddReviewContainer extends Component {
   }
 
   closeModal() {
+    console.log('hello');
     this.setState({ isShown: false });
     this.TriggerButton.focus();
     this.toggleScrollLock();
