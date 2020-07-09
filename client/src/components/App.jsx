@@ -60,11 +60,11 @@ const App = () => {
 
     return (
       <>
-        <Header />
-        <Overview />
-        <RelatedItemsAndComparison />
-        {/* <QuestionsAndAnswers /> */}
-        <RatingsAndReviews />
+         <Header />
+        <Overview /> 
+        <RelatedItemsAndComparison productId={productId} />
+        <QuestionsAndAnswers /> 
+         <RatingsAndReviews />
         <Footer />
       </>
     );

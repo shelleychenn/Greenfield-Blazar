@@ -36,8 +36,7 @@ const dataFormatter = (id) => {
     .then((resultDataWithImgAdded) => {
       return Promise.all(
         resultDataWithImgAdded.map((item) => {
-          return apiHelpers
-            .getProductReviewMetaData(item.id)
+          return apiHelpers.getProductReviewsMetadata(item.id)
             .then(({ data }) => {
               let rating = ratingAvgFinder(data.ratings);
               item.rating = rating;

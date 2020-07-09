@@ -7,6 +7,11 @@
   grid-template-rows: 230px 70px 30px;
   border: 3px solid grey;
 
+  .productCardImg:hover{
+    cursor:pointer;
+    filter: grayscale(70%);
+  }
+
   .starButton {
     float: right;
     color: white;
@@ -60,10 +65,12 @@
 
   margin-top: 7%;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.5;
+  border-radius: 70%;
 }
 .pButton:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 .nButton {
   position: absolute;
@@ -73,10 +80,12 @@
 
   align-self: flex-end;
   background-color: black;
-  opacity: 0.8;
+  opacity: 0.5;
+  border-radius: 50%;
 }
 .nButton:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .viewer {
@@ -92,23 +101,29 @@
 }
 
 .modalWindowContainer {
-  height: 250px;
+
+  height: 230px;
   width: 420px;
   z-index: 1;
   position: absolute;
-  background-color: red;
+  background-color: rgb(230, 230, 236);
 }
 .comparisonModalWindow {
   display: grid;
   grid-template-columns: 10px 100px 100px 100px 100px 10px;
-  grid-template-rows: 20px 30px 30px 30px 30px 30px 30px 30px 30px;
+  grid-template-rows: 20px 30px 30px 30px 30px 30px 30px 30px ;
+  border:2px solid grey;
+ 
 
   .relatedProductName {
+    
     grid-row: 2/3;
     grid-column: 2/4;
     display: flex;
     justify-content: flex-start;
     text-decoration: underline;
+    font-weight:bold;
+    font-size:15px;
   }
   .overViewProductName {
     grid-row: 2;
@@ -116,30 +131,36 @@
     display: flex;
     justify-content: flex-end;
     text-decoration: underline;
+    font-weight:bold;
+    font-size:15px;
   }
   .feature0 {
     grid-row: 3;
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck0 {
     grid-row: 3;
     grid-column: 5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .overViewProductCheck0 {
     grid-row: 3;
     grid-column: 2;
     display: flex;
     justify-content: center;
+    
   }
   .feature1 {
     grid-row: 4;
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck1 {
     grid-row: 4;
@@ -158,12 +179,14 @@
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck2 {
     grid-row: 5;
     grid-column: 5;
     display: flex;
     justify-content: center;
+    
   }
   .overViewProductCheck2 {
     grid-row: 5;
@@ -176,6 +199,7 @@
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck3 {
     grid-row: 6;
@@ -194,6 +218,7 @@
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck4 {
     grid-row: 7;
@@ -213,6 +238,7 @@
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck5 {
     grid-row: 8;
@@ -232,6 +258,7 @@
     grid-column: 3/5;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .relatedProductCheck6 {
     grid-row: 9;
@@ -250,7 +277,7 @@
 .relatedItems-grid-master {
   display: grid;
   grid-template-columns: 1fr 950px 1fr;
-  grid-template-rows: auto 407px;
+  grid-template-rows: auto 407px 50px;
 
   .relatedProducts-container {
     grid-column: 1/2;

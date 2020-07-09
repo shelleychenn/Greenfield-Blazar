@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "./relatedItems-componenets/Carousel.jsx";
-import dataFormatter from '../helpers/dataFormatter.js'
+import dataFormatter from "../helpers/dataFormatter.js";
+
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class RelatedProducts extends React.Component {
     this.state = {
       relatedProductList: [],
       outFitList: JSON.parse(localStorage.getItem("outFitArray")),
+      currentProductId:0
     };
     this.changeOutfitList = this.changeOutfitList.bind(this);
   }
@@ -16,9 +18,15 @@ class RelatedProducts extends React.Component {
     this.setState({ outFitList: value });
   }
   componentDidMount() {
-    dataFormatter(5).then((updatedProductList) =>
+    this.setState({currentProductId:this.props.productId},()=>{
+
+      dataFormatter(this.state.currentProductId).then((updatedProductList) =>
       this.setState({ relatedProductList: updatedProductList })
     );
+
+    })
+    
+ 
   }
   render() {
     return (

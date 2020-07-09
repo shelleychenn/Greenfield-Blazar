@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from '../StarRating.jsx'
 
 var ProductCardView = ({ productInfo, handleClick, view, value }) => {
   const {
@@ -9,21 +10,22 @@ var ProductCardView = ({ productInfo, handleClick, view, value }) => {
     rating,
     slogan,
   } = productInfo;
-  console.log(name)
 
-  if (view === "relatedProducts") {
+ 
     return (
       <div className="productCardPadder">
         <div className="productCard">
           <div
             onClick={() => console.log("click")}
+            aria-label={slogan}
             style={{
               backgroundImage: `url(${thumbnail_url})`,
               backgroundSize: "cover",
+              
             }}
           >
             <div className="starButton" id={value} onClick={handleClick}>
-              star
+              {view === 'relatedProducts' ? "star":"x" }
             </div>
           </div>
 
@@ -34,35 +36,11 @@ var ProductCardView = ({ productInfo, handleClick, view, value }) => {
             <div className="price">${default_price}</div>
           </div>
 
-          {rating ? <div className="stars">{rating}</div> : null}
+          {rating ? <div className="stars"> <StarRating value={rating}/></div> : null}
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className="productCardPadder">
-        <div className="productCard">
-          <div
-            style={{
-              backgroundImage: `url(${thumbnail_url})`,
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="starButton" id={value} onClick={handleClick}>
-              x
-            </div>
-          </div>
+  } 
 
-          <div className="productInfo">
-            <div className="category">{name} </div>
-            <div className="productName"> {category}</div>
-            <div className="price">${default_price}</div>
-          </div>
-          {rating ? <div className="stars">{rating}</div> : null}
-        </div>
-      </div>
-    );
-  }
-};
 
 export default ProductCardView;

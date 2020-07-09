@@ -11,7 +11,7 @@ class Carousel extends React.Component {
     this.state = {
       currentProductCard: 0,
       modalView: false,
-      modalIndex: 0
+      modalIndex: 0,
     };
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -21,12 +21,14 @@ class Carousel extends React.Component {
   }
   /////////////////////////////////////////////////////////////////////////////////////////////
   handleClick(e) {
+    e.stopPropagation()
     this.setState({ modalView: !this.state.modalView });
-    this.setState({modalIndex:e.target.id})
+    this.setState({ modalIndex: e.target.id });
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
 
   handleDelete(e) {
+     e.stopPropagation()
     let outfitArray = JSON.parse(localStorage.getItem("outFitArray"));
 
     outfitArray.splice(e.target.id, 1);
@@ -68,7 +70,6 @@ class Carousel extends React.Component {
       }
 
       this.previousButton.style.visibility = "visible";
-
       let newCurrentCard = this.state.currentProductCard + 1;
 
       this.setState({ currentProductCard: newCurrentCard }, () => {
@@ -94,68 +95,23 @@ class Carousel extends React.Component {
         this.cardContainer.style.transform = `translate(-${
           26.5 * this.state.currentProductCard
         }vh)`;
-
       });
     }
   }
-  componentDidMount(){
-    if(!localStorage.getItem('outFitArray')){
-      localStorage.setItem('outFitArray','[]')
+  componentDidMount() {
+    if (!localStorage.getItem("outFitArray")) {
+      localStorage.setItem("outFitArray", "[]");
     }
-  
   }
   //////////////////////////////////////////////////////////////////////////////
   render() {
-    var productList = this.props.list ? this.props.list:[];
-    if (this.state.modalView) {
+    var productList = this.props.list ? this.props.list : [];
+    
       return (
         <div>
-           <ComparisonModal productInfo={this.props.list[this.state.modalIndex]} />
-          <div className="viewer">
-            <img
-              ref={(ref_id) => (this.previousButton = ref_id)}
-              onClick={this.handlePrevious}
-              className="pButton"
-              src="./assets/left-arrow-icon.png"
-            />
-            <img
-              ref={(ref_id) => (this.nextButton = ref_id)}
-              onClick={this.handleNext}
-              className="nButton"
-              src="./assets/right-arrow-icon.png"
-            />
-
-            <div
-              ref={(ref_id) => (this.cardContainer = ref_id)}
-              className="cardContainer"
-            >
-             
-              {productList.map((item, i) => {
-                return (
-                  
-                
-                  <ProductCardView
-                    value={i}
-                    handleClick={
-                      this.props.view === "relatedProducts"
-                        ? this.handleClick
-                        : this.handleDelete
-                    }
-                    view={this.props.view}
-                    productInfo={item}
-                  />
-                  
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-     
-
+          {this.state.modalView ?  <ComparisonModal
+            productInfo={this.props.list[this.state.modalIndex]}
+          /> : null}
           <div className="viewer">
             <img
               ref={(ref_id) => (this.previousButton = ref_id)}
@@ -175,13 +131,11 @@ class Carousel extends React.Component {
               className="cardContainer"
             >
               {this.props.view !== "relatedProducts" ? (
-            
-            <AddOutfitProductCard eric={this.handleAdd}/>
-          ) : null}
-              
+                <AddOutfitProductCard handleAdd={this.handleAdd} />
+              ) : null}
+
               {productList.map((item, i) => {
                 return (
-                 
                   <ProductCardView
                     value={i}
                     view={this.props.view}
@@ -200,6 +154,6 @@ class Carousel extends React.Component {
       );
     }
   }
-}
+
 
 export default Carousel;
