@@ -28,6 +28,7 @@ const NameAndDate = ({ review }) => {
       </div>
     );
   }
+  return null;
 };
 
 export default NameAndDate;

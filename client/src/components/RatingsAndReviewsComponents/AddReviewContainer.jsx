@@ -26,6 +26,7 @@ class AddReviewContainer extends Component {
   }
 
   closeModal() {
+    console.log('hello');
     this.setState({ isShown: false });
     this.TriggerButton.focus();
     this.toggleScrollLock();
@@ -53,7 +54,11 @@ class AddReviewContainer extends Component {
             }}
             closeModal={this.closeModal}
           >
-            <NewReviewForm onSubmit={this.props.onSubmit} />
+            <NewReviewForm
+              handleNewReview={this.props.handleNewReview}
+              reviewsMetaData={this.props.reviewsMetaData}
+              closeModal={this.closeModal}
+            />
           </Modal>
         ) : null}
       </React.Fragment>

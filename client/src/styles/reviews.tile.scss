@@ -1,6 +1,6 @@
-.review-tile {
-  width: 90%;
-}
+// .review-tile {
+//   width: 90%;
+// }
 
 .review-tile-header {
   display: flex;
@@ -31,6 +31,7 @@
   height: 88px;
   width: 88px;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 .review-tile-image:hover {
@@ -75,4 +76,30 @@ a {
 .review-list-buttons {
   position: flex;
   justify-content: row;
+  float: right;
+}
+
+.review-list {
+  overflow: scroll;
+  height: 580px;
+}
+
+.left-button {
+  float: left;
+  margin-bottom: 30px;
+}
+
+.right-button {
+  float: left;
+  margin-bottom: 30px;
+}
+
+button {
+  border: none;
+  padding: 14px 30px;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: darkslategray;
 }

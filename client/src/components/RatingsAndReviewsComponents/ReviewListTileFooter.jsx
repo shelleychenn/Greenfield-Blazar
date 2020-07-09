@@ -13,17 +13,16 @@ class ReviewListTileFooter extends Component {
   }
 
   incrementWasHelpfulCount() {
-    let newCount = this.state.helpfulCount + 1;
-    //apiHelpers.markReviewAsHelpful()
-    this.setState({
-      clicked: true,
-      helpfulCount: newCount,
+    apiHelpers.markReviewAsHelpful(this.props.review.review_id).then((data) => {
+      this.setState({
+        clicked: true,
+        helpfulCount: this.state.helpfulCount + 1,
+      });
     });
   }
 
   render() {
     if (!this.state.clicked) {
-      console.log(this.state.helpfulCount);
       return (
         <>
           Helpful? <a onClick={this.incrementWasHelpfulCount}>Yes </a>(

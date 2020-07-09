@@ -9,22 +9,20 @@ import {
   setProductReviewsMetaData,
 } from '../actions/';
 import apiHelpers from '../helpers/apiHelpers.js';
-
 import Header from './Header.jsx';
 import Overview from './Overview.jsx';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 import RatingsAndReviews from './RatingsAndReviews.jsx';
 import Footer from './Footer.jsx';
-// Dummy data files below:
-import reviews from '../../../_testApiData/_reviewsApi.js';
-import reviewsMetaData from '../../../_testApiData/_reviewsMetadataApi.js';
 
 const App = () => {
   const productStyles = useSelector((state) => state.productStyles);
   const productId = useSelector((state) => state.productId);
   const dispatch = useDispatch();
 
+  // // using random product id to start with
+  // let productId = 4;
   useEffect(() => {
     apiHelpers
       .getProductStyles(productId)
@@ -54,20 +52,29 @@ const App = () => {
       .getProductReviewsMetadata(productId)
       .then(({ data }) => dispatch(setProductReviewsMetaData(data)))
       .catch((err) => {
-        console.log('ISSUE FETCHING PRODUCT REVIEWS');
+        console.log('ISSUE FETCHING PRODUCT REVIEWS METADATA');
+      });
+
+    apiHelpers
+      .postReview(productId)
+      .then(({ data }) => dispatch(postNewReview(data)))
+      .catch((err) => {
+        console.log('ISSUE POSTING NEW REVIEW');
       });
   }, [productId]);
 
-    return (
-      <>
-         <Header />
-        <Overview /> 
-        <RelatedItemsAndComparison />
-        <QuestionsAndAnswers /> 
-         <RatingsAndReviews />
-        <Footer />
-      </>
-    );
-}
+  return (
+    <>
+      <Header />
+      <Overview />
+      <RelatedItemsAndComparison />
+      <QuestionsAndAnswers />
+      <div className="ratings-and-reviews">
+        <RatingsAndReviews />
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default App;

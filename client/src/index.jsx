@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import './styles.scss';
-
-// var mountNode = document.getElementById('app');
-// ReactDOM.render(<App />, mountNode);
-
 import { createStore } from 'redux';
 import rootReducer from './reducers/';
 import { Provider } from 'react-redux';

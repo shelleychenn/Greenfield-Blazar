@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import RatingSummary from './RatingSummary.jsx';
 import RatingBar from './RatingBar.jsx';
+import { connect } from 'react-redux';
+import { setProductReviews } from '../../actions';
 
 class ReviewBreakdown extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      filterClicked: false,
+    };
     this.getAverageRating = this.getAverageRating.bind(this);
     this.getRatingPercentage = this.getRatingPercentage.bind(this);
     this.getRecommendedPercentage = this.getRecommendedPercentage.bind(this);
@@ -105,10 +110,18 @@ class ReviewBreakdown extends Component {
 
     let bars = ratingBars();
 
+    const traitMeaning = {
+      Size: ['too small', 'too big'],
+      Width: ['too narrow', 'too wide'],
+      Comfort: ['uncomfortable', 'perfect'],
+      Quality: ['poor', 'great'],
+      Length: ['too short', 'too long'],
+      Fit: ['too tight', 'too loose'],
+    };
+
     const productBreakdownBar = (characteristics) => {
       let productBars = [];
       for (let trait in characteristics) {
-        // TODO: use map
         productBars.push(
           <div className="review-product-bar" key={trait}>
             {trait}
@@ -121,6 +134,10 @@ class ReviewBreakdown extends Component {
               }
               icon="▼"
             />
+            <div className="review-product-bar-text">
+              <p>{traitMeaning[trait][0]}</p>
+              <p>{traitMeaning[trait][1]}</p>
+            </div>
           </div>
         );
       }
@@ -131,7 +148,6 @@ class ReviewBreakdown extends Component {
       this.props.reviewsMetaData.characteristics
     );
 
-    console.log('Averating', this.props.reviewsMetaData.ratings);
     return (
       <div className="review-breakdown">
         <RatingSummary
@@ -153,6 +169,15 @@ class ReviewBreakdown extends Component {
             return bar;
           })}
         </div>
+        <br />
+        <div
+          className="review-remove-filter"
+          onClick={() => {
+            this.props.handleStarFilter(null);
+          }}
+        >
+          Remove all filters
+        </div>
 
         <div className="review-product-breakdown">
           {productBars.map((bar) => {
@@ -164,4 +189,4 @@ class ReviewBreakdown extends Component {
   }
 }
 
-export default ReviewBreakdown;
+export default connect()(ReviewBreakdown);

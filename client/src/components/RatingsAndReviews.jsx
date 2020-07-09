@@ -1,102 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ReviewList from './RatingsAndReviewsComponents/ReviewList.jsx';
 import ReviewBreakdown from './RatingsAndReviewsComponents/ReviewBreakdown.jsx';
 
 const RatingsAndReviews = () => {
+  const newReview = useSelector((state) => {
+    state.newReview;
+  });
   const productReviews = useSelector((state) => state.productReviews);
 
-  console.log('dataSelected', productReviews);
+  const [starCount, setStarCount] = useState(null);
+
+  const handleStarFilter = (starCount) => {
+    setStarCount(starCount);
+  };
+
   if (
     productReviews &&
     productReviews.reviews &&
     productReviews.reviews.length &&
     productReviews.reviewsMetaData
   ) {
+    let reviews = productReviews.reviews;
+    if (starCount !== null) {
+      reviews = reviews.filter((review) => {
+        return review.rating === starCount;
+      });
+    }
     return (
-      <div className="ratings-and-reviews-container">
-        {/* Left side: ReviewBreakdown goes here */}
-        <div className="ratings-and-reviews-left-container">
-          <ReviewBreakdown reviewsMetaData={productReviews.reviewsMetaData} />
+      <>
+        <div className="ratings-and-reviews-header">Ratings &amp; Reviews</div>
+        <div className="ratings-and-reviews-container">
+          {/* Left side: ReviewBreakdown goes here */}
+          <div className="ratings-and-reviews-left-container">
+            <ReviewBreakdown
+              reviews={productReviews.reviews}
+              reviewsMetaData={productReviews.reviewsMetaData}
+              handleStarFilter={handleStarFilter}
+            />
+          </div>
+          {/* Right side: ReviewList goes here */}
+          <div className="ratings-and-reviews-right-container">
+            <ReviewList
+              reviews={reviews}
+              reviewsMetaData={productReviews.reviewsMetaData}
+            />
+          </div>
         </div>
-        {/* Right side: ReviewList goes here */}
-        <div className="ratings-and-reviews-right-container">
-          <ReviewList reviews={productReviews.reviews} />
-        </div>
-      </div>
+      </>
     );
   } else {
     return null;
   }
 };
-
-// class RatingsAndReviews extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       reviews: this.props.reviews,
-//     };
-//     this.handleSortChoice = this.handleSortChoice.bind(this);
-//     this.handleStarFilter = this.handleStarFilter.bind(this);
-//   }
-
-//   handleSortChoice(option) {
-//     console.log(option);
-//     let copy = [...this.state.reviews.results];
-//     if (option === 'Relevant') {
-//       this.state.reviews.results.sort((a, b) => {
-//         // TODO:
-//         return reviews;
-//       });
-//     }
-//     if (option === 'Helpful') {
-//       copy = copy.sort((a, b) => {
-//         return b.helpfulness - a.helpfulness;
-//       });
-//       this.setState({
-//         reviews: { ...this.state.reviews, results: copy },
-//       });
-//     }
-//     if (option === 'Newest') {
-//       copy = copy.sort((a, b) => {
-//         return new Date(b.date) - new Date(a.date);
-//       });
-//       this.setState({
-//         reviews: { ...this.state.reviews, results: copy },
-//       });
-//     }
-//   }
-
-//   handleStarFilter(starCount) {
-//     let relatedReviews = this.props.reviews.results.filter((review) => {
-//       return review.rating === starCount;
-//     });
-//     this.setState({
-//       reviews: { results: relatedReviews },
-//     });
-//   }
-
-//   render() {
-//     console.log('reviews in RA', this.props.reviews);
-//     return (
-//       <div className="ratings-and-reviews-container">
-//         {/* Left side: ReviewBreakdown goes here */}
-//         <div className="ratings-and-reviews-left-container">
-//           <ReviewBreakdown
-//             reviewsMetaData={this.props.reviewsMetaData}
-//             handleStarFilter={this.handleStarFilter}
-//           />
-//         </div>
-//         {/* Right side: ReviewList goes here */}
-//         <div className="ratings-and-reviews-right-container">
-//           <ReviewList
-//             reviews={this.state.reviews}
-//             handleSortChoice={this.handleSortChoice}
-//           />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 export default RatingsAndReviews;

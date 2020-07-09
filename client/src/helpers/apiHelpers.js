@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_URL = "http://18.224.200.47";
+const API_URL = 'http://18.224.200.47';
 
 const apiHelpers = {
   getProductInformation: (productId) => {
@@ -16,7 +16,7 @@ const apiHelpers = {
   },
 
   getProductReviews: (productId) => {
-    return axios.get(`${API_URL}/reviews/${productId}/list`);
+    return axios.get(`${API_URL}/reviews/${productId}/list?count=30`);
   },
 
   getProductReviewsMetadata: (productId) => {
@@ -24,8 +24,19 @@ const apiHelpers = {
   },
 
   markReviewAsHelpful: (review_id) => {
-    return axios.put(`${API_URL}/helpful/${review_id}`);
-  }
+    return axios.put(`${API_URL}/reviews/helpful/${review_id}`);
+  },
+
+  sortReviews: (productId, sortBy) => {
+    return axios.get(
+      `${API_URL}/reviews/${productId}/list?sort=${sortBy}&count=30`
+    );
+  },
+
+  postReview: (productId, newReview) => {
+    console.log('newReview', newReview);
+    return axios.post(`${API_URL}/reviews/${productId}`, newReview);
+  },
 };
 
 export default apiHelpers;

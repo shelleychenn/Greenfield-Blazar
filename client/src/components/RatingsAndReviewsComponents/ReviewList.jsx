@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReviewListTile from './ReviewListTile.jsx';
 import AddReview from './AddReview.jsx';
-
-// input: displayed product / (product id)
+import apiHelpers from '../../helpers/apiHelpers.js';
+import { connect } from 'react-redux';
+import { setProductReviews } from '../../actions';
 
 class ReviewList extends Component {
   constructor(props) {
@@ -11,10 +12,18 @@ class ReviewList extends Component {
       reviewExist: this.props.reviews.length,
       reviewShown: 2,
       totalReviewCount: this.props.reviews.length,
-      sortingRule: 'Relevant',
+      sortingRule: 'relevant',
     };
     this.loadMoreReviews = this.loadMoreReviews.bind(this);
     this.handleSortingChange = this.handleSortingChange.bind(this);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      reviewShown: prevState.reviewShown,
+      totalReviewCount: nextProps.reviews.length,
+      sortingRule: prevState.sortingRule,
+    };
   }
 
   loadMoreReviews() {
@@ -30,18 +39,20 @@ class ReviewList extends Component {
     this.setState({
       sortingRule: e.target.value,
     });
-    this.props.handleSortChoice(e.target.value);
+    apiHelpers
+      .sortReviews(this.props.reviewsMetaData.product_id, e.target.value)
+      .then(({ data }) => {
+        this.props.dispatch(setProductReviews(data.results));
+      });
   }
 
   render() {
-    console.log('reviews', this.props.reviews);
     let button =
       this.state.reviewExist <= 2 || this.state.totalReviewCount <= 2 ? null : (
         <button onClick={this.loadMoreReviews}>More Reviews</button>
       );
 
     let reviews = this.props.reviews.slice(0, this.state.reviewShown);
-
     return (
       <>
         <div className="sorting-choices">
@@ -51,9 +62,9 @@ class ReviewList extends Component {
               value={this.state.sortingRule}
               onChange={this.handleSortingChange}
             >
-              <option value="Relevant">Relevant</option>
-              <option value="Helpful">Helpful</option>
-              <option value="Newest">Newest</option>
+              <option value="relevant">Relevant</option>
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
             </select>
           </form>
         </div>
@@ -66,7 +77,7 @@ class ReviewList extends Component {
         <div className="review-list-buttons">
           <div className="left-button"> {button}</div>
           <div className="right-button">
-            <AddReview />
+            <AddReview reviewsMetaData={this.props.reviewsMetaData} />
           </div>
         </div>
       </>
@@ -74,4 +85,4 @@ class ReviewList extends Component {
   }
 }
 
-export default ReviewList;
+export default connect()(ReviewList);
