@@ -28,23 +28,26 @@ const RatingsAndReviews = () => {
       });
     }
     return (
-      <div className="ratings-and-reviews-container">
-        {/* Left side: ReviewBreakdown goes here */}
-        <div className="ratings-and-reviews-left-container">
-          <ReviewBreakdown
-            reviews={productReviews.reviews}
-            reviewsMetaData={productReviews.reviewsMetaData}
-            handleStarFilter={handleStarFilter}
-          />
+      <>
+        <div className="ratings-and-reviews-header">Ratings &amp; Reviews</div>
+        <div className="ratings-and-reviews-container">
+          {/* Left side: ReviewBreakdown goes here */}
+          <div className="ratings-and-reviews-left-container">
+            <ReviewBreakdown
+              reviews={productReviews.reviews}
+              reviewsMetaData={productReviews.reviewsMetaData}
+              handleStarFilter={handleStarFilter}
+            />
+          </div>
+          {/* Right side: ReviewList goes here */}
+          <div className="ratings-and-reviews-right-container">
+            <ReviewList
+              reviews={reviews}
+              reviewsMetaData={productReviews.reviewsMetaData}
+            />
+          </div>
         </div>
-        {/* Right side: ReviewList goes here */}
-        <div className="ratings-and-reviews-right-container">
-          <ReviewList
-            reviews={reviews}
-            reviewsMetaData={productReviews.reviewsMetaData}
-          />
-        </div>
-      </div>
+      </>
     );
   } else {
     return null;
