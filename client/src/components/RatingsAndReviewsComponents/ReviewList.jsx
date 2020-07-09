@@ -4,7 +4,6 @@ import AddReview from './AddReview.jsx';
 import apiHelpers from '../../helpers/apiHelpers.js';
 import { connect } from 'react-redux';
 import { setProductReviews } from '../../actions';
-// input: displayed product / (product id)
 
 class ReviewList extends Component {
   constructor(props) {

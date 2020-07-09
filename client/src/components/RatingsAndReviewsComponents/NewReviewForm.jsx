@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import StarRating from '../StarRating.jsx';
 import RecommendRadioButton from './RecommendRadioButton.jsx';
 import CharacteristicsRadioButton from './CharacteristicsRadioButton.jsx';
-//import UploadImages from './UploadImages.jsx';
 import apiHelpers from '../../helpers/apiHelpers.js';
 import { connect } from 'react-redux';
 import { postNewReview } from '../../actions';
@@ -117,14 +116,11 @@ class NewReviewForm extends Component {
       this.setState({
         photos: images,
       });
-
-      // this.setState({
-      //   photos: [URL.createObjectURL(event.target.files[0])],
-      // });
     }
   }
 
   render() {
+    console.log(this.state.photos);
     let imagesThumbNails = this.state.photos.map((photo) => (
       <img className="modal-form-image" src={photo} />
     ));
@@ -267,9 +263,7 @@ class NewReviewForm extends Component {
                 className="filetype"
                 id="group_image"
               />
-              {/* <img className="modal-form-image" src={this.state.photos[0]} /> */}
               <div>{imagesThumbNails}</div>
-              {/* <UploadImages /> */}
             </div>
           </div>
           <br />
@@ -314,7 +308,6 @@ class NewReviewForm extends Component {
                 console.log('hello');
                 this.onSubmit();
                 this.props.closeModal();
-                //this.props.closeModalOnSubmit();
               }}
             >
               Submit
