@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import StarRating from '../StarRating.jsx';
 import RecommendRadioButton from './RecommendRadioButton.jsx';
 import CharacteristicsRadioButton from './CharacteristicsRadioButton.jsx';
-import UploadImages from './UploadImages.jsx';
+//import UploadImages from './UploadImages.jsx';
 import apiHelpers from '../../helpers/apiHelpers.js';
 
 class NewReviewForm extends Component {
@@ -26,6 +26,7 @@ class NewReviewForm extends Component {
     this.updateRecommendState = this.updateRecommendState.bind(this);
     this.updateCharacteristic = this.updateCharacteristic.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
   }
 
   handleChange(e) {
@@ -103,6 +104,14 @@ class NewReviewForm extends Component {
     });
   }
 
+  onImageChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      this.setState({
+        photos: [URL.createObjectURL(event.target.files[0])],
+      });
+    }
+  }
+
   render() {
     let characteristicSelections = {
       Size: [
@@ -168,7 +177,7 @@ class NewReviewForm extends Component {
     };
 
     let text = starTest[this.state.rating.toString()];
-
+    console.log('photo', this.state.photos);
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
@@ -233,7 +242,13 @@ class NewReviewForm extends Component {
           <br />
           <div>
             <label>Upload your photos </label>
-            <UploadImages />
+            <input
+              type="file"
+              onChange={this.onImageChange}
+              className="filetype"
+              id="group_image"
+            />
+            {/* <UploadImages /> */}
           </div>
           <br />
           <div className="form-group">
