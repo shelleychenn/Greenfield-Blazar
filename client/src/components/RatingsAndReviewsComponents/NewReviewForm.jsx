@@ -309,6 +309,7 @@ class NewReviewForm extends Component {
                 console.log('hello');
                 this.onSubmit();
                 this.props.closeModal();
+                //this.props.closeModalOnSubmit();
               }}
             >
               Submit

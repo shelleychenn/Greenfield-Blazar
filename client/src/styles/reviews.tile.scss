@@ -81,7 +81,7 @@ a {
 
 .review-list {
   overflow: scroll;
-  height: 600px;
+  height: 580px;
 }
 
 .left-button {
@@ -92,4 +92,14 @@ a {
 .right-button {
   float: left;
   margin-bottom: 30px;
+}
+
+button {
+  border: none;
+  padding: 14px 30px;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  color: darkslategray;
 }

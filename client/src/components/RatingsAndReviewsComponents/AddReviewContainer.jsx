@@ -12,6 +12,7 @@ class AddReviewContainer extends Component {
     this.showModal = this.showModal.bind(this);
     this.toggleScrollLock = this.toggleScrollLock.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    //this.closeModalOnSubmit = this.closeModalOnSubmit.bind(this);
   }
 
   showModal() {
@@ -30,6 +31,12 @@ class AddReviewContainer extends Component {
     this.TriggerButton.focus();
     this.toggleScrollLock();
   }
+
+  // closeModalOnSubmit() {
+  //   this.setState({ isShown: false });
+  //   this.TriggerButton.focus();
+  //   this.toggleScrollLock();
+  // }
 
   render() {
     return (
@@ -57,6 +64,7 @@ class AddReviewContainer extends Component {
               handleNewReview={this.props.handleNewReview}
               reviewsMetaData={this.props.reviewsMetaData}
               closeModal={this.closeModal}
+              //closeModalOnSubmit={this.closeModalOnSubmit}
             />
           </Modal>
         ) : null}
