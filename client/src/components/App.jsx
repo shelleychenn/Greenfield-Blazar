@@ -62,7 +62,7 @@ const App = () => {
       <>
          <Header />
         <Overview /> 
-        <RelatedItemsAndComparison productId={productId} />
+        <RelatedItemsAndComparison />
         <QuestionsAndAnswers /> 
          <RatingsAndReviews />
         <Footer />

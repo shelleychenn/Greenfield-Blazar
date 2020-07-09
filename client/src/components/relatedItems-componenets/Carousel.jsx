@@ -12,13 +12,16 @@ class Carousel extends React.Component {
       currentProductCard: 0,
       modalView: false,
       modalIndex: 0,
+      comparisonData:{}
     };
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    
   }
+
   /////////////////////////////////////////////////////////////////////////////////////////////
   handleClick(e) {
     e.stopPropagation()
@@ -39,15 +42,8 @@ class Carousel extends React.Component {
 
   handleAdd(e, value) {
     let outfitArray = JSON.parse(localStorage.getItem("outFitArray"));
-
-    outfitArray.push({
-      id: 1,
-      name: "TEST ADD",
-      slogan: "TEST ADD",
-      description: "TEST ADD",
-      category: "TEST ADD",
-      default_price: "TEST ADD",
-    });
+   
+    outfitArray.push(this.props.currentProductData);
     localStorage.setItem("outFitArray", JSON.stringify(outfitArray));
     this.props.alterList(outfitArray);
 
@@ -102,16 +98,20 @@ class Carousel extends React.Component {
     if (!localStorage.getItem("outFitArray")) {
       localStorage.setItem("outFitArray", "[]");
     }
+    
   }
   //////////////////////////////////////////////////////////////////////////////
   render() {
     var productList = this.props.list ? this.props.list : [];
+    console.log('test',this.props.list)
     
       return (
         <div>
           {this.state.modalView ?  <ComparisonModal
+            
             productInfo={this.props.list[this.state.modalIndex]}
             clickHandler={this.handleClick}
+            dataForComparison={this.props}
           /> : null}
           <div className="viewer">
             <img
