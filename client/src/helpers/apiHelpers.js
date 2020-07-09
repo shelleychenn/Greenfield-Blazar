@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://18.224.200.47';
+const API_URL = "http://18.224.200.47";
 
 const apiHelpers = {
   getProductInformation: (productId) => {
@@ -25,7 +25,7 @@ const apiHelpers = {
 
   markReviewAsHelpful: (review_id) => {
     return axios.put(`${API_URL}/helpful/${review_id}`);
-  },
+  }
 };
 
 export default apiHelpers;

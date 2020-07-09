@@ -2,6 +2,7 @@ import ProductCardView from "../relatedItems-componenets/ProductCardView.jsx";
 import ComparisonModal from "../relatedItems-componenets/ComparisonModal.jsx";
 
 import React from "react";
+import AddOutfitProductCard from "./AddOutfitProductCard.jsx";
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -10,20 +11,27 @@ class Carousel extends React.Component {
     this.state = {
       currentProductCard: 0,
       modalView: false,
+      modalIndex: 0,
+      comparisonData:{}
     };
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    
   }
+
   /////////////////////////////////////////////////////////////////////////////////////////////
-  handleClick() {
+  handleClick(e) {
+    e.stopPropagation()
     this.setState({ modalView: !this.state.modalView });
+    this.setState({ modalIndex: e.target.id });
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
 
   handleDelete(e) {
+     e.stopPropagation()
     let outfitArray = JSON.parse(localStorage.getItem("outFitArray"));
 
     outfitArray.splice(e.target.id, 1);
@@ -34,15 +42,8 @@ class Carousel extends React.Component {
 
   handleAdd(e, value) {
     let outfitArray = JSON.parse(localStorage.getItem("outFitArray"));
-
-    outfitArray.push({
-      id: 1,
-      name: "TEST ADD",
-      slogan: "TEST ADD",
-      description: "TEST ADD",
-      category: "TEST ADD",
-      default_price: "TEST ADD",
-    });
+   
+    outfitArray.push(this.props.currentProductData);
     localStorage.setItem("outFitArray", JSON.stringify(outfitArray));
     this.props.alterList(outfitArray);
 
@@ -65,7 +66,6 @@ class Carousel extends React.Component {
       }
 
       this.previousButton.style.visibility = "visible";
-
       let newCurrentCard = this.state.currentProductCard + 1;
 
       this.setState({ currentProductCard: newCurrentCard }, () => {
@@ -91,60 +91,28 @@ class Carousel extends React.Component {
         this.cardContainer.style.transform = `translate(-${
           26.5 * this.state.currentProductCard
         }vh)`;
-
       });
     }
   }
+  componentDidMount() {
+    if (!localStorage.getItem("outFitArray")) {
+      localStorage.setItem("outFitArray", "[]");
+    }
+    
+  }
   //////////////////////////////////////////////////////////////////////////////
   render() {
-    var productList = this.props.list;
-    if (this.state.modalView) {
+    var productList = this.props.list ? this.props.list : [];
+    console.log('test',this.props.list)
+    
       return (
         <div>
-          <ComparisonModal />
-          <div className="viewer">
-            <img
-              ref={(ref_id) => (this.previousButton = ref_id)}
-              onClick={this.handlePrevious}
-              className="pButton"
-              src="./assets/left-arrow-icon.png"
-            />
-            <img
-              ref={(ref_id) => (this.nextButton = ref_id)}
-              onClick={this.handleNext}
-              className="nButton"
-              src="./assets/right-arrow-icon.png"
-            />
-
-            <div
-              ref={(ref_id) => (this.cardContainer = ref_id)}
-              className="cardContainer"
-            >
-              {!!productList && productList.map((item, i) => {
-                return (
-                  <ProductCardView
-                    value={i}
-                    handleClick={
-                      this.props.view === "relatedProducts"
-                        ? this.handleClick
-                        : this.handleDelete
-                    }
-                    view={this.props.view}
-                    productInfo={item}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          {this.props.view !== "relatedProducts" ? (
-            <div onClick={this.handleAdd}>add card functionality</div>
-          ) : null}
-
+          {this.state.modalView ?  <ComparisonModal
+            
+            productInfo={this.props.list[this.state.modalIndex]}
+            clickHandler={this.handleClick}
+            dataForComparison={this.props}
+          /> : null}
           <div className="viewer">
             <img
               ref={(ref_id) => (this.previousButton = ref_id)}
@@ -163,7 +131,12 @@ class Carousel extends React.Component {
               ref={(ref_id) => (this.cardContainer = ref_id)}
               className="cardContainer"
             >
-              {!!productList && productList.map((item, i) => {
+              {this.props.view !== "relatedProducts" ? (
+                <AddOutfitProductCard handleAdd={this.handleAdd} />
+              ) : null}
+
+              {productList.map((item, i) => {
+                
                 return (
                   <ProductCardView
                     value={i}
@@ -183,6 +156,6 @@ class Carousel extends React.Component {
       );
     }
   }
-}
+
 
 export default Carousel;
