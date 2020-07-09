@@ -1,3 +1,9 @@
+.relatedItemsTitle{
+  font-size: 30px;
+ 
+}
+
+
 .productCardPadder {
   padding-right: 1.5vh;
 }
@@ -106,7 +112,9 @@
   width: 420px;
   z-index: 1;
   position: absolute;
-  background-color: rgb(230, 230, 236);
+
+  margin-left:260px;
+  margin-top:10px;
 }
 .modalWindowContainer:hover{
   cursor:pointer;
@@ -116,6 +124,7 @@
   grid-template-columns: 10px 100px 100px 100px 100px 10px;
   grid-template-rows: 20px 30px 30px 30px 30px 30px 30px 30px ;
   border:2px solid grey;
+  background-color: white;
  
 
   .relatedProductName {

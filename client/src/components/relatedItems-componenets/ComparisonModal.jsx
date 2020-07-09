@@ -1,18 +1,15 @@
 import React from "react";
-
+import compareFeatures from "../../helpers/compareFeatures"
 var ComparisonModal = ({ productInfo, clickHandler}) => {
-  let test = {
-    "100% Cotton": [1, 0],
-    Skinny: [1, 0],
-    Rubber: [0, 1],
-    FullControlSkin: [0, 1],
-    "ControlSupport Arch Bridge": [0, 1],
-    "Double Stitch": [0, 1],
-  };
+  let { features } = productInfo;
+  var y= [{"feature":"Fabric","value":"100% Cotton"},{"feature":"Cut","value":"Skinny"}]
+  var test = compareFeatures(features,y)
+
+
   let testKeys = Object.keys(test);
 
-  let { features } = productInfo;
-  console.log(JSON.stringify(features));
+
+
   return (
     <div className="modalWindowContainer" onClick={clickHandler}>
       <div className="comparisonModalWindow" >

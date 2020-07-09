@@ -136,6 +136,7 @@ class Carousel extends React.Component {
               ) : null}
 
               {productList.map((item, i) => {
+                
                 return (
                   <ProductCardView
                     value={i}
