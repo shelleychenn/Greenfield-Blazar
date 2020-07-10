@@ -11,12 +11,16 @@ const ProductInformation = () => {
   const productReviews = useSelector((state) => state.productReviews);
 
   useEffect(() => {
-    if (productReviews.reviews) {
-      let avg = productReviews.reviews.reduce((acc, cur) => {
-        acc += cur.rating;
+    if (productReviews.reviewsMetaData) {
+      let avg = Object.entries(productReviews.reviewsMetaData.ratings).reduce((acc, cur) => {
+        acc.total += Number(cur[0]) * cur[1];
+        acc.count += cur[1];
         return acc;
-      }, 0) / productReviews.reviews.length;
-      setRatingsAverage(avg.toFixed(1));
+      }, {total: 0, count: 0});
+      setRatingsAverage((avg.total / avg.count).toFixed(2));
+
+      console.log("ProductInformation -> Object.entries(productReviews.reviewsMetaData.ratings)", Object.entries(productReviews.reviewsMetaData.ratings))
+      console.log('HEREEEEEE: ', productReviews.reviews, productReviews.reviews.length, avg);
     }
   }, [productReviews]);
 
