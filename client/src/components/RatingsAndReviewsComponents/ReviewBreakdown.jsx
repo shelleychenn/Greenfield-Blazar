@@ -154,9 +154,8 @@ class ReviewBreakdown extends Component {
           averageRating={
             this.getAverageRating(this.props.reviewsMetaData.ratings).average
           }
-          reviewCounts={
-            this.getAverageRating(this.props.reviewsMetaData.ratings).count
-          }
+          reviewCounts={this.props.reviews.length}
+          // this.getAverageRating(this.props.reviewsMetaData.ratings).count
         />
 
         <p className="review-%recommend">

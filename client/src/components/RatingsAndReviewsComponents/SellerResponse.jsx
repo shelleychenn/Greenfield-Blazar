@@ -1,7 +1,8 @@
 import React from 'react';
 
 const SellerResponse = ({ review }) => {
-  if (review.response === null || review.response === '') {
+  console.log(review.response);
+  if (!review.response) {
     return null;
   } else {
     return (
