@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SellerResponse = ({ review }) => {
-  console.log(review.response);
   if (!review.response) {
     return null;
   } else {

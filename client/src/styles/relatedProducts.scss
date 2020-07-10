@@ -3,7 +3,7 @@
 }
 .productCard {
   display: grid;
-  grid-template-columns: 25vh;
+  grid-template-columns: 225px;
   grid-template-rows: 230px 70px 30px;
   border: 1px solid $color-lightblack;
 
@@ -309,7 +309,7 @@
 
 .addProductCard {
   display: grid;
-  grid-template-columns: 25vh;
+  grid-template-columns: 225px;
   grid-template-rows: 80px 200px 50px;
   border: 1px solid $color-lightblack;
 

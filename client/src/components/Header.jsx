@@ -6,15 +6,22 @@ const Header = () => {
   const [userInput, setUserInput] = useState('');
   const dispatch = useDispatch();
 
+  const handleInput = () => {
+    dispatch(setProductId(userInput));
+    setUserInput('');
+  }
+
   return (
     <div className='header-component'>
       <div className='header-container'>
-        <h2>Blazar</h2>
-        <input type='text' value={userInput} onChange={(e) => setUserInput(e.target.value)}></input>
-        <img src='./assets/magnifying-glass-black-icon.png' onClick={() => {
-          dispatch(setProductId(userInput));
-          setUserInput('');
-        }}/>
+        <h2>Blázar</h2>
+        <input type='text' value={userInput} onChange={(e) => setUserInput(e.target.value)} onKeyDown={
+          (e) => {
+            e.key === 'Enter' ? handleInput() : null;
+          }
+        }></input>
+        <img src='./assets/magnifying-glass-black-icon.png'
+        onClick={handleInput}/>
       </div>
       <div className='announcement-container'>
         <p>Summer Sale - Free shipping on all $30+ purchases!</p>

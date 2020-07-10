@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import products from '../../../../_testApiData/_productsApi.js';
 
 const AddToCart = () => {
 

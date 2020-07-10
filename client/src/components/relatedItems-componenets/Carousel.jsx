@@ -71,7 +71,7 @@ class Carousel extends React.Component {
       this.setState({ currentProductCard: newCurrentCard }, () => {
         this.cardContainer.style.transitionDuration = "1s";
         this.cardContainer.style.transform = `translate(-${
-          26.5 * this.state.currentProductCard
+          26.2 * this.state.currentProductCard
         }vh)`;
       });
     }
@@ -89,7 +89,7 @@ class Carousel extends React.Component {
       this.setState({ currentProductCard: newCurrentCard }, () => {
         this.cardContainer.style.transitionDuration = "1s";
         this.cardContainer.style.transform = `translate(-${
-          26.5 * this.state.currentProductCard
+          26.2 * this.state.currentProductCard
         }vh)`;
       });
     }
