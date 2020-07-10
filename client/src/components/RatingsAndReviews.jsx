@@ -29,8 +29,8 @@ const RatingsAndReviews = () => {
     }
     return (
       <>
-        <div className="ratings-and-reviews-header">Ratings &amp; Reviews</div>
         <div className="ratings-and-reviews-container">
+        <h5 className="ratings-and-reviews-header" id='ratings-and-reviews'>RATINGS &amp; REVIEWS</h5>
           {/* Left side: ReviewBreakdown goes here */}
           <div className="ratings-and-reviews-left-container">
             <ReviewBreakdown

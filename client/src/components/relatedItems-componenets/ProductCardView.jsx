@@ -27,14 +27,15 @@ var ProductCardView = ({ productInfo, handleClick, view, value }) => {
           }}
         >
           <div className="starButton" id={value} onClick={handleClick}>
-            {view === "relatedProducts" ? "star" : "x"}
+            {/* {view === "relatedProducts" ? "star" : "x"} */}
+            {view === "relatedProducts" ? '⭒' : <img className = 'product-card-x-button' src='/assets/x-icon.png' />}
           </div>
         </div>
 
         <div className="productInfo" onClick={() => console.log("click")}>
-          <div className="category">{category} </div>
+          <div className="category">{category.toUpperCase()} </div>
           <div className="productName"> {name}</div>
-          <div className="productSlogan"> {slogan}</div>
+          <div className="productSlogan"> {slogan.split('').length > 25 ? slogan.slice(0,25).concat('...') : slogan}</div>
           <div className="price">${default_price}</div>
         </div>
 
