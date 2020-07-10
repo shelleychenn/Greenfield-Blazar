@@ -20,7 +20,6 @@ export const setProductInfo = (info) => {
 };
 
 export const setProductReviews = (reviews) => {
-  console.log(reviews);
   return {
     type: 'SET_PRODUCT_REVIEWS',
     payload: reviews,

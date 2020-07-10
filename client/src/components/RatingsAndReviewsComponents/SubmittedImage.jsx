@@ -25,7 +25,6 @@ class SubmittedImage extends Component {
   }
 
   render() {
-    console.log(this.props.photo.url);
     return (
       <div>
         <img

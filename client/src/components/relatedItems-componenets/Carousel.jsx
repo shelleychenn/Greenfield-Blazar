@@ -19,7 +19,7 @@ class Carousel extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
-    
+
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ class Carousel extends React.Component {
 
   handleAdd(e, value) {
     let outfitArray = JSON.parse(localStorage.getItem("outFitArray"));
-   
+
     outfitArray.push(this.props.currentProductData);
     localStorage.setItem("outFitArray", JSON.stringify(outfitArray));
     this.props.alterList(outfitArray);
@@ -98,17 +98,16 @@ class Carousel extends React.Component {
     if (!localStorage.getItem("outFitArray")) {
       localStorage.setItem("outFitArray", "[]");
     }
-    
+
   }
   //////////////////////////////////////////////////////////////////////////////
   render() {
     var productList = this.props.list ? this.props.list : [];
-    console.log('test',this.props.list)
-    
+
       return (
         <div>
           {this.state.modalView ?  <ComparisonModal
-            
+
             productInfo={this.props.list[this.state.modalIndex]}
             clickHandler={this.handleClick}
             dataForComparison={this.props}
@@ -136,7 +135,7 @@ class Carousel extends React.Component {
               ) : null}
 
               {productList.map((item, i) => {
-                
+
                 return (
                   <ProductCardView
                     value={i}

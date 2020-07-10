@@ -18,9 +18,6 @@ const ProductInformation = () => {
         return acc;
       }, {total: 0, count: 0});
       setRatingsAverage((avg.total / avg.count).toFixed(2));
-
-      console.log("ProductInformation -> Object.entries(productReviews.reviewsMetaData.ratings)", Object.entries(productReviews.reviewsMetaData.ratings))
-      console.log('HEREEEEEE: ', productReviews.reviews, productReviews.reviews.length, avg);
     }
   }, [productReviews]);
 

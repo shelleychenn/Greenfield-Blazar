@@ -32,7 +32,7 @@ var ProductCardView = ({ productInfo, handleClick, view, value }) => {
           </div>
         </div>
 
-        <div className="productInfo" onClick={() => console.log("click")}>
+        <div className="productInfo">
           <div className="category">{category.toUpperCase()} </div>
           <div className="productName"> {name}</div>
           <div className="productSlogan"> {slogan.split('').length > 25 ? slogan.slice(0,25).concat('...') : slogan}</div>

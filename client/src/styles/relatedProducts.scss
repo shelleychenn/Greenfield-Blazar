@@ -320,12 +320,17 @@
     align-items: center;
   }
   .addProductCardTitle {
-    grid-row: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    grid-row: 2;
+    align-self: center;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    margin: 0 50px;
+    font-family: 'Montserrat-Light';
+    line-height: 30px;
   }
 }
 .addProductCard:hover {
   cursor: pointer;
+  background-color: rgb(243, 243, 243);
 }
