@@ -25,14 +25,20 @@ class SubmittedImage extends Component {
   }
 
   render() {
-    console.log(this.props.photo.url);
+    let link;
+    if (this.props.photo.url.slice(0, 5) === 'blob:') {
+      link = 'https://source.unsplash.com/random';
+    } else {
+      link = this.props.photo.url;
+    }
+    console.log('this', this.props.photo.url);
     return (
       <div>
         <img
           className="review-tile-image"
-          src={this.props.photo.url}
+          src={link}
           onClick={this.handleShowModal}
-          alt="no image"
+          alt="loading image"
         />
         {this.state.isOpen && (
           <Modal
@@ -46,8 +52,8 @@ class SubmittedImage extends Component {
           >
             <img
               className="review-tile-image-modal"
-              src={this.props.photo.url}
-              alt="no image"
+              src={link}
+              alt="loading image"
             />
           </Modal>
         )}
