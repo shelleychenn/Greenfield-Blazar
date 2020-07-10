@@ -29,7 +29,7 @@ const RatingsAndReviews = () => {
     }
     return (
       <>
-        <div className="ratings-and-reviews-header">Ratings &amp; Reviews</div>
+        <div className="ratings-and-reviews-header" id='ratings-and-reviews'>Ratings &amp; Reviews</div>
         <div className="ratings-and-reviews-container">
           {/* Left side: ReviewBreakdown goes here */}
           <div className="ratings-and-reviews-left-container">
