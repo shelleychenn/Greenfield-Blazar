@@ -1,3 +1,5 @@
+
+
 .relatedItemsTitle{
   font-size: 30px;
  
@@ -22,11 +24,15 @@
     float: right;
     color: white;
     margin-right: 2%;
-    color: yellow;
-    z-index: 10;
+    font-size: 20px;
+    margin-top:3%;
+    z-index: 1;
   }
+
   .starButton:hover {
     cursor: pointer;
+    
+   color:yellow;
   }
 
   .productInfo {

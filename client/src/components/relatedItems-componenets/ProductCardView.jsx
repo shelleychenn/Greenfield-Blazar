@@ -27,7 +27,7 @@ var ProductCardView = ({ productInfo, handleClick, view, value }) => {
           }}
         >
           <div className="starButton" id={value} onClick={handleClick}>
-            {view === "relatedProducts" ? "star" : "x"}
+            {view === "relatedProducts" ?  "⭐" : "×"}
           </div>
         </div>
 
