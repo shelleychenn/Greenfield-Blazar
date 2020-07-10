@@ -25,11 +25,11 @@ const RelatedProducts = () => {
   return (
     <div className="relatedItems-grid-master">
       <div className="relatedProducts-container">
-        <h4 className="relatedItemsTitle">Related Products</h4>
+        <h5 className="relatedItemsTitle">RELATED PRODUCTS</h5>
         <Carousel view="relatedProducts" list={relatedProductList} />
       </div>
       <div className="yourOutfit-container">
-        <h4 className="relatedItemsTitle">Your Outfit </h4>
+        <h5 className="relatedItemsTitle">YOUR OUTFIT</h5>
 
         <Carousel
           view="yourOutfit"

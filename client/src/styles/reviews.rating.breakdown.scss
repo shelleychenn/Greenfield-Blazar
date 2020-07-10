@@ -1,7 +1,9 @@
-h1 {
-  margin-top: 0px;
-  font-size: 40px;
-  letter-spacing: 1.5px;
+.rating-average {
+  h1 {
+    margin-top: 0px;
+    font-size: 40px;
+    letter-spacing: 1.5px;
+  }
 }
 
 .review-breakdown {
@@ -83,4 +85,8 @@ button:hover {
   justify-content: space-between;
   margin-top: -12px;
   font-size: 0.8em;
+}
+
+.recommend-checkmark {
+  vertical-align: bottom;
 }

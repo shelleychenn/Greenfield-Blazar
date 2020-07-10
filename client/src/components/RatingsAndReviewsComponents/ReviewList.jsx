@@ -13,6 +13,7 @@ class ReviewList extends Component {
       reviewShown: 2,
       totalReviewCount: this.props.reviews.length,
       sortingRule: 'relevant',
+      isLoadMoreClicked: false,
     };
     this.loadMoreReviews = this.loadMoreReviews.bind(this);
     this.handleSortingChange = this.handleSortingChange.bind(this);
@@ -30,6 +31,7 @@ class ReviewList extends Component {
     let newCount = this.state.reviewShown;
     let reviewToLoad = this.state.reviewExist;
     this.setState({
+      isLoadMoreClicked: true,
       reviewExist: (reviewToLoad -= 2),
       reviewShown: (newCount += 2),
     });
@@ -49,7 +51,7 @@ class ReviewList extends Component {
   render() {
     let button =
       this.state.reviewExist <= 2 || this.state.totalReviewCount <= 2 ? null : (
-        <button onClick={this.loadMoreReviews}>More Reviews</button>
+        <button onClick={ this.loadMoreReviews }>More Reviews</button>
       );
 
     let reviews = this.props.reviews.slice(0, this.state.reviewShown);
@@ -69,7 +71,7 @@ class ReviewList extends Component {
           </form>
         </div>
 
-        <div className="review-list">
+        <div className={this.state.isLoadMoreClicked ? "review-list review-list-clicked" : "review-list"}>
           {reviews.map((review) => (
             <ReviewListTile review={review} key={review.review_id} />
           ))}
