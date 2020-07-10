@@ -5,11 +5,17 @@
 .review-tile-header {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .sorting-choices {
   font-weight: bold;
   padding-bottom: 15px;
+
+  select {
+    border: none;
+    border-bottom: 2px solid $color-lightblack;
+  }
 }
 
 .review-tile-body-summary,
@@ -74,14 +80,29 @@ a {
 }
 
 .review-list-buttons {
-  position: flex;
-  justify-content: row;
-  float: right;
+  margin-top: 15px;
 }
 
 .review-list {
   overflow: auto;
   height: 580px;
+}
+
+.review-list-clicked {
+  height: 500px;
+}
+
+.left-button,
+.right-button {
+  button {
+    border: 1px solid #000;
+    padding: 20px 30px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #fff;
+  }
 }
 
 .left-button {
@@ -90,16 +111,16 @@ a {
 }
 
 .right-button {
+  button {
+    @include button-standard;
+    padding-left: 5px;
+    padding-right: 40px;
+  }
   float: left;
   margin-bottom: 30px;
+  margin-left: 10px;
 }
 
-button {
-  border: none;
-  padding: 14px 30px;
-  display: inline-block;
-  font-size: 15px;
-  margin: 4px 2px;
-  cursor: pointer;
-  color: darkslategray;
+.review-name-date {
+  font-size: 12px;
 }

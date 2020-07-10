@@ -31,7 +31,6 @@ class SubmittedImage extends Component {
     } else {
       link = this.props.photo.url;
     }
-    console.log('this', this.props.photo.url);
     return (
       <div>
         <img

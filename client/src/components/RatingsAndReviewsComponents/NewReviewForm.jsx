@@ -77,7 +77,6 @@ class NewReviewForm extends Component {
         characteristics: this.state.characteristics,
       })
       .then((response) => {
-        console.log(response);
         this.props.dispatch(postNewReview(this.state));
         this.props.closeModal();
       })
@@ -87,7 +86,6 @@ class NewReviewForm extends Component {
   }
 
   updateCharacteristic(input) {
-    console.log('input', input.type);
     let code = {
       Size: 14,
       Width: 15,
@@ -97,7 +95,6 @@ class NewReviewForm extends Component {
       Fit: 19,
     };
     let num = code[input.type];
-    console.log('num', num);
 
     this.setState({
       characteristics: {
@@ -120,7 +117,6 @@ class NewReviewForm extends Component {
   }
 
   render() {
-    console.log(this.state.photos);
     let imagesThumbNails = this.state.photos.map((photo) => (
       <img className="modal-form-image" src={photo} />
     ));
@@ -178,8 +174,6 @@ class NewReviewForm extends Component {
       });
     }
 
-    console.log(this.state);
-
     let starTest = {
       1: 'Poor',
       2: 'Fair',
@@ -189,7 +183,6 @@ class NewReviewForm extends Component {
     };
 
     let text = starTest[this.state.rating.toString()];
-    console.log('photo', this.state.photos);
     return (
       <div className="modal-form">
         <div className="modal-form-heading">
@@ -305,7 +298,6 @@ class NewReviewForm extends Component {
               className="form-submit-button"
               type="submit"
               onSubmit={() => {
-                console.log('hello');
                 this.onSubmit();
                 this.props.closeModal();
               }}

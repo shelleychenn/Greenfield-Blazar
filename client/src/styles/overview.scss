@@ -52,14 +52,9 @@
     }
 
     button {
+      @include button-standard;
       grid-column: 1 / span 4;
       grid-row: 3;
-      background-image: url('/assets/add-icon.png');
-      background-repeat: no-repeat;
-      background-position: 95% 50%;
-      text-align: left;
-      text-indent: 10px;
-      cursor: pointer;
     }
 
     .container-favorite {
@@ -261,7 +256,7 @@
     }
 
     p {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     display: grid;
@@ -279,7 +274,11 @@
 
         h4 {
           text-transform: capitalize;
-          padding-bottom: 10px;
+          padding-bottom: 20px;
+        }
+
+        p {
+          font-family: 16px;
         }
       }
 
@@ -300,7 +299,7 @@
 
   .socialMedia-container {
     grid-row: 2;
-    padding-top: 10px;
+    padding-top: 20px;
     display: grid;
     grid-template-columns: 30px 30px 30px;
 
@@ -323,10 +322,6 @@
       margin: 0;
     }
 
-    p {
-      font-size: 14px;
-    }
-
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 300px;
@@ -335,7 +330,7 @@
     .overview-reviews-container {
       display: grid;
       grid-template-rows: 1fr;
-      grid-template-columns: 80px 100px;
+      grid-template-columns: 90px 110px;
 
       div {
         grid-column: 1;

@@ -1,22 +1,23 @@
-h1 {
-  font-size: 45px;
-}
-
 .ratings-and-reviews-container {
   display: grid;
   grid-template-columns: 1fr 300px 15px 635px 1fr;
+  grid-template-rows: 60px 1fr;
 }
 
 .ratings-and-reviews-left-container {
   grid-column: 2;
+  grid-row: 2;
 }
 
 .ratings-and-reviews-right-container {
   grid-column: 4;
+  grid-row: 2;
   padding-left: 10px;
 }
 
 .ratings-and-reviews-header {
-  margin-left: 10.7%;
-  margin-bottom: 30px;
+  // margin-left: 10.7%;
+  // margin-bottom: 30px;
+  grid-column: 2;
+  grid-row: 1;
 }
