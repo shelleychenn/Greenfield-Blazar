@@ -9,10 +9,12 @@
   "scripts": {
     "start": "nodemon ./server/index.js",
     "dev-react": "webpack -d --watch",
+    "prod-react": "webpack -p",
     "test": "jest"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "focus-trap-react": "^7.0.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -32,6 +34,7 @@
     "express": "^4.17.1",
     "jest": "^26.1.0",
     "node-sass": "^4.14.1",
+    "sass": "^1.26.9",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",

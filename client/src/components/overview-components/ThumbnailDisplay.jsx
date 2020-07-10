@@ -2,6 +2,7 @@ import React from 'react';
 
 const ThumbnailDisplay = ({
   selectedStyle,
+  productDetails,
   thumbnailIndexBounds,
   indexDisplacement,
   imageIndex,
@@ -19,6 +20,7 @@ const ThumbnailDisplay = ({
             e.stopPropagation();
             scrollBackward();
           }}
+          alt='Up arrow icon'
         />
       )}
       <div className='thumbnail-container'>
@@ -33,6 +35,7 @@ const ThumbnailDisplay = ({
                   e.stopPropagation();
                   setImageIndex(index + indexDisplacement);
                 }}
+                alt={!!productDetails ? `${productDetails.name} ${imageIndex}` : ''}
               />
             );
           })}
@@ -45,6 +48,7 @@ const ThumbnailDisplay = ({
             e.stopPropagation();
             scrollForward();
           }}
+          alt='Down arrow icon'
         />
       )}
     </>

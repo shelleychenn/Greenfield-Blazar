@@ -1,0 +1,121 @@
+.modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform: translateZ(0);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 40%;
+  max-height: 80%;
+}
+
+.modal-body {
+  padding-top: 0.25em;
+}
+
+@media screen and (min-width: 500px) {
+  /* Center the Modal! */
+  .modal-area {
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    max-width: 30em;
+    max-height: calc(100% - 1em);
+    max-height: 75%;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  line-height: 1;
+  background: #f6f6f7;
+  border: 0;
+  box-shadow: 0;
+  cursor: pointer;
+}
+
+.modal-close-icon {
+  width: 25px;
+  height: 25px;
+  fill: transparent;
+  stroke: black;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.scroll-lock {
+  overflow: hidden;
+  margin-right: 17px;
+}
+
+.form-text {
+  color: gray;
+  font-size: smaller;
+  margin: 20px;
+  margin-top: 3px;
+}
+
+.form-group {
+  padding: 7px 2px;
+}
+
+.modal-form-input {
+  margin-top: 10px;
+  width: 80%;
+  margin-left: 20px;
+  border: 1px solid #000;
+  height: 2em;
+  border-radius: 3px;
+}
+
+.characteristic-radio-button {
+  font-size: 0.9em;
+  padding-left: 20px;
+}
+
+.modal-form-star-rating {
+  margin-left: 20px;
+}
+
+.modal-form-star-rating:hover {
+  cursor: pointer;
+}
+
+.upload-images {
+  margin-left: 20px;
+}
+
+.modal-form-recommend-radio-button {
+  margin-left: 20px;
+}
+
+.modal-form-image {
+  padding-top: 10px;
+  height: 75px;
+  width: 75px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.modal-form-upload-body {
+  margin-left: 20px;
+}

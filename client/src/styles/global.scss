@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('/assets/Montserrat/Montserrat-SemiBold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('/assets/Roboto/Roboto-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('/assets/Roboto/Roboto-Bold.ttf');
+  font-weight: bold;
+}
+
+$font-sanserif: 'Roboto-Regular', Helvetica, Arial, sans-serif;
+$font-header: 'Montserrat-Light', Arial, sans-serif;
+$font-logo: 'Montserrat-Light', Arial, sans-serif;
+$h1: 2rem;
+
+$color-lightblack: #919191;
+
+* {
+  font-family: $font-sanserif;
+  letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-header;
+  letter-spacing: 1.5px;
+}
+
+h1 {
+  font-size: $h1;
+}
+
+button, select {
+  font-weight: bold;
+  font-family: $font-header;
+}
+
+body {
+  margin: 0;
+}
+
+input:focus,
+button:focus,
+select:focus {
+  outline: none;
+}
+
+@mixin button-standard {
+  background-image: url('/assets/add-icon.png');
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  text-align: left;
+  text-indent: 10px;
+  cursor: pointer;
+}
